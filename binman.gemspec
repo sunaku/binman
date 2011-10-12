@@ -4,7 +4,7 @@ require "binman/version"
 
 Gem::Specification.new do |s|
   s.name        = "binman"
-  s.version     = Binman::VERSION
+  s.version     = BinMan::VERSION
   s.authors,
   s.email       = File.read('LICENSE').scan(/Copyright \d+ (.+) <(.+?)>/).transpose
   s.homepage    = "http://github.com/sunaku/binman"

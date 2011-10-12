@@ -1,5 +1,5 @@
 require "binman/version"
 
-module Binman
+module BinMan
   # Your code goes here...
 end
