@@ -44,8 +44,13 @@ module BinMan
     end
 
     header = read(source)
-    roff = dump(header)
-    IO.popen('man -l -', 'w') {|man| man.puts roff }
+
+    begin
+      roff = dump(header)
+      IO.popen('man -l -', 'w') {|man| man.puts roff }
+    rescue
+      puts header
+    end
   end
 
   ##
