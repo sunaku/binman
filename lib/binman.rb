@@ -4,38 +4,49 @@ module BinMan
   extend self
 
   ##
-  # Returns the content of the leading comment header (which is a contiguous
-  # sequence of single-line comments starting at the beginning of the file and
-  # ending at the first single blank line) from the given source.
+  # Returns content of leading comment header (a contiguous sequence of
+  # single-line comments starting at beginning of file and ending at first
+  # single blank line) from given source (IO, file name, or string).
   #
-  # Comment markers and the shebang line (if any) are removed from the result.
+  # Comment markers and shebang line (if any) are removed from result.
   #
-  def read string
+  def read source=nil
+    source = source.read if source.respond_to? :read
+    source ||=
+      if first_caller = caller.find {|f| not f.start_with? __FILE__ }
+        first_caller.sub(/:\d+.*$/, '')
+      end
+    source = File.read(source) if File.exist? source
+
+    string = source.to_s
     string.split(/^\s*$/, 2).first.sub(/\A#!.+$/, '').gsub(/^# ?/, '').strip
+  end
+
+  ##
+  # Converts given leading comment header (produced by #read) into roff(7).
+  #
+  def dump header
+    require 'redcarpet'
+    require 'redcarpet/render_man'
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::ManPage)
+    roff = markdown.render(header)
   end
 
   ##
   # Shows leading comment header from given source as UNIX man page.
   #
-  def show file=nil
-    file ||= caller.first.sub(/:\d+.*$/, '')
-    head = read(File.read(file))
-
-    require 'redcarpet'
-    require 'redcarpet/render_man'
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::ManPage)
-    roff = markdown.render(head)
+  def show source=nil
+    header = read(source)
+    roff = dump(header)
     IO.popen('man -l -', 'w') {|man| man.puts roff }
   end
 
   ##
-  # Shows leading comment header from given file as UNIX man page and exits.
+  # Shows leading comment header from given source as UNIX man page and exits.
   #
-  def help file=nil, argv=ARGV
-    file ||= caller.first.sub(/:\d+.*$/, '')
-
+  def help source=nil, argv=ARGV
     unless argv.grep(/^(-h|--help)$/).empty?
-      show file
+      show source
       exit
     end
   end
