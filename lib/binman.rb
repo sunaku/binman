@@ -34,12 +34,10 @@ module BinMan
   # Shows leading comment header from given source as UNIX man page.
   #
   def show source=nil
-    # try showing pre-built man page for given source
-    if source and File.exist? source
-      bin = File.basename(source)
-      man = File.expand_path("../../man/man1/#{bin}.1", source)
-      return if system 'man', '-l', man if File.exist? man
-    end
+    # try showing existing man page files for given source
+    return if source and File.exist? source and
+      File.exist? man_path = File.expand_path('../../man', source) and
+      system 'man', '-M', man_path, '-a', File.basename(source)
 
     header = read(source)
 
