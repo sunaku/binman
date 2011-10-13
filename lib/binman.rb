@@ -4,11 +4,16 @@ module BinMan
   extend self
 
   ##
-  # Returns content of leading comment header (a contiguous sequence of
-  # single-line comments starting at beginning of file and ending at first
-  # single blank line) from given source (IO, file name, or string).
+  # Returns content of leading comment header (which can be one of the
+  # following two choices) from given source (IO, file name, or string).
   #
-  # Comment markers and shebang line (if any) are removed from result.
+  # (1) A contiguous sequence of single-line comments starting at the
+  #     beginning of the file (after shebang and encoding comments plus
+  #     optional blank lines) and ending at the first single blank line.
+  #
+  # (2) First embedded document delimited by `=begin` and `=end` lines.
+  #
+  # Comment markers and shebang/encoding comments are omitted from result.
   #
   def read source=nil
     source = source.read if source.respond_to? :read
@@ -19,7 +24,17 @@ module BinMan
     source = File.read(source) if File.exist? source
 
     string = source.to_s
-    string.split(/^\s*$/, 2).first.sub(/\A#!.+$/, '').gsub(/^# ?/, '').strip
+
+    # strip shebang and encoding comments
+    [/\A#!.+$/, /\A#.*coding:.+$/].each do |comment|
+      string = $'.lstrip if string =~ comment
+    end
+
+    if string =~ /\A#/
+      string.split(/^\s*$/, 2).first.gsub(/^# ?/, '')
+    else
+      string[/^=begin\b.*?$(.*?)^=end\b.*?$/m, 1]
+    end.strip
   end
 
   ##
