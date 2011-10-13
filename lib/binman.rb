@@ -41,8 +41,10 @@ module BinMan
   # Converts given leading comment header (produced by #read) into roff(7).
   #
   def dump header
-    require 'binman/renderer'
-    RENDERER.render(header)
+    require 'redcarpet-manpage'
+    RedcarpetManpage::RENDERER.render(header)
+  rescue LoadError
+    raise 'Run `gem install binman --development` to use dump().'
   end
 
   ##
@@ -59,7 +61,8 @@ module BinMan
     begin
       roff = dump(header)
       IO.popen('man -l -', 'w') {|man| man.puts roff }
-    rescue
+    rescue => error
+      warn "binman: #{error}"
       puts header
     end
   end

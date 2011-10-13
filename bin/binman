@@ -34,6 +34,15 @@ A leading comment header can be one of the following two things:
 
 ### Markdown Processing Extensions
 
+The following [Redcarpet2] markdown processing extensions are enabled:
+
+* autolink
+* no_intra_emphasis
+* fenced_code_blocks
+* space_after_headers
+
+### Markdown Processing Divergence
+
 Although your leading comment headers are written in markdown(7), `binman`
 introduces the following additional conventions to simplify common tasks:
 
