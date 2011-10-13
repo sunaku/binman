@@ -3,9 +3,10 @@ binman - UNIX man pages for Ruby bin/ scripts
 
 [binman] produces UNIX man pages for your Ruby `bin/` scripts using
 markdown(7), roff(7), [Redcarpet2] for conversion thereof, and man(1).
-Here is [an example bin/ script][binman-bin] to help get you started!
 
-![Obligatory Screenshot](http://ompldr.org/vYXM4aw)
+![Obligatory Screen-shot of binman(1) in action!](http://ompldr.org/vYXNlNg)
+
+Here is [an example bin/ script][binman-bin] to help get you started!
 
 [binman]: https://github.com/sunaku/binman
 [binman-api]: http://rdoc.info/github/sunaku/binman
@@ -20,7 +21,7 @@ Features
 
 * Individual extraction, conversion, and display commands.
 
-* Implemented in less than 100 lines of pure Ruby code! :-)
+* Implemented in roughly 100 lines of pure Ruby code! :-)
 
 ------------------------------------------------------------------------------
 Prerequisites
