@@ -22,8 +22,6 @@
 # then converting them from markdown(7) to roff(7) using [Redcarpet2] for
 # display using man(1).
 #
-# See for more information and resources.
-#
 # ### Markdown Processing Extensions
 #
 # Although your leading comment headers are written in markdown(7), `binman`
