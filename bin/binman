@@ -1,65 +1,74 @@
 #!/usr/bin/env ruby
-#
-# BINMAN 1 "2011-10-12" "0.0.1" "Ruby User Manuals"
-# =================================================
-#
-# NAME
-# ----
-#
-# binman - UNIX man pages for Ruby `bin/` scripts
-#
-# SYNOPSIS
-# --------
-#
-# `binman` [*OPTION*]... *COMMAND*
-#
-# DESCRIPTION
-# -----------
-#
-# [binman] produces UNIX man pages for your Ruby `bin/` scripts by extracting
-# their leading comment header (a contiguous sequence of single-line comments
-# starting at beginning of file and ending at first single blank line) and
-# then converting them from markdown(7) to roff(7) using [Redcarpet2] for
-# display using man(1).
-#
-# ### Markdown Processing Extensions
-#
-# Although your leading comment headers are written in markdown(7), `binman`
-# introduces the following additional conventions to simplify common tasks:
-#
-# 1. Paragraphs beginning with bold/italic and followed by at least
-#    one two-space indented line are considered to be definitions.
-#    The first line of such a paragraph is the term being defined and
-#    the subsequent two-space indented lines are the definition body.
-#
-# OPTIONS
-# -------
-#
-# `-h`, `--help`
-#   Display this manual page using man(1).
-#
-# COMMANDS
-# --------
-#
-# `read` [*FILE*]
-#   Print the leading comment header extracted from the given *FILE* or stdin.
-#
-# `dump` [*FILE*]
-#   Print the roff(7) conversion of the leading comment header extracted from
-#   the given *FILE* or stdin.
-#
-# `show` [*FILE*]
-#   Use man(1) to display the roff(7) conversion of the leading comment header
-#   extracted from the given *FILE* or stdin.
-#
-# SEE ALSO
-# --------
-#
-# man(1), roff(7), markdown(7)
-#
-# [binman]: https://github.com/sunaku/binman
-# [Redcarpet2]: https://github.com/tanoku/redcarpet
-#
+# encoding: utf-8
+=begin
+
+BINMAN 1 "2011-10-12" "0.0.1" "Ruby User Manuals"
+=================================================
+
+NAME
+----
+
+binman - UNIX man pages for Ruby `bin/` scripts
+
+SYNOPSIS
+--------
+
+`binman` [*OPTION*]... *COMMAND*
+
+DESCRIPTION
+-----------
+
+[binman] produces UNIX man pages for your Ruby `bin/` scripts.  It can extract
+their leading comment headers (defined below), convert them from markdown(7)
+into roff(7) using [Redcarpet2], and display them using man(1).
+
+### Leading Comment Headers
+
+1. A contiguous sequence of single-line comments starting at the
+   beginning of the file (after shebang and encoding comments plus
+   optional blank lines) and ending at the first single blank line.
+
+2. First embedded document delimited by `=begin` and `=end` lines.
+
+### Markdown Processing Extensions
+
+Although your leading comment headers are written in markdown(7), `binman`
+introduces the following additional conventions to simplify common tasks:
+
+1. Paragraphs beginning with bold/italic and followed by at least
+   one two-space indented line are considered to be definitions.
+   The first line of such a paragraph is the term being defined and
+   the subsequent two-space indented lines are the definition body.
+
+OPTIONS
+-------
+
+`-h`, `--help`
+  Display this help manual using man(1).
+
+COMMANDS
+--------
+
+`read` [*FILE*]
+  Print the leading comment header extracted from the given *FILE* or stdin.
+
+`dump` [*FILE*]
+  Print the roff(7) conversion of the leading comment header extracted from
+  the given *FILE* or stdin.
+
+`show` [*FILE*]
+  Use man(1) to display the roff(7) conversion of the leading comment header
+  extracted from the given *FILE* or stdin.
+
+SEE ALSO
+--------
+
+man(1), roff(7), markdown(7)
+
+[binman]: https://github.com/sunaku/binman
+[Redcarpet2]: https://github.com/tanoku/redcarpet
+
+=end =========================================================================
 
 require 'binman'
 BinMan.help
