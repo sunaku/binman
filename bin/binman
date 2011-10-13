@@ -24,6 +24,8 @@ into roff(7) using [Redcarpet2], and display them using man(1).
 
 ### Leading Comment Headers
 
+A leading comment header can be one of the following two things:
+
 1. A contiguous sequence of single-line comments starting at the
    beginning of the file (after shebang and encoding comments plus
    optional blank lines) and ending at the first single blank line.
