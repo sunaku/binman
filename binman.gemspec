@@ -2,6 +2,10 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "binman/version"
 
+# pre-build man page files
+require 'binman/rake_tasks'
+Rake::Task[:binman].invoke
+
 Gem::Specification.new do |s|
   s.name        = "binman"
   s.version     = BinMan::VERSION
