@@ -1,4 +1,19 @@
 ------------------------------------------------------------------------------
+Version 0.1.2 (2011-10-13)
+------------------------------------------------------------------------------
+
+Housekeeping:
+
+* Extracted `BinMan::Renderer` into [redcarpet-manpage] library.
+
+* The [Redcarpet2] library is not a runtime gem dependency anymore.
+
+* Forgot to introduce leading comment headers in binman(1) man page.
+
+[Redcarpet2]: https://github.com/tanoku/redcarpet
+[redcarpet-manpage]: http://rdoc.info/github/sunaku/redcarpet-manpage
+
+------------------------------------------------------------------------------
 Version 0.1.1 (2011-10-13)
 ------------------------------------------------------------------------------
 
