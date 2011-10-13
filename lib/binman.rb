@@ -26,10 +26,8 @@ module BinMan
   # Converts given leading comment header (produced by #read) into roff(7).
   #
   def dump header
-    require 'redcarpet'
-    require 'redcarpet/render_man'
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::ManPage)
-    roff = markdown.render(header)
+    require 'binman/renderer'
+    RENDERER.render(header)
   end
 
   ##
