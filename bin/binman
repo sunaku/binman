@@ -80,5 +80,5 @@ case command
 when 'read' then puts BinMan.read(file)
 when 'dump' then puts BinMan.dump(BinMan.read(file))
 when 'show' then BinMan.show(file)
-else warn "binman: unknown command: #{command}"; exit!
+else raise ArgumentError, 'bad command; try --help'
 end
