@@ -16,12 +16,13 @@
 # DESCRIPTION
 # -----------
 #
-# `binman` produces UNIX man pages for your Ruby `bin/` scripts by extracting
+# [binman] produces UNIX man pages for your Ruby `bin/` scripts by extracting
 # their leading comment header (a contiguous sequence of single-line comments
 # starting at beginning of file and ending at first single blank line) and
-# then converting them from markdown(7) to roff(7) for display using man(1).
+# then converting them from markdown(7) to roff(7) using [Redcarpet2] for
+# display using man(1).
 #
-# See https://github.com/sunaku/binman for more information and resources.
+# See for more information and resources.
 #
 # ### Markdown Processing Extensions
 #
@@ -57,6 +58,9 @@
 # --------
 #
 # man(1), roff(7), markdown(7)
+#
+# [binman]: https://github.com/sunaku/binman
+# [Redcarpet2]: https://github.com/tanoku/redcarpet
 #
 
 require 'binman'
