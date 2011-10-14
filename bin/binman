@@ -97,6 +97,6 @@ when 'show'
 when 'load', 'dump', 'conv'
   puts BinMan.send(command, source)
 else
-  warn 'bad command; try --help'
+  warn 'binman: bad command; try --help'
   exit!
 end
