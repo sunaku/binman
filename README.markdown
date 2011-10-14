@@ -33,9 +33,13 @@ Prerequisites
 Installation
 ------------------------------------------------------------------------------
 
-As a Ruby gem:
+As a Ruby gem (without markdown to roff converter):
 
     gem install binman
+
+As a Ruby gem (with extra cheese and everything please):
+
+    gem install binman --development
 
 As a Git clone:
 
@@ -80,6 +84,16 @@ See the [API documentation][binman-api] for more delicious recipes.
 Add the following line to your `Rakefile` and you've got a `binman` task!
 
     require 'binman/rake_tasks'
+
+It will pre-build UNIX man page files for your `bin/` scripts into a `man/`
+directory so that your end-users do not need the markdown to roff converter
+installed in order to view your man pages!  Just remember to add the `man/`
+directory's contents to your gemspec or release package:
+
+    Gem::Specification.new do |s|
+      # ... your stuff ...
+      s.files += Dir['man/**/*']
+    end
 
 ------------------------------------------------------------------------------
 License
