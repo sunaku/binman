@@ -91,5 +91,5 @@ case command
 when 'read' then puts BinMan.read(file)
 when 'dump' then puts BinMan.dump(BinMan.read(file))
 when 'show' then BinMan.show(file)
-else raise ArgumentError, 'bad command; try --help'
+else warn 'bad command; try --help'; exit!
 end
