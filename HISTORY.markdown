@@ -1,4 +1,32 @@
 ------------------------------------------------------------------------------
+Version 1.0.0 (2011-10-13)
+------------------------------------------------------------------------------
+
+Incompatible changes:
+
+* The `BinMan::dump()` method and corresponding `binman dump` command now
+  extract the leading comment header from their input before returning the
+  markdown to roff conversion thereof.
+
+* The `BinMan::read()` method and corresponding `binman read` command have
+  been renamed to `BinMan::load()` and `binman load` respectively.
+
+New features:
+
+* Added `BinMan::conv()` method and corresponding `binman conv` command to
+  encapsulate the markdown to roff conversion process.
+
+Bug fixes:
+
+* Pre-built man pages included alongside a `bin/` script were not displayed.
+  Instead, binman was (incorrectly) always trying to convert the leading
+  comment header from the `bin/` script into a UNIX man page for display.
+
+Housekeeping:
+
+* README: explain dev deps and `man/` dir packaging.
+
+------------------------------------------------------------------------------
 Version 0.1.2 (2011-10-13)
 ------------------------------------------------------------------------------
 
