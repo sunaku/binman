@@ -3,8 +3,7 @@ require "binman/version"
 module BinMan
   extend self
 
-  ##
-  # Returns content of leading comment header (which can be one of the
+  # Extracts content of leading comment header (which can be one of the
   # following two choices) from given source (IO, file name, or string).
   #
   # (1) A contiguous sequence of single-line comments starting at the
@@ -15,51 +14,48 @@ module BinMan
   #
   # Comment markers and shebang/encoding comments are omitted from result.
   #
-  def read source=nil
-    source = source.read if source.respond_to? :read
-    source ||=
-      if first_caller = caller.find {|f| not f.start_with? __FILE__ }
-        first_caller.sub(/:\d+.*$/, '')
-      end
-    source = File.read(source) if File.exist? source
-
-    string = source.to_s
+  def load source=nil
+    header = read(source)
 
     # strip shebang and encoding comments
     [/\A#!.+$/, /\A#.*coding:.+$/].each do |comment|
-      string = $'.lstrip if string =~ comment
+      header = $'.lstrip if header =~ comment
     end
 
-    if string =~ /\A#/
-      string.split(/^\s*$/, 2).first.gsub(/^# ?/, '')
+    if header =~ /\A#/
+      header.split(/^\s*$/, 2).first.gsub(/^# ?/, '')
     else
-      string[/^=begin\b.*?$(.*?)^=end\b.*?$/m, 1]
+      header[/^=begin\b.*?$(.*?)^=end\b.*?$/m, 1]
     end.strip
   end
 
-  ##
-  # Converts given leading comment header (produced by #read) into roff(7).
-  #
-  def dump header
+  # Converts given markdown(7) source into roff(7).
+  def conv source=nil
+    header = read(source)
     require 'redcarpet-manpage'
     RedcarpetManpage::RENDERER.render(header)
   rescue LoadError
-    raise 'Run `gem install binman --development` to use dump().'
+    raise 'Run `gem install binman --development` to use BinMan::conv().'
   end
 
-  ##
-  # Shows leading comment header from given source as UNIX man page.
-  #
+  # Extracts leading comment header content from given
+  # source and returns the roff(7) conversion thereof.
+  def dump source=nil
+    conv load(source)
+  end
+
+  # Shows leading comment header from given source as UNIX man page if
+  # possible, else falls back to showing leading comment header as-is.
   def show source=nil
     # try showing existing man page files for given source
-    return if source and File.exist? source and
-      File.exist? man_path = File.expand_path('../../man', source) and
-      system 'man', '-M', man_path, '-a', File.basename(source)
+    return if file = find(source) and File.exist? file and
+      File.exist? man_path = File.expand_path('../../man', file) and
+      system 'man', '-M', man_path, '-a', File.basename(file)
 
-    header = read(source)
+    header = load(source)
 
     begin
-      roff = dump(header)
+      roff = conv(header)
       IO.popen('man -l -', 'w') {|man| man.puts roff }
     rescue => error
       warn "binman: #{error}"
@@ -67,13 +63,31 @@ module BinMan
     end
   end
 
-  ##
   # Shows leading comment header from given source as UNIX man page and exits.
-  #
   def help source=nil, argv=ARGV
     unless argv.grep(/^(-h|--help)$/).empty?
       show source
       exit
+    end
+  end
+
+private
+
+  # Returns contents of given source I/O, file name, or string.
+  def read source=nil
+    if source.respond_to? :read
+      source.read
+    elsif file = find(source) and File.exist? file
+      File.read file
+    else
+      source
+    end
+  end
+
+  # Resolves given source into first caller's file name if nil.
+  def find source=nil
+    source || if first_caller = caller.find {|f| not f.start_with? __FILE__ }
+      first_caller.sub(/:\d+.*$/, '')
     end
   end
 end

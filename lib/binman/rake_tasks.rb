@@ -7,7 +7,7 @@ mans = bins.pathmap("#{path}/%n.1")
 bins.zip(mans).each do |bin, man|
   file man => [bin, path] do
     require 'binman'
-    roff = BinMan.dump(BinMan.read(bin))
+    roff = BinMan.dump(bin)
     File.open(man, 'w') {|f| f << roff }
   end
 end

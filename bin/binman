@@ -60,16 +60,20 @@ OPTIONS
 COMMANDS
 --------
 
-`read` [*FILE*]
-  Print the leading comment header extracted from the given *FILE* or stdin.
+`show` [*FILE*]
+  Use man(1) to display the roff(7) conversion of the leading comment header
+  extracted from the given *FILE* or STDIN.
+
+`load` [*FILE*]
+  Print the leading comment header extracted from the given *FILE* or STDIN.
 
 `dump` [*FILE*]
   Print the roff(7) conversion of the leading comment header extracted from
-  the given *FILE* or stdin.
+  the given *FILE* or STDIN.
 
-`show` [*FILE*]
-  Use man(1) to display the roff(7) conversion of the leading comment header
-  extracted from the given *FILE* or stdin.
+`conv` [*FILE*]
+  Print the roff(7) conversion of the markdown(7) document read from the given
+  *FILE* or STDIN.
 
 SEE ALSO
 --------
@@ -84,12 +88,15 @@ man(1), roff(7), markdown(7)
 require 'binman'
 BinMan.help
 
-command, file = ARGV
-file ||= STDIN
+command, source = ARGV
+source ||= STDIN
 
 case command
-when 'read' then puts BinMan.read(file)
-when 'dump' then puts BinMan.dump(BinMan.read(file))
-when 'show' then BinMan.show(file)
-else warn 'bad command; try --help'; exit!
+when 'show'
+  BinMan.show source
+when 'load', 'dump', 'conv'
+  puts BinMan.send(command, source)
+else
+  warn 'bad command; try --help'
+  exit!
 end
