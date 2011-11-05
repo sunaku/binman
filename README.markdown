@@ -96,6 +96,8 @@ packages, add the following line to the top of your `*.gemspec` file:
 
     require 'binman/gemspec'
 
+Doing this also adds binman as a runtime and development gem dependency.
+
 ------------------------------------------------------------------------------
 License
 ------------------------------------------------------------------------------

@@ -11,5 +11,16 @@ class Gem::Specification
 
     # and add them to the gem
     self.files += Dir['man/**/*']
+
+    # add binman as dependency
+    unless self.name == 'binman'
+      binman_gem = ['binman', '~> 1']
+      self.add_runtime_dependency(*binman_gem)
+      binman_vers = Gem::Dependency.new(*binman_gem)
+      binman_spec = Gem::SpecFetcher.fetcher.fetch(binman_vers).flatten.first
+      binman_spec.development_dependencies.unshift(binman_vers).each do |dep|
+        self.add_development_dependency dep.name, dep.requirements_list
+      end
+    end
   end
 end
