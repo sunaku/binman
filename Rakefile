@@ -1,2 +1,2 @@
 require "bundler/gem_tasks"
-require "binman/rake_tasks"
+require "binman/rakefile"
