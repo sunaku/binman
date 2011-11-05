@@ -1,4 +1,20 @@
 ------------------------------------------------------------------------------
+Version 1.1.0 (2011-11-05)
+------------------------------------------------------------------------------
+
+Compatible changes:
+
+* The `binman/rake_tasks` library has been renamed (with deprecation) to
+  `binman/rakefile`.  The deprecation warning will be removed in the next
+  major release.
+
+New features:
+
+* Add `binman/gemspec` packaging convenience library which automatically
+  builds and includes your UNIX man page files in your gem packages and also
+  adds binman as a runtime and development gem dependency.
+
+------------------------------------------------------------------------------
 Version 1.0.0 (2011-10-13)
 ------------------------------------------------------------------------------
 
