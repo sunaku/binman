@@ -13,7 +13,7 @@ class Gem::Specification
     self.files += Dir['man/**/*']
 
     # add binman as dependency
-    unless self.name == 'binman'
+    if self.name and self.name != 'binman'
       binman_gem = ['binman', '~> 1']
       self.add_runtime_dependency(*binman_gem)
       binman_vers = Gem::Dependency.new(*binman_gem)
