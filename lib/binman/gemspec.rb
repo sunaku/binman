@@ -14,7 +14,8 @@ class Gem::Specification
 
     # add binman as dependency
     if self.name and self.name != 'binman'
-      binman_gem = ['binman', '~> 1']
+      require 'binman/version'
+      binman_gem = ['binman', "~> #{BinMan::VERSION[/\d+/]}"]
       self.add_runtime_dependency(*binman_gem)
       binman_vers = Gem::Dependency.new(*binman_gem)
       binman_spec = Gem::SpecFetcher.fetcher.fetch(binman_vers).flatten.first
