@@ -6,7 +6,7 @@ class Gem::Specification
     _582ab9fd_ffc8_4972_b37f_1a46031a9163(*args, &block)
 
     # pre-build man page files
-    require 'binman/rake_tasks'
+    require 'binman/rakefile'
     Rake::Task[:binman].invoke
 
     # and add them to the gem
