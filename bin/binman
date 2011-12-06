@@ -20,7 +20,7 @@ DESCRIPTION
 
 [binman] produces UNIX man pages for your Ruby `bin/` scripts.  It can extract
 their leading comment headers (defined below), convert them from markdown(7)
-into roff(7) using [Redcarpet2], and display them using man(1).
+into roff(7) using [md2man] and [Redcarpet2], and display them using man(1).
 
 ### Leading Comment Headers
 
@@ -32,24 +32,32 @@ A leading comment header can be one of the following two things:
 
 2. First embedded document delimited by `=begin` and `=end` lines.
 
-### Markdown Processing Extensions
-
-The following [Redcarpet2] markdown processing extensions are enabled:
-
-* autolink
-* no_intra_emphasis
-* fenced_code_blocks
-* space_after_headers
-
 ### Markdown Processing Divergence
 
-Although your leading comment headers are written in markdown(7), `binman`
-introduces the following additional conventions to simplify common tasks:
+Although your leading comment headers are written in markdown(7), `binman
+conv` introduces the following additions to markdown(7) syntax via [md2man]:
 
-1. Paragraphs beginning with bold/italic and followed by at least
-   one two-space indented line are considered to be definitions.
-   The first line of such a paragraph is the term being defined and
-   the subsequent two-space indented lines are the definition body.
+  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
+    in the roff(7) output, specifying the UNIX man page's header and footer.
+
+  * Paragraphs whose lines are all uniformly indented by two spaces are
+    considered to be "indented paragraphs".  They are unindented accordingly
+    before emission as `.IP` in the roff(7) output.
+
+  * Paragraphs whose subsequent lines (all except the first) are uniformly
+    indented by two spaces are considered to be a "tagged paragraphs".  They
+    are unindented accordingly before emission as `.TP` in the roff(7) output.
+
+### Markdown Processing Extensions
+
+The following [Redcarpet2] extensions for markdown(7) are enabled:
+
+* tables
+* autolink
+* superscript
+* strikethrough
+* no_intra_emphasis
+* fenced_code_blocks
 
 OPTIONS
 -------
@@ -81,6 +89,7 @@ SEE ALSO
 man(1), roff(7), markdown(7)
 
 [binman]: https://github.com/sunaku/binman
+[md2man]: https://github.com/sunaku/md2man
 [Redcarpet2]: https://github.com/tanoku/redcarpet
 
 =end =========================================================================

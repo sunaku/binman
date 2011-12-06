@@ -20,5 +20,5 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   # s.add_development_dependency "rspec"
   # s.add_runtime_dependency "rest-client"
-  s.add_development_dependency "redcarpet-manpage", ">= 0.0.1"
+  s.add_development_dependency "md2man", "~> 1"
 end

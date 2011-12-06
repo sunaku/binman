@@ -31,9 +31,8 @@ module BinMan
 
   # Converts given markdown(7) source into roff(7).
   def conv source=nil
-    header = read(source)
-    require 'redcarpet-manpage'
-    RedcarpetManpage::RENDERER.render(header)
+    require 'md2man'
+    Md2Man::ENGINE.render(read(source))
   rescue LoadError
     raise 'Run `gem install binman --development` to use BinMan::conv().'
   end
