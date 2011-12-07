@@ -20,7 +20,7 @@ DESCRIPTION
 
 [binman] produces UNIX man pages for your Ruby `bin/` scripts.  It can extract
 their leading comment headers (defined below), convert them from markdown(7)
-into roff(7) using [md2man] and [Redcarpet2], and display them using man(1).
+into roff(7) using [md2man], and display them using man(1).
 
 ### Leading Comment Headers
 
