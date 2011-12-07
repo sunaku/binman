@@ -1,4 +1,23 @@
 ------------------------------------------------------------------------------
+Version 2.0.0 (2011-12-06)
+------------------------------------------------------------------------------
+
+Breaking changes:
+
+* Removed the deprecated `binman/rake_tasks` helper library.  Use
+  `binman/rakefile` instead.
+
+External changes:
+
+* Fixed infinite looping in the `binman/gemspec` helper library.
+
+Internal changes:
+
+* Upgraded to md2man v1 for Markdown to UNIX man page conversion.
+
+* Do not hard-code the version number in `binman/gemspec` helper.
+
+------------------------------------------------------------------------------
 Version 1.1.0 (2011-11-05)
 ------------------------------------------------------------------------------
 
