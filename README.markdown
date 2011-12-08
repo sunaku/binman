@@ -83,7 +83,7 @@ See the [API documentation][binman-api] for more delicious recipes.
 
 Add the following line to your `Rakefile` and you've got a `binman` task!
 
-    require 'binman/rake_tasks'
+    require 'binman/rakefile'
 
 It will pre-build UNIX man page files for your `bin/` scripts into a `man/`
 directory so that your end-users do not need the markdown to roff converter
