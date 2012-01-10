@@ -1,8 +1,11 @@
 require 'rake'
 
-path = 'man/man1'
+directory path = 'man/man1'
 bins = FileList['bin/*']
 mans = bins.pathmap("#{path}/%n.1")
+
+desc 'Build UNIX man pages for bin/ scripts.'
+task :binman => mans
 
 bins.zip(mans).each do |bin, man|
   file man => [bin, path] do
@@ -12,7 +15,5 @@ bins.zip(mans).each do |bin, man|
   end
 end
 
-
-desc 'Build UNIX man pages for bin/ scripts.'
-task :binman => mans
-directory path
+# build man pages before building ruby gem using bundler
+%w[build install release].each {|t| task t => :binman }
