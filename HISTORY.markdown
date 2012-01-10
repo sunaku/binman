@@ -1,4 +1,17 @@
 ------------------------------------------------------------------------------
+Version 3.0.0 (2012-01-09)
+------------------------------------------------------------------------------
+
+Breaking changes:
+
+* Removed the `binman/gemspec` helper library because it did not play well
+  with Bundler.  Use the standard `add_runtime_dependency` method instead.
+
+External changes:
+
+* The `binman/Rakefile` helper library now hooks into Bundler's Rake tasks.
+
+------------------------------------------------------------------------------
 Version 2.0.0 (2011-12-06)
 ------------------------------------------------------------------------------
 
