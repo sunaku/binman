@@ -85,18 +85,9 @@ Add the following line to your `Rakefile` and you've got a `binman` task!
 
     require 'binman/rakefile'
 
-It will pre-build UNIX man page files for your `bin/` scripts into a `man/`
-directory so that your end-users do not need the markdown to roff converter
-installed in order to view your man pages!
-
-### In your gemspec
-
-To automatically build and include your UNIX man page files in your gem
-packages, add the following line to the top of your `*.gemspec` file:
-
-    require 'binman/gemspec'
-
-Doing this also adds binman as a runtime and development gem dependency.
+This task pre-builds UNIX man page files for your `bin/` scripts into a `man/`
+directory so that your end-users do not need the Markdown to Roff converter
+installed in order to view the man pages embedded therein!
 
 ------------------------------------------------------------------------------
 License
