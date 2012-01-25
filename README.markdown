@@ -46,6 +46,7 @@ As a Git clone:
     git clone git://github.com/sunaku/binman
     cd binman
     bundle install
+    bundle exec rake install
 
 ------------------------------------------------------------------------------
 Invocation
