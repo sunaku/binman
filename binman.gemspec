@@ -17,4 +17,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_development_dependency "md2man", "~> 1"
+  s.add_development_dependency "rake", ">= 0.9.2.2", "< 1"
 end
