@@ -41,30 +41,21 @@ As a Ruby gem (with extra cheese and everything please):
 
     gem install binman --development
 
-As a Git clone:
+### Development
 
     git clone git://github.com/sunaku/binman
     cd binman
-    bundle install
-    bundle exec rake install
-
-------------------------------------------------------------------------------
-Invocation
-------------------------------------------------------------------------------
-
-If installed as a Ruby gem:
-
-    binman
-
-If installed as a Git clone:
-
-    bundle exec ruby -Ilib bin/binman
-
-Just pass `--help` to see its man page.
+    bundle install --binstubs=bundle_bin
+    bundle_bin/binman --help  # run it directly
+    bundle exec rake -T       # packaging tasks
 
 ------------------------------------------------------------------------------
 Usage
 ------------------------------------------------------------------------------
+
+### At the command line
+
+    binman --help
 
 ### In your bin/ scripts
 
