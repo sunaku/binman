@@ -71,15 +71,26 @@ Or, if you're on a diet:
 
 See the [API documentation][binman-api] for more delicious recipes.
 
-### In your Rakefile
+### Pre-building man pages
 
-Add the following line to your `Rakefile` and you've got a `binman` task!
+Add the following lines to your gemspec:
+
+    s.files += Dir["man/**/*"]
+    s.add_development_dependency 'md2man', '~> 1'
+
+Add the following line to your Rakefile:
 
     require 'binman/rakefile'
 
-This task pre-builds UNIX man page files for your `bin/` scripts into a `man/`
-directory so that your end-users do not need the Markdown to Roff converter
-installed in order to view the man pages embedded therein!
+You now have a `rake binman` task that pre-builds UNIX man page files for your
+`bin/` scripts into a `man/` directory so that your end-users do not need
+[md2man] installed in order to view the man pages you've embedded therein!
+
+If you're using Bundler, this task also hooks into its gem packaging tasks and
+ensures that your UNIX man page files are pre-built and included in your gem:
+
+    bundle exec rake build
+    gem spec pkg/*.gem | fgrep man/man
 
 ------------------------------------------------------------------------------
 License
