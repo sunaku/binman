@@ -55,7 +55,12 @@ module BinMan
 
     begin
       roff = conv(header)
-      IO.popen('man -l -', 'w') {|man| man.puts roff }
+      require 'tempfile'
+      Tempfile.open 'binman' do |temp|
+        temp.write roff
+        temp.close
+        system 'man', temp.path
+      end
     rescue => error
       warn "binman: #{error}"
       puts header
