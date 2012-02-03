@@ -67,9 +67,12 @@ module BinMan
     end
   end
 
-  # Shows leading comment header from given source as UNIX man page and exits.
+  # Shows leading comment header from given source as UNIX man page and exits
+  # if the given argument vector contains '-h' or '--help', except after '--'.
   def help source=nil, argv=ARGV
-    unless argv.grep(/^(-h|--help)$/).empty?
+    limit = argv.index('--') || argv.length
+    index = [argv.index('-h'), argv.index('--help')].compact.min
+    if index and index < limit
       show source
       exit
     end
