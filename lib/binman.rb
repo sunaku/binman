@@ -34,7 +34,7 @@ module BinMan
     require 'md2man'
     Md2Man::ENGINE.render(read(source))
   rescue LoadError
-    raise 'Run `gem install binman --development` to use BinMan::conv().'
+    raise 'Run `gem install md2man -v "~>1"` to use BinMan::conv().'
   end
 
   # Extracts leading comment header content from given

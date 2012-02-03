@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  s.add_development_dependency "md2man", "~> 1"
-  s.add_development_dependency "rake", ">= 0.9.2.2", "< 1"
+  s.add_development_dependency 'md2man', '~> 1'
+  s.add_development_dependency 'rake', '>= 0.9.2.2', '< 1'
 end

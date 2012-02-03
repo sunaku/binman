@@ -33,13 +33,13 @@ Prerequisites
 Installation
 ------------------------------------------------------------------------------
 
-As a Ruby gem (without markdown to roff converter):
+If you just want to view pre-built man pages:
 
     gem install binman
 
-As a Ruby gem (with extra cheese and everything please):
+If you also want to build your own man pages:
 
-    gem install binman --development
+    gem install md2man -v "~>1"
 
 ### Development
 
