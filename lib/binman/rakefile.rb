@@ -4,7 +4,7 @@ directory path = 'man/man1'
 bins = FileList['bin/*']
 mans = bins.pathmap("#{path}/%n.1")
 
-desc 'Build UNIX man pages for bin/ scripts.'
+desc 'Build UNIX manual pages for bin/ scripts.'
 task :binman => mans
 
 bins.zip(mans).each do |bin, man|

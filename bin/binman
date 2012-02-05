@@ -1,44 +1,43 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
-=begin
+=begin =======================================================================
 
-BINMAN 1 "2012-02-02" "3.0.1"
-=============================
+# BINMAN 1 2012-02-02 3.0.1
 
-NAME
-----
+## NAME
 
-binman - UNIX man pages for Ruby `bin/` scripts
+binman - man pages for bin scripts
 
-SYNOPSIS
---------
+## SYNOPSIS
 
 `binman` [*OPTION*]... *COMMAND*
 
-DESCRIPTION
------------
+## DESCRIPTION
 
-[binman] produces UNIX man pages for your Ruby `bin/` scripts.  It can extract
-their leading comment headers (defined below), convert them from markdown(7)
-into roff(7) using [md2man], and display them using man(1).
+[binman] produces UNIX manual pages for your executable scripts. It can
+extract their leading comment headers (defined below), convert them from
+markdown(7) into roff(7) using [md2man], and display them using man(1).
 
-### Leading Comment Headers
+### Leading comment headers
 
 A leading comment header can be one of the following two things:
 
-1. A contiguous sequence of single-line comments starting at the
-   beginning of the file (after shebang and encoding comments plus
-   optional blank lines) and ending at the first single blank line.
+1.  A contiguous sequence of single-line comments (which begin with `#`
+    and optionally continue with a single space followed by any number of
+    characters until the end of the line) starting at the beginning of the
+    file (after shebang and encoding comments plus optional blank lines) and
+    ending at the first single blank line.
 
-2. First embedded document delimited by `=begin` and `=end` lines.
+2.  The first embedded document delimited by `=begin` and `=end` lines, which
+    begin with the respective delimiters and optionally continue with a single
+    space followed by any number of characters until the end of the line.
 
-### Markdown Processing Divergence
+### Markdown processing divergence
 
 Although your leading comment headers are written in markdown(7), `binman
-conv` introduces the following additions to markdown(7) syntax via [md2man]:
+conv` inherits the following additions to markdown(7) syntax from [md2man]:
 
   * There can be at most one top-level heading (H1).  It is emitted as `.TH`
-    in the roff(7) output, specifying the UNIX man page's header and footer.
+    in the roff(7) output to define the UNIX manual page's header and footer.
 
   * Paragraphs whose lines are all uniformly indented by two spaces are
     considered to be "indented paragraphs".  They are unindented accordingly
@@ -48,25 +47,23 @@ conv` introduces the following additions to markdown(7) syntax via [md2man]:
     indented by two spaces are considered to be a "tagged paragraphs".  They
     are unindented accordingly before emission as `.TP` in the roff(7) output.
 
-### Markdown Processing Extensions
+### Markdown processing extensions
 
-The following [Redcarpet2] extensions for markdown(7) are enabled:
+The following [Redcarpet] extensions are enabled while processing markdown(7):
 
-* tables
-* autolink
-* superscript
-* strikethrough
-* no_intra_emphasis
-* fenced_code_blocks
+  * tables
+  * autolink
+  * superscript
+  * strikethrough
+  * no_intra_emphasis
+  * fenced_code_blocks
 
-OPTIONS
--------
+## OPTIONS
 
 `-h`, `--help`
-  Display this help manual using man(1).
+  Show this help manual.
 
-COMMANDS
---------
+## COMMANDS
 
 `show` [*FILE*]
   Use man(1) to display the roff(7) conversion of the leading comment header
@@ -83,14 +80,13 @@ COMMANDS
   Print the roff(7) conversion of the markdown(7) document read from the given
   *FILE* or STDIN.
 
-SEE ALSO
---------
+## SEE ALSO
 
 man(1), roff(7), markdown(7)
 
 [binman]: https://github.com/sunaku/binman
 [md2man]: https://github.com/sunaku/md2man
-[Redcarpet2]: https://github.com/tanoku/redcarpet
+[Redcarpet]: https://github.com/tanoku/redcarpet
 
 =end =========================================================================
 
@@ -106,6 +102,6 @@ when 'show'
 when 'load', 'dump', 'conv'
   puts BinMan.send(command, source)
 else
-  warn 'binman: bad command; try --help'
+  warn 'binman: invalid command; try --help'
   exit!
 end
