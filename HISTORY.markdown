@@ -1,3 +1,19 @@
+## Version 3.1.0 (2012-02-06)
+
+Minor:
+
+  * Added `binman help` command for use by non-Ruby bin scripts.  See README
+    for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!
+
+Patch:
+
+  * Replace `gem install binman --development` tip in `BinMan::conv()` with
+    `gem install md2man` tip because the former just hangs in RubyGems 1.8.
+
+Other:
+
+  * Shorten markdown headings; improve documentation; clean up.
+
 ## Version 3.0.1 (2012-02-02)
 
 Patch:
