@@ -92,7 +92,7 @@ man(1), roff(7), markdown(7)
 
 [binman]: https://github.com/sunaku/binman
 [md2man]: https://github.com/sunaku/md2man
-[Redcarpet]: https://github.com/tanoku/redcarpet
+[Redcarpet]: https://github.com/vmg/redcarpet
 
 =end =========================================================================
 
