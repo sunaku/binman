@@ -25,7 +25,7 @@ module BinMan
     if header =~ /\A\s*^#/
       header.split(/^\s*$/, 2).first.gsub(/^# ?/, '')
     else
-      header[/^=begin\b.*?$(.*?)^=end\b.*?$/m, 1]
+      header[/^=begin\b.*?$(.*?)^=end\b.*?$/m, 1].to_s
     end.strip
   end
 
