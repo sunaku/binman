@@ -18,11 +18,11 @@ module BinMan
     header = read(source)
 
     # strip shebang and encoding comments
-    [/\A#!.+$/, /\A#.*coding:.+$/].each do |comment|
-      header = $'.lstrip if header =~ comment
-    end
+    header.sub! /\A#!.+\n?/, ''
+    header.sub! /\A#.*coding:.+\n?/, ''
 
-    if header =~ /\A#/
+    # extract the leading comment header
+    if header =~ /\A\s*^#/
       header.split(/^\s*$/, 2).first.gsub(/^# ?/, '')
     else
       header[/^=begin\b.*?$(.*?)^=end\b.*?$/m, 1]
