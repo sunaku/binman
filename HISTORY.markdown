@@ -1,3 +1,15 @@
+## Version 3.1.1 (2012-10-13)
+
+Patch:
+
+  * load() failed when leading comment header missing
+
+  * lstrip() is too powerful; consume lines carefully
+
+Other:
+
+  * fix broken link to redcarpet library home page
+
 ## Version 3.1.0 (2012-02-06)
 
 Minor:
