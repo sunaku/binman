@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.summary       = 'man pages for bin scripts'
   s.description   = 'Produces UNIX manual pages for executable scripts.'
 
-  s.files         = `git ls-files`.split("\n") + Dir['man/**/*']
+  s.files         = `git ls-files`.split("\n") + Dir['man/man?/*.?']
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
