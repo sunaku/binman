@@ -1,3 +1,13 @@
+## Version 3.2.0 (2012-10-14)
+
+Minor:
+
+  * add binman:web task to produce man pages in HTML
+
+Other:
+
+  * gemspec: package only roff files from inside man/
+
 ## Version 3.1.1 (2012-10-13)
 
 Patch:

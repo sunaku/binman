@@ -39,9 +39,9 @@ If you also want to build your own manual pages:
 
     git clone git://github.com/sunaku/binman
     cd binman
-    bundle install --binstubs=bundle_bin
-    bundle_bin/binman --help  # run it directly
-    bundle exec rake -T       # packaging tasks
+    bundle install
+    bundle exec binman --help # run it directly
+    bundle exec rake --tasks  # packaging tasks
 
 ## Usage
 
