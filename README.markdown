@@ -29,7 +29,7 @@ If you only want to view pre-built manual pages:
 
 If you also want to build your own manual pages:
 
-    gem install md2man -v '~> 1'
+    gem install md2man -v '~> 1.4'
 
 ### Prerequisites
 
@@ -215,7 +215,7 @@ You can also write the manual as a multi-line Ruby comment inside an `if 0`:
 Add the following lines to your gemspec:
 
     s.files += Dir['man/man?/*.?']
-    s.add_development_dependency 'md2man', '~> 1'
+    s.add_development_dependency 'md2man', '~> 1.4'
 
 Add the following line to your Rakefile:
 
@@ -224,6 +224,7 @@ Add the following line to your Rakefile:
 You now have a `rake binman` task that pre-builds UNIX manual page files for
 your `bin/` scripts into a `man/` directory so that your end-users do not need
 [md2man] installed in order to view the manual pages you've embedded therein!
+There are also sub-tasks to build manual pages individually as [roff] or HTML.
 
 If you're using Bundler, this task also hooks into its gem packaging tasks and
 ensures that your UNIX manual pages are pre-built and packaged into your gem:
@@ -235,6 +236,7 @@ ensures that your UNIX manual pages are pre-built and packaged into your gem:
 
 Released under the ISC license.  See the LICENSE file for details.
 
+[roff]: http://troff.org
 [binman]: https://github.com/sunaku/binman
 [binman-api]: http://rubydoc.info/gems/binman/frames
 [binman-bin]: https://raw.github.com/sunaku/binman/master/bin/binman

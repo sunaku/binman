@@ -1,18 +1,30 @@
 require 'rake'
 
-directory path = 'man/man1'
+directory dir = 'man/man1'
 bins = FileList['bin/*']
-mans = bins.pathmap("#{path}/%n.1")
+mkds = bins.pathmap("#{dir}/%n.1.markdown")
+
+desc 'Build manual pages for bin/ scripts.'
+task :binman => ['binman:man', 'binman:web']
+
+bins.zip(mkds).each do |src, dst|
+  file dst => [dir, src] do
+    require 'binman'
+    output = BinMan.load(src)
+    File.open(dst, 'w') {|f| f << output }
+  end
+end
 
 desc 'Build UNIX manual pages for bin/ scripts.'
-task :binman => mans
+task 'binman:man' => mkds do
+  require 'md2man/rakefile'
+  Rake::Task['md2man:man'].invoke
+end
 
-bins.zip(mans).each do |bin, man|
-  file man => [bin, path] do
-    require 'binman'
-    roff = BinMan.dump(bin)
-    File.open(man, 'w') {|f| f << roff }
-  end
+desc 'Build HTML manual pages for bin/ scripts.'
+task 'binman:web' => mkds do
+  require 'md2man/rakefile'
+  Rake::Task['md2man:web'].invoke
 end
 
 # build man pages before building ruby gem using bundler
