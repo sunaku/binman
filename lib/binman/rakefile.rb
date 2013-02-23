@@ -1,7 +1,9 @@
 require 'rake'
 
 # build man pages before building ruby gem using bundler
-%w[build install release].each {|t| task t => :binman }
+if defined? Bundler::GemHelper
+  %w[build install release].each {|t| task t => :binman }
+end
 
 #-----------------------------------------------------------------------------
 desc 'Build manual pages for bin/ scripts.'
