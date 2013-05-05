@@ -1,3 +1,17 @@
+## Version 3.2.1 (2013-05-04)
+
+Patch:
+
+  * Ensure that the `binman:web` Rake task works the first time through.
+
+  * Fix "uninitialized constant Md2Man::VERSION" errors in `binman/rakefile`.
+
+  * Hook into the `build` Rake task only if Bundler's Rake tasks are loaded:
+
+    https://github.com/sunaku/md2man/pull/7#issuecomment-9467621
+
+    Thanks to Postmodern for raising this issue.
+
 ## Version 3.2.0 (2012-10-14)
 
 Minor:
