@@ -31,10 +31,10 @@ module BinMan
 
   # Converts given markdown(7) source into roff(7).
   def conv source=nil
-    require 'md2man'
-    Md2Man::ENGINE.render(read(source))
+    require 'md2man/roff/engine'
+    Md2Man::Roff::ENGINE.render(read(source))
   rescue LoadError
-    raise 'Run `gem install md2man -v "~>1"` to use BinMan::conv().'
+    raise 'Run `gem install md2man --version "~> 2.0"` to use BinMan::conv().'
   end
 
   # Extracts leading comment header content from given

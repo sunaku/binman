@@ -214,8 +214,9 @@ You can also write the manual as a multi-line Ruby comment inside an `if 0`:
 
 Add the following lines to your gemspec:
 
-    s.files += Dir['man/man?/*.?']
-    s.add_development_dependency 'md2man', '~> 1.4'
+    s.files += Dir['man/man?/*.?']            # UNIX man pages
+    s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+    s.add_development_dependency 'md2man', '~> 2.0'
 
 Add the following line to your Rakefile:
 

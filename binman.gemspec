@@ -16,6 +16,9 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ['lib']
 
-  s.add_development_dependency 'md2man', '~> 1.4'
+  s.files += Dir['man/man?/*.?']            # UNIX man pages
+  s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+  s.add_development_dependency 'md2man', '~> 2.0'
+
   s.add_development_dependency 'rake', '>= 0.9.2.2', '< 1'
 end
