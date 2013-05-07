@@ -47,10 +47,29 @@ module BinMan
   # possible, else falls back to showing leading comment header as-is.
   def show source=nil
     # try showing existing man page files for given source
-    return if file = find(source) and File.exist? file and
-      File.exist? man_path = File.expand_path('../../man', file) and
-      system 'man', '-M', man_path, '-a', File.basename(file)
+    if file = find(source) and File.exist? file
+      man_page = File.basename(file)
+      man_path = File.expand_path('../../man', file)
 
+      # try showing HTML manual page in a web browser in background
+      async_show_html = Thread.new do
+        if man_html = Dir["#{man_path}/**/#{man_page}.*.html"].first
+          %w[ xdg-open open start ].any? do |browser|
+            # close streams to avoid interference with man(1) reader below
+            system browser, man_html, 0 => :close, 1 => :close, 2 => :close
+          end
+        end
+      end
+
+      # try showing roff manual page in man(1) reader in foreground;
+      # close STDERR to avoid interference with the fall back below
+      if system 'man', '-M', man_path, '-a', man_page, 2 => :close
+        async_show_html.join
+        return true
+      end
+    end
+
+    # fall back to showing leading comment header as-is
     header = load(source)
 
     begin
