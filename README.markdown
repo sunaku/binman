@@ -47,6 +47,8 @@ If you also want to build your own manual pages:
 
 ### At the command line
 
+See binman(1) manual:
+
     binman --help
 
 ### Inside a Ruby script
@@ -210,9 +212,17 @@ You can also write the manual as a multi-line Ruby comment inside an `if 0`:
 
 ## Packaging
 
-### Pre-building man pages
+### Building man pages
 
-Add the following lines to your gemspec:
+#### At the command line
+
+See binman-rake(1) manual:
+
+    binman-rake --help
+
+#### Inside a Ruby script
+
+Add this snippet to your gemspec file:
 
     s.files += Dir['man/man?/*.?']            # UNIX man pages
     s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
