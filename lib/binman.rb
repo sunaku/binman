@@ -52,21 +52,15 @@ module BinMan
       man_path = File.expand_path('../../man', file)
 
       # try showing HTML manual page in a web browser in background
-      async_show_html = Thread.new do
-        if man_html = Dir["#{man_path}/**/#{man_page}.*.html"].first
-          %w[ xdg-open open start ].any? do |browser|
-            # close streams to avoid interference with man(1) reader below
-            system browser, man_html, 0 => :close, 1 => :close, 2 => :close
-          end
-        end
+      require 'opener'
+      Dir["#{man_path}/**/#{man_page}.*.html"].each do |man_html|
+        # close streams to avoid interference with man(1) reader below
+        Opener.spawn man_html, 0 => :close, 1 => :close, 2 => :close
       end
 
       # try showing roff manual page in man(1) reader in foreground;
       # close STDERR to avoid interference with the fall back below
-      if system 'man', '-M', man_path, '-a', man_page, 2 => :close
-        async_show_html.join
-        return true
-      end
+      return if system 'man', '-M', man_path, '-a', man_page, 2 => :close
     end
 
     # fall back to showing leading comment header as-is

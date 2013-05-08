@@ -20,5 +20,6 @@ Gem::Specification.new do |s|
   s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
   s.add_development_dependency 'md2man', '~> 2.0'
 
+  s.add_dependency 'opener', '>= 0.1.0', '< 1'
   s.add_development_dependency 'rake', '>= 0.9.2.2', '< 1'
 end
