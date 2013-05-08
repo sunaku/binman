@@ -1,3 +1,19 @@
+## Version 3.3.0 (2013-05-08)
+
+Minor:
+
+  * Add binman-rake(1) script to provide access to `binman/rakefile` tasks.
+
+  * Always try showing HTML manual page in web browser from `BinMan.show()`.
+
+Other:
+
+  * Upgrade to md2man 2.0.0.
+
+  * Rename HISTORY to VERSION so it sorts after README.
+
+  * Add man/man0/ subdir containing README and VERSION.
+
 ## Version 3.2.1 (2013-05-04)
 
 Patch:
