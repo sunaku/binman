@@ -31,10 +31,9 @@ module BinMan
 
   # Converts given markdown(7) source into roff(7).
   def conv source=nil
+    require_md2man
     require 'md2man/roff/engine'
     Md2Man::Roff::ENGINE.render(read(source))
-  rescue LoadError
-    raise 'Run `gem install md2man --version "~> 2.0"` to use BinMan::conv().'
   end
 
   # Extracts leading comment header content from given
@@ -89,6 +88,15 @@ module BinMan
       show source
       exit
     end
+  end
+
+  # Requires that the correct version of Md2Man is available on this system.
+  def require_md2man
+    require 'rubygems' unless respond_to? :gem
+    gem 'md2man', '~> 2.0' if respond_to? :gem
+    require 'md2man/version'
+  rescue LoadError
+    raise "Run `gem install md2man --version '~> 2.0'` for #{library.inspect}."
   end
 
 private
