@@ -1,3 +1,9 @@
+## Version 3.3.1 (2013-06-01)
+
+Patch:
+
+  * Ensure that md2man 2.0 is loaded before running any BinMan rake tasks.
+
 ## Version 3.3.0 (2013-05-08)
 
 Minor:

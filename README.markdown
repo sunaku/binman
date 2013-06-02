@@ -12,7 +12,7 @@
 
   * Individual extraction, conversion, and display commands.
 
-  * Implemented in roughly 100 lines of pure Ruby code! :-)
+  * Implemented in roughly 130 lines of pure Ruby code! :-)
 
 ### Demonstration
 
@@ -29,7 +29,7 @@ If you only want to view pre-built manual pages:
 
 If you also want to build your own manual pages:
 
-    gem install md2man -v '~> 1.4'
+    gem install md2man -v '~> 2.0'
 
 ### Prerequisites
 

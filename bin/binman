@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 =begin =======================================================================
 
-# BINMAN 1 2013-05-08 3.3.0
+# BINMAN 1 2013-06-01 3.3.1
 
 ## NAME
 
@@ -34,7 +34,7 @@ A leading comment header can be one of the following two things:
 ### Markdown processing divergence
 
 Although your leading comment headers are written in markdown(7), `binman
-conv` inherits the following additions to markdown(7) syntax from [md2man]:
+conv` inherits the following additions to markdown(7) syntax from md2man(5):
 
   * There can be at most one top-level heading (H1).  It is emitted as `.TH`
     in the roff(7) output to define the UNIX manual page's header and footer.
@@ -55,7 +55,6 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
   * autolink
   * superscript
   * strikethrough
-  * no\_intra\_emphasis
   * fenced\_code\_blocks
 
 ## OPTIONS
@@ -88,7 +87,7 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 
 ## SEE ALSO
 
-man(1), roff(7), markdown(7)
+binman-rake(1), man(1), roff(7), markdown(7)
 
 [binman]: https://github.com/sunaku/binman
 [md2man]: https://github.com/sunaku/md2man
