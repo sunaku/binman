@@ -54,7 +54,11 @@ module BinMan
       require 'opener'
       Dir["#{man_path}/**/#{man_page}.*.html"].each do |man_html|
         # close streams to avoid interference with man(1) reader below
-        Opener.spawn man_html, 0 => :close, 1 => :close, 2 => :close
+        begin
+          Opener.spawn man_html, 0 => :close, 1 => :close, 2 => :close
+        rescue Errno::ENOENT
+          # designated opener program could not be found on this system
+        end
       end
 
       # try showing roff manual page in man(1) reader in foreground;
