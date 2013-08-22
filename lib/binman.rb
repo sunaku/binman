@@ -100,7 +100,7 @@ module BinMan
     gem 'md2man', '~> 2.0' if respond_to? :gem
     require 'md2man/version'
   rescue LoadError
-    raise "Run `gem install md2man --version '~> 2.0'` for #{library.inspect}."
+    raise 'Run `gem install md2man --version "~> 2.0"` to use BinMan::conv().'
   end
 
 private
