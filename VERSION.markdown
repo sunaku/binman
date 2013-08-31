@@ -1,3 +1,28 @@
+## Version 3.3.2 (2013-08-30)
+
+Patch:
+
+  * Rescue error when designated opener is not found:
+
+        $ binman -h
+        /gems/opener-0.1.0/lib/opener.rb:97:in `spawn': No such file or directory - xdg-open (Errno::ENOENT)
+                from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn'
+                from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show'
+                from /gems/binman-3.3.1/lib/binman.rb:55:in `each'
+                from /gems/binman-3.3.1/lib/binman.rb:55:in `show'
+                from /gems/binman-3.3.1/lib/binman.rb:88:in `help'
+                from /gems/binman-3.3.1/bin/binman:106:in `<top (required)>'
+                from /bin/binman:23:in `load'
+                from /bin/binman:23:in `<main>'
+
+  * Fix an undefined local variable or method error:
+
+        binman: undefined local variable or method `library' for BinMan:Module
+
+Other:
+
+  * Add screenshot to git repo since OmpLoader is dead.
+
 ## Version 3.3.1 (2013-06-01)
 
 Patch:
