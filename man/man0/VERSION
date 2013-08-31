@@ -1,0 +1,299 @@
+.SH Version 3.3.2 (2013\-08\-30)
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Rescue error when designated opener is not found:
+.PP
+.RS
+.nf
+$ binman -h
+/gems/opener-0.1.0/lib/opener.rb:97:in `spawn': No such file or directory - xdg-open (Errno::ENOENT)
+        from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn'
+        from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show'
+        from /gems/binman-3.3.1/lib/binman.rb:55:in `each'
+        from /gems/binman-3.3.1/lib/binman.rb:55:in `show'
+        from /gems/binman-3.3.1/lib/binman.rb:88:in `help'
+        from /gems/binman-3.3.1/bin/binman:106:in `<top (required)>'
+        from /bin/binman:23:in `load'
+        from /bin/binman:23:in `<main>'
+.fi
+.RE
+.IP \(bu 2
+Fix an undefined local variable or method error:
+.PP
+.RS
+.nf
+binman: undefined local variable or method `library' for BinMan:Module
+.fi
+.RE
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+Add screenshot to git repo since OmpLoader is dead.
+.RE
+.SH Version 3.3.1 (2013\-06\-01)
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Ensure that md2man 2.0 is loaded before running any BinMan rake tasks.
+.RE
+.SH Version 3.3.0 (2013\-05\-08)
+.PP
+Minor:
+.RS
+.IP \(bu 2
+Add 
+.BR binman-rake (1) 
+script to provide access to \fB\fCbinman/rakefile\fR tasks.
+.IP \(bu 2
+Always try showing HTML manual page in web browser from \fB\fCBinMan.show()\fR\&.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+Upgrade to md2man 2.0.0.
+.IP \(bu 2
+Rename HISTORY to VERSION so it sorts after README.
+.IP \(bu 2
+Add man/man0/ subdir containing README and VERSION.
+.RE
+.SH Version 3.2.1 (2013\-05\-04)
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Ensure that the \fB\fCbinman:web\fR Rake task works the first time through.
+.IP \(bu 2
+Fix "uninitialized constant Md2Man::VERSION" errors in \fB\fCbinman/rakefile\fR\&.
+.IP \(bu 2
+Hook into the \fB\fCbuild\fR Rake task only if Bundler's Rake tasks are loaded:
+.TP
+.UR https://github.com/sunaku/md2man/pull/7#issuecomment-9467621
+.UE
+.PP
+Thanks to Postmodern for raising this issue.
+.RE
+.SH Version 3.2.0 (2012\-10\-14)
+.PP
+Minor:
+.RS
+.IP \(bu 2
+add binman:web task to produce man pages in HTML
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+gemspec: package only roff files from inside man/
+.RE
+.SH Version 3.1.1 (2012\-10\-13)
+.PP
+Patch:
+.RS
+.IP \(bu 2
+load() failed when leading comment header missing
+.IP \(bu 2
+lstrip() is too powerful; consume lines carefully
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+fix broken link to redcarpet library home page
+.RE
+.SH Version 3.1.0 (2012\-02\-06)
+.PP
+Minor:
+.RS
+.IP \(bu 2
+Added \fB\fCbinman help\fR command for use by non\-Ruby bin scripts.  See README
+for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!
+.RE
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Replace \fB\fCgem install binman --development\fR tip in \fB\fCBinMan::conv()\fR with
+\fB\fCgem install md2man\fR tip because the former just hangs in RubyGems 1.8.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+Shorten markdown headings; improve documentation; clean up.
+.RE
+.SH Version 3.0.1 (2012\-02\-02)
+.PP
+Patch:
+.RS
+.IP \(bu 2
+BinMan.help(): ignore \fB\fC-h\fR and \fB\fC--help\fR options after standard \fB\fC--\fR flag.
+.IP \(bu 2
+BinMan.show(): write temp file because not all systems support \fB\fCman -l\fR\&.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+HISTORY: group changes by version number components.
+.IP \(bu 2
+README: add instructions on pre\-building man pages.
+.IP \(bu 2
+README: fix installation commands for development.
+.IP \(bu 2
+bundler suggests moving all dev deps into gemspec.
+.RE
+.SH Version 3.0.0 (2012\-01\-09)
+.PP
+Major:
+.RS
+.IP \(bu 2
+Removed the \fB\fCbinman/gemspec\fR helper library because it did not play well
+with Bundler.  Use the standard \fB\fCadd_runtime_dependency\fR method instead.
+This example
+.UR https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20
+.UE
+shows what work is involved in upgrading.
+.RE
+.PP
+Minor:
+.RS
+.IP \(bu 2
+The \fB\fCbinman/Rakefile\fR helper library now hooks into Bundler's Rake tasks.
+Be sure to add the \fB\fCman/**/*\fR files to your gemspec accordingly
+.UR https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20
+.UE \&.
+.RE
+.SH Version 2.0.0 (2011\-12\-06)
+.PP
+Major:
+.RS
+.IP \(bu 2
+Removed the deprecated \fB\fCbinman/rake_tasks\fR helper library.  Use
+\fB\fCbinman/rakefile\fR instead.
+.RE
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Fixed infinite looping in the \fB\fCbinman/gemspec\fR helper library.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+Upgraded to md2man v1 for Markdown to UNIX man page conversion.
+.IP \(bu 2
+Do not hard\-code the version number in \fB\fCbinman/gemspec\fR helper.
+.RE
+.SH Version 1.1.0 (2011\-11\-05)
+.PP
+Alert:
+.RS
+.IP \(bu 2
+The \fB\fCbinman/rake_tasks\fR library has been renamed (with deprecation) to
+\fB\fCbinman/rakefile\fR\&.  The deprecation warning will be removed in the next
+major release.
+.RE
+.PP
+Minor:
+.RS
+.IP \(bu 2
+Add \fB\fCbinman/gemspec\fR packaging convenience library which automatically
+builds and includes your UNIX man page files in your gem packages and also
+adds binman as a runtime and development gem dependency.
+.RE
+.SH Version 1.0.0 (2011\-10\-13)
+.PP
+Major:
+.RS
+.IP \(bu 2
+The \fB\fCBinMan::dump()\fR method and corresponding \fB\fCbinman dump\fR command now
+extract the leading comment header from their input before returning the
+markdown to roff conversion thereof.
+.IP \(bu 2
+The \fB\fCBinMan::read()\fR method and corresponding \fB\fCbinman read\fR command have
+been renamed to \fB\fCBinMan::load()\fR and \fB\fCbinman load\fR respectively.
+.RE
+.PP
+Minor:
+.RS
+.IP \(bu 2
+Added \fB\fCBinMan::conv()\fR method and corresponding \fB\fCbinman conv\fR command to
+encapsulate the markdown to roff conversion process.
+.RE
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Pre\-built man pages included alongside a \fB\fCbin/\fR script were not displayed.
+Instead, binman was (incorrectly) always trying to convert the leading
+comment header from the \fB\fCbin/\fR script into a UNIX man page for display.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+README: explain dev deps and \fB\fCman/\fR dir packaging.
+.RE
+.SH Version 0.1.2 (2011\-10\-13)
+.PP
+Minor:
+.RS
+.IP \(bu 2
+The Redcarpet2
+.UR https://github.com/tanoku/redcarpet
+.UE
+library is not a runtime gem dependency anymore.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+Extracted \fB\fCBinMan::Renderer\fR into redcarpet\-manpage
+.UR http://rdoc.info/github/sunaku/redcarpet-manpage
+.UE
+library.
+.IP \(bu 2
+Forgot to introduce leading comment headers in 
+.BR binman (1) 
+man page.
+.RE
+.SH Version 0.1.1 (2011\-10\-13)
+.PP
+Minor:
+.RS
+.IP \(bu 2
+\fB\fCBinMan.read()\fR now supports embedded document (=begin/=end) comments
+also.  See 
+.BR binman (1) 
+for the new description of leading comment headers.
+.RE
+.PP
+Patch:
+.RS
+.IP \(bu 2
+Ignore encoding comment line after shebang line.
+.IP \(bu 2
+roff: fix first paragraphs inside list items.
+.RE
+.PP
+Other:
+.RS
+.IP \(bu 2
+gemspec: build man page files before building gem.
+.IP \(bu 2
+binman: raise error and suggest \-\-help option.
+.IP \(bu 2
+README: add link to example of binman markdown.
+.IP \(bu 2
+README: add obligatory screenshot! >:\-)
+.RE
+.SH Version 0.0.1 (2011\-10\-12)
+.PP
+First release!  Happy birthday!  Woohoo!  :\-)

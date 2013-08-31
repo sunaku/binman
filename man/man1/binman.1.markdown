@@ -1,0 +1,91 @@
+# BINMAN 1 2013-08-30 3.3.2
+
+## NAME
+
+binman - man pages for bin scripts
+
+## SYNOPSIS
+
+`binman` [*OPTION*]... *COMMAND*
+
+## DESCRIPTION
+
+[binman] produces UNIX manual pages for your executable scripts. It can
+extract their leading comment headers (defined below), convert them from
+markdown(7) into roff(7) using [md2man], and display them using man(1).
+
+### Leading comment headers
+
+A leading comment header can be one of the following two things:
+
+1.  A contiguous sequence of single-line comments (which begin with `#`
+    and optionally continue with a single space followed by any number of
+    characters until the end of the line) starting at the beginning of the
+    file (after shebang and encoding comments plus optional blank lines) and
+    ending at the first single blank line.
+
+2.  The first embedded document delimited by `=begin` and `=end` lines, which
+    begin with the respective delimiters and optionally continue with a single
+    space followed by any number of characters until the end of the line.
+
+### Markdown processing divergence
+
+Although your leading comment headers are written in markdown(7), `binman
+conv` inherits the following additions to markdown(7) syntax from md2man(5):
+
+  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
+    in the roff(7) output to define the UNIX manual page's header and footer.
+
+  * Paragraphs whose lines are all uniformly indented by two spaces are
+    considered to be "indented paragraphs".  They are unindented accordingly
+    before emission as `.IP` in the roff(7) output.
+
+  * Paragraphs whose subsequent lines (all except the first) are uniformly
+    indented by two spaces are considered to be a "tagged paragraphs".  They
+    are unindented accordingly before emission as `.TP` in the roff(7) output.
+
+### Markdown processing extensions
+
+The following [Redcarpet] extensions are enabled while processing markdown(7):
+
+  * tables
+  * autolink
+  * superscript
+  * strikethrough
+  * fenced\_code\_blocks
+
+## OPTIONS
+
+`-h`, `--help`
+  Show this help manual.
+
+## COMMANDS
+
+`help` *FILE* [*ARGUMENT*]...
+  If the given *ARGUMENT* sequence contains `-h` or `--help` except after
+  `--`, then this program extracts the given *FILE*'s leading comment header,
+  converts it into roff(7), and displays it using man(1) before exiting with
+  status code `0`.  Otherwise, this program exits with status code `111`.
+
+`show` [*FILE*]
+  Use man(1) to display the roff(7) conversion of the leading comment header
+  extracted from the given *FILE* or STDIN.
+
+`load` [*FILE*]
+  Print the leading comment header extracted from the given *FILE* or STDIN.
+
+`dump` [*FILE*]
+  Print the roff(7) conversion of the leading comment header extracted from
+  the given *FILE* or STDIN.
+
+`conv` [*FILE*]
+  Print the roff(7) conversion of the markdown(7) document read from the given
+  *FILE* or STDIN.
+
+## SEE ALSO
+
+binman-rake(1), man(1), roff(7), markdown(7)
+
+[binman]: https://github.com/sunaku/binman
+[md2man]: https://github.com/sunaku/md2man
+[Redcarpet]: https://github.com/vmg/redcarpet

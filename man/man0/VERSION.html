@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="md2man 2.0.2 https://github.com/sunaku/md2man" />
+  <title>VERSION</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="Version-3-3-2-2013-08-30">Version 3.3.2 (2013-08-30)</h2><p>Patch:</p>
+<ul>
+<li><p>Rescue error when designated opener is not found:</p>
+<pre><code>$ binman -h
+/gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;: No such file or directory - xdg-open (Errno::ENOENT)
+        from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;
+        from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show&#39;
+        from /gems/binman-3.3.1/lib/binman.rb:55:in `each&#39;
+        from /gems/binman-3.3.1/lib/binman.rb:55:in `show&#39;
+        from /gems/binman-3.3.1/lib/binman.rb:88:in `help&#39;
+        from /gems/binman-3.3.1/bin/binman:106:in `&lt;top (required)&gt;&#39;
+        from /bin/binman:23:in `load&#39;
+        from /bin/binman:23:in `&lt;main&gt;&#39;
+</code></pre></li>
+<li><p>Fix an undefined local variable or method error:</p>
+<pre><code>binman: undefined local variable or method `library&#39; for BinMan:Module
+</code></pre></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>Add screenshot to git repo since OmpLoader is dead.</li>
+</ul>
+<h2 id="Version-3-3-1-2013-06-01">Version 3.3.1 (2013-06-01)</h2><p>Patch:</p>
+<ul>
+<li>Ensure that md2man 2.0 is loaded before running any BinMan rake tasks.</li>
+</ul>
+<h2 id="Version-3-3-0-2013-05-08">Version 3.3.0 (2013-05-08)</h2><p>Minor:</p>
+<ul>
+<li><p>Add <a class="md2man-xref" href="../man1/binman-rake.1.html">binman-rake(1)</a> script to provide access to <code>binman/rakefile</code> tasks.</p></li>
+<li><p>Always try showing HTML manual page in web browser from <code>BinMan.show()</code>.</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Upgrade to md2man 2.0.0.</p></li>
+<li><p>Rename HISTORY to VERSION so it sorts after README.</p></li>
+<li><p>Add man/man0/ subdir containing README and VERSION.</p></li>
+</ul>
+<h2 id="Version-3-2-1-2013-05-04">Version 3.2.1 (2013-05-04)</h2><p>Patch:</p>
+<ul>
+<li><p>Ensure that the <code>binman:web</code> Rake task works the first time through.</p></li>
+<li><p>Fix &quot;uninitialized constant Md2Man::VERSION&quot; errors in <code>binman/rakefile</code>.</p></li>
+<li><p>Hook into the <code>build</code> Rake task only if Bundler&#39;s Rake tasks are loaded:</p><p><a href="https://github.com/sunaku/md2man/pull/7#issuecomment-9467621">https://github.com/sunaku/md2man/pull/7#issuecomment-9467621</a></p><p>Thanks to Postmodern for raising this issue.</p></li>
+</ul>
+<h2 id="Version-3-2-0-2012-10-14">Version 3.2.0 (2012-10-14)</h2><p>Minor:</p>
+<ul>
+<li>add binman:web task to produce man pages in HTML</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>gemspec: package only roff files from inside man/</li>
+</ul>
+<h2 id="Version-3-1-1-2012-10-13">Version 3.1.1 (2012-10-13)</h2><p>Patch:</p>
+<ul>
+<li><p>load() failed when leading comment header missing</p></li>
+<li><p>lstrip() is too powerful; consume lines carefully</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>fix broken link to redcarpet library home page</li>
+</ul>
+<h2 id="Version-3-1-0-2012-02-06">Version 3.1.0 (2012-02-06)</h2><p>Minor:</p>
+<ul>
+<li>Added <code>binman help</code> command for use by non-Ruby bin scripts.  See README
+for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!</li>
+</ul>
+<p>Patch:</p>
+<ul>
+<li>Replace <code>gem install binman --development</code> tip in <code>BinMan::conv()</code> with
+<code>gem install md2man</code> tip because the former just hangs in RubyGems 1.8.</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>Shorten markdown headings; improve documentation; clean up.</li>
+</ul>
+<h2 id="Version-3-0-1-2012-02-02">Version 3.0.1 (2012-02-02)</h2><p>Patch:</p>
+<ul>
+<li><p>BinMan.help(): ignore <code>-h</code> and <code>--help</code> options after standard <code>--</code> flag.</p></li>
+<li><p>BinMan.show(): write temp file because not all systems support <code>man -l</code>.</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>HISTORY: group changes by version number components.</p></li>
+<li><p>README: add instructions on pre-building man pages.</p></li>
+<li><p>README: fix installation commands for development.</p></li>
+<li><p>bundler suggests moving all dev deps into gemspec.</p></li>
+</ul>
+<h2 id="Version-3-0-0-2012-01-09">Version 3.0.0 (2012-01-09)</h2><p>Major:</p>
+<ul>
+<li>Removed the <code>binman/gemspec</code> helper library because it did not play well
+with Bundler.  Use the standard <code>add_runtime_dependency</code> method instead.
+<a href="https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20">This example</a> shows what work is involved in upgrading.</li>
+</ul>
+<p>Minor:</p>
+<ul>
+<li>The <code>binman/Rakefile</code> helper library now hooks into Bundler&#39;s Rake tasks.
+Be sure to add the <code>man/**/*</code> files to your gemspec <a href="https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20">accordingly</a>.</li>
+</ul>
+<h2 id="Version-2-0-0-2011-12-06">Version 2.0.0 (2011-12-06)</h2><p>Major:</p>
+<ul>
+<li>Removed the deprecated <code>binman/rake_tasks</code> helper library.  Use
+<code>binman/rakefile</code> instead.</li>
+</ul>
+<p>Patch:</p>
+<ul>
+<li>Fixed infinite looping in the <code>binman/gemspec</code> helper library.</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Upgraded to md2man v1 for Markdown to UNIX man page conversion.</p></li>
+<li><p>Do not hard-code the version number in <code>binman/gemspec</code> helper.</p></li>
+</ul>
+<h2 id="Version-1-1-0-2011-11-05">Version 1.1.0 (2011-11-05)</h2><p>Alert:</p>
+<ul>
+<li>The <code>binman/rake_tasks</code> library has been renamed (with deprecation) to
+<code>binman/rakefile</code>.  The deprecation warning will be removed in the next
+major release.</li>
+</ul>
+<p>Minor:</p>
+<ul>
+<li>Add <code>binman/gemspec</code> packaging convenience library which automatically
+builds and includes your UNIX man page files in your gem packages and also
+adds binman as a runtime and development gem dependency.</li>
+</ul>
+<h2 id="Version-1-0-0-2011-10-13">Version 1.0.0 (2011-10-13)</h2><p>Major:</p>
+<ul>
+<li><p>The <code>BinMan::dump()</code> method and corresponding <code>binman dump</code> command now
+extract the leading comment header from their input before returning the
+markdown to roff conversion thereof.</p></li>
+<li><p>The <code>BinMan::read()</code> method and corresponding <code>binman read</code> command have
+been renamed to <code>BinMan::load()</code> and <code>binman load</code> respectively.</p></li>
+</ul>
+<p>Minor:</p>
+<ul>
+<li>Added <code>BinMan::conv()</code> method and corresponding <code>binman conv</code> command to
+encapsulate the markdown to roff conversion process.</li>
+</ul>
+<p>Patch:</p>
+<ul>
+<li>Pre-built man pages included alongside a <code>bin/</code> script were not displayed.
+Instead, binman was (incorrectly) always trying to convert the leading
+comment header from the <code>bin/</code> script into a UNIX man page for display.</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li>README: explain dev deps and <code>man/</code> dir packaging.</li>
+</ul>
+<h2 id="Version-0-1-2-2011-10-13">Version 0.1.2 (2011-10-13)</h2><p>Minor:</p>
+<ul>
+<li>The <a href="https://github.com/tanoku/redcarpet">Redcarpet2</a> library is not a runtime gem dependency anymore.</li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>Extracted <code>BinMan::Renderer</code> into <a href="http://rdoc.info/github/sunaku/redcarpet-manpage">redcarpet-manpage</a> library.</p></li>
+<li><p>Forgot to introduce leading comment headers in <a class="md2man-xref" href="../man1/binman.1.html">binman(1)</a> man page.</p></li>
+</ul>
+<h2 id="Version-0-1-1-2011-10-13">Version 0.1.1 (2011-10-13)</h2><p>Minor:</p>
+<ul>
+<li><code>BinMan.read()</code> now supports embedded document (=begin/=end) comments
+also.  See <a class="md2man-xref" href="../man1/binman.1.html">binman(1)</a> for the new description of leading comment headers.</li>
+</ul>
+<p>Patch:</p>
+<ul>
+<li><p>Ignore encoding comment line after shebang line.</p></li>
+<li><p>roff: fix first paragraphs inside list items.</p></li>
+</ul>
+<p>Other:</p>
+<ul>
+<li><p>gemspec: build man page files before building gem.</p></li>
+<li><p>binman: raise error and suggest --help option.</p></li>
+<li><p>README: add link to example of binman markdown.</p></li>
+<li><p>README: add obligatory screenshot! &gt;:-)</p></li>
+</ul>
+<h2 id="Version-0-0-1-2011-10-12">Version 0.0.1 (2011-10-12)</h2><p>First release!  Happy birthday!  Woohoo!  :-)</p></div></body>
+</html>

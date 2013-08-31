@@ -1,0 +1,130 @@
+.TH BINMAN 1 2013\-08\-30 3.3.2
+.SH NAME
+.PP
+binman \- man pages for bin scripts
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\fR [\fIOPTION\fP]... \fICOMMAND\fP
+.SH DESCRIPTION
+.PP
+binman
+.UR https://github.com/sunaku/binman
+.UE
+produces UNIX manual pages for your executable scripts. It can
+extract their leading comment headers (defined below), convert them from
+.BR markdown (7) 
+into 
+.BR roff (7) 
+using md2man
+.UR https://github.com/sunaku/md2man
+.UE , and display them using 
+.BR man (1).
+.SS Leading comment headers
+.PP
+A leading comment header can be one of the following two things:
+.nr step0 0 1
+.RS
+.IP \n+[step0]
+A contiguous sequence of single\-line comments (which begin with \fB\fC#\fR
+and optionally continue with a single space followed by any number of
+characters until the end of the line) starting at the beginning of the
+file (after shebang and encoding comments plus optional blank lines) and
+ending at the first single blank line.
+.IP \n+[step0]
+The first embedded document delimited by \fB\fC=begin\fR and \fB\fC=end\fR lines, which
+begin with the respective delimiters and optionally continue with a single
+space followed by any number of characters until the end of the line.
+.RE
+.SS Markdown processing divergence
+.PP
+Although your leading comment headers are written in 
+.BR markdown (7), 
+\fB\fCbinman
+conv\fR inherits the following additions to 
+.BR markdown (7) 
+syntax from 
+.BR md2man (5):
+.RS
+.IP \(bu 2
+There can be at most one top\-level heading (H1).  It is emitted as \fB\fC.TH\fR
+in the 
+.BR roff (7) 
+output to define the UNIX manual page's header and footer.
+.IP \(bu 2
+Paragraphs whose lines are all uniformly indented by two spaces are
+considered to be "indented paragraphs".  They are unindented accordingly
+before emission as \fB\fC.IP\fR in the 
+.BR roff (7) 
+output.
+.IP \(bu 2
+Paragraphs whose subsequent lines (all except the first) are uniformly
+indented by two spaces are considered to be a "tagged paragraphs".  They
+are unindented accordingly before emission as \fB\fC.TP\fR in the 
+.BR roff (7) 
+output.
+.RE
+.SS Markdown processing extensions
+.PP
+The following Redcarpet
+.UR https://github.com/vmg/redcarpet
+.UE
+extensions are enabled while processing 
+.BR markdown (7):
+.RS
+.IP \(bu 2
+tables
+.IP \(bu 2
+autolink
+.IP \(bu 2
+superscript
+.IP \(bu 2
+strikethrough
+.IP \(bu 2
+fenced_code_blocks
+.RE
+.SH OPTIONS
+.TP
+\fB\fC-h\fR, \fB\fC--help\fR
+Show this help manual.
+.SH COMMANDS
+.TP
+\fB\fChelp\fR \fIFILE\fP [\fIARGUMENT\fP]...
+If the given \fIARGUMENT\fP sequence contains \fB\fC-h\fR or \fB\fC--help\fR except after
+\fB\fC--\fR, then this program extracts the given \fIFILE\fP\&'s leading comment header,
+converts it into 
+.BR roff (7), 
+and displays it using 
+.BR man (1) 
+before exiting with
+status code \fB\fC0\fR\&.  Otherwise, this program exits with status code \fB\fC111\fR\&.
+.TP
+\fB\fCshow\fR [\fIFILE\fP]
+Use 
+.BR man (1) 
+to display the 
+.BR roff (7) 
+conversion of the leading comment header
+extracted from the given \fIFILE\fP or STDIN.
+.TP
+\fB\fCload\fR [\fIFILE\fP]
+Print the leading comment header extracted from the given \fIFILE\fP or STDIN.
+.TP
+\fB\fCdump\fR [\fIFILE\fP]
+Print the 
+.BR roff (7) 
+conversion of the leading comment header extracted from
+the given \fIFILE\fP or STDIN.
+.TP
+\fB\fCconv\fR [\fIFILE\fP]
+Print the 
+.BR roff (7) 
+conversion of the 
+.BR markdown (7) 
+document read from the given
+\fIFILE\fP or STDIN.
+.SH SEE ALSO
+.PP
+.BR binman-rake (1), 
+.BR man (1), 
+.BR roff (7), 
+.BR markdown (7)

@@ -1,0 +1,335 @@
+.TH binman \- man pages for bin scripts
+.PP
+binman
+.UR https://github.com/sunaku/binman
+.UE
+produces UNIX manual pages for executable scripts using md2man
+.UR https://github.com/sunaku/md2man
+.UE \&.
+.SH Features
+.RS
+.IP \(bu 2
+Supports any scripting language that has multi\-line
+comments or uses \fB\fC#\fR for single\-line comments: Ruby,
+Perl, Python, Node.js, Tcl, AWK, UNIX shell, and more!
+.IP \(bu 2
+Provides a Ruby library and a command\-line client too.
+.IP \(bu 2
+Individual extraction, conversion, and display commands.
+.IP \(bu 2
+Implemented in roughly 130 lines of pure Ruby code! :\-)
+.RE
+.SS Demonstration
+.PP
+[Obligatory screen\-shot of 
+.BR binman (1) 
+in action!](
+.UR https://raw.github.com/sunaku/binman/master/EXAMPLE.png
+.UE )
+.PP
+Here is a complete example in Ruby
+.UR https://raw.github.com/sunaku/binman/master/bin/binman
+.UE
+to help you get started.
+For examples in other scripting languages, see the "Usage" section below!
+.SH Installation
+.PP
+If you only want to view pre\-built manual pages:
+.PP
+.RS
+.nf
+gem install binman
+.fi
+.RE
+.PP
+If you also want to build your own manual pages:
+.PP
+.RS
+.nf
+gem install md2man -v '~> 2.0'
+.fi
+.RE
+.SS Prerequisites
+.RS
+.IP \(bu 2
+Ruby 1.8.7 or 1.9.2 or newer.
+.RE
+.SS Development
+.PP
+.RS
+.nf
+git clone git://github.com/sunaku/binman
+cd binman
+bundle install
+bundle exec binman --help # run it directly
+bundle exec rake --tasks  # packaging tasks
+.fi
+.RE
+.SH Usage
+.SS At the command line
+.PP
+See 
+.BR binman (1) 
+manual:
+.PP
+.RS
+.nf
+binman --help
+.fi
+.RE
+.SS Inside a Ruby script
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# your program's manual page goes here
+require 'binman'
+# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+BinMan.help
+# OPTION 2: show manual unconditionally
+BinMan.show
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# your program's manual page goes here
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.PP
+See the API documentation
+.UR http://rubydoc.info/gems/binman/frames
+.UE
+for even more possibilities!
+.SS Inside a shell script
+.PP
+.RS
+.nf
+#!/usr/bin/sh
+# your program's manual page goes here
+# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+binman help "$0" "$@" && exit
+# OPTION 2: show manual unconditionally
+binman show "$0"
+.fi
+.RE
+.SS Inside a Perl script
+.PP
+.RS
+.nf
+#!/usr/bin/env perl
+# your program's manual page goes here
+# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+system('binman', 'help', __FILE__, @ARGV) == 0 and exit;
+# OPTION 2: show manual unconditionally
+system('binman', 'show', __FILE__);
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment after \fB\fC__END__\fR:
+.PP
+.RS
+.nf
+#!/usr/bin/env perl
+print "your program's code goes here";
+__END__
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.SS Inside a Python script
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# your program's manual page goes here
+import sys, subprocess
+# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+subprocess.call(['binman', 'help', __file__] + sys.argv) == 0 and sys.exit()
+# OPTION 2: show manual unconditionally
+subprocess.call(['binman', 'show', __file__])
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# your program's manual page goes here
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment inside a docstring:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+.fi
+.RE
+.SS Inside an AWK script
+.PP
+The technique for determining current AWK script file name comes from here
+.UR http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784-print.html
+.UE \&.
+.PP
+.RS
+.nf
+#!/usr/bin/awk -f
+# your program's manual page goes here
+# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\\0"," ",c); gsub("\\0"," ",c);
+       if(system("binman help" c) == 0){ exit }}
+# OPTION 2: show manual unconditionally
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\\0"," ",c); sub("\\0.*","",c);
+       system("binman show" c)}
+.fi
+.RE
+.SS Inside a Tcl script
+.PP
+.RS
+.nf
+#!/usr/bin/env tclsh
+# your program's manual page goes here
+# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+if {![catch {exec -- >/dev/tty binman help $argv0 {*}$argv}]} {exit}
+# OPTION 2: show manual unconditionally
+exec >/dev/tty binman show $argv0
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment inside an \fB\fCif 0\fR:
+.PP
+.RS
+.nf
+#!/usr/bin/env tclsh
+if 0 {
+=begin
+your program's manual page goes here
+=end
+}
+.fi
+.RE
+.SS Inside a Node.js script
+.PP
+.RS
+.nf
+/*
+=begin
+your program's manual page goes here
+=end
+*/
+var exec = require('child_process').exec;
+// OPTION 1: show manual and exit if ARGV has -h or --help except after --
+exec(['>/dev/tty', 'binman', 'help', __filename].concat(process.argv).
+join(' '), 
+.BR function (error){ 
+if (error === null){ process.exit(); } });
+// OPTION 2: show manual unconditionally
+exec(['>/dev/tty', 'binman', 'show', __filename].join(' '));
+.fi
+.RE
+.SH Packaging
+.SS Building man pages
+.SS At the command line
+.PP
+See 
+.BR binman-rake (1) 
+manual:
+.PP
+.RS
+.nf
+binman-rake --help
+.fi
+.RE
+.SS Inside a Ruby script
+.PP
+Add this snippet to your gemspec file:
+.PP
+.RS
+.nf
+s.files += Dir['man/man?/*.?']            # UNIX man pages
+s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
+s.add_development_dependency 'md2man', '~> 2.0'
+.fi
+.RE
+.PP
+Add the following line to your Rakefile:
+.PP
+.RS
+.nf
+require 'binman/rakefile'
+.fi
+.RE
+.PP
+You now have a \fB\fCrake binman\fR task that pre\-builds UNIX manual page files for
+your \fB\fCbin/\fR scripts into a \fB\fCman/\fR directory so that your end\-users do not need
+md2man
+.UR https://github.com/sunaku/md2man
+.UE
+installed in order to view the manual pages you've embedded therein!
+There are also sub\-tasks to build manual pages individually as roff
+.UR http://troff.org
+.UE
+or HTML.
+.PP
+If you're using Bundler, this task also hooks into its gem packaging tasks and
+ensures that your UNIX manual pages are pre\-built and packaged into your gem:
+.PP
+.RS
+.nf
+bundle exec rake build
+gem spec pkg/*.gem | fgrep man/man
+.fi
+.RE
+.SH License
+.PP
+Released under the ISC license.  See the LICENSE file for details.
