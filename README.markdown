@@ -21,8 +21,7 @@
 
 ### Demonstration
 
-![Obligatory screen-shot of binman(1) in action!](
-https://raw.github.com/sunaku/binman/master/EXAMPLE.png)
+![Obligatory screen-shot of binman(1) in action!](EXAMPLE.png)
 
 Here is [a complete example in Ruby][binman-bin] to help you get started.
 For examples in other scripting languages, see the "Usage" section below!
