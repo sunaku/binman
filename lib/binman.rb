@@ -97,10 +97,10 @@ module BinMan
   # Requires that the correct version of Md2Man is available on this system.
   def require_md2man
     require 'rubygems' unless respond_to? :gem
-    gem 'md2man', '~> 2.0' if respond_to? :gem
+    gem 'md2man', '~> 3.0' if respond_to? :gem
     require 'md2man/version'
   rescue LoadError
-    raise 'Run `gem install md2man --version "~> 2.0"` to use BinMan::conv().'
+    raise 'Run `gem install md2man --version "~> 3.0"` to use BinMan::conv().'
   end
 
 private

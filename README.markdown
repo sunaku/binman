@@ -2,6 +2,11 @@
 
 [binman] produces UNIX manual pages for executable scripts using [md2man].
 
+* Package: <https://rubygems.org/gems/binman>
+* Manuals: <https://sunaku.github.io/binman>
+* Sources: <https://github.com/sunaku/binman>
+* Support: <https://github.com/sunaku/binman/issues>
+
 ## Features
 
   * Supports any scripting language that has multi-line
@@ -16,8 +21,7 @@
 
 ### Demonstration
 
-![Obligatory screen-shot of binman(1) in action!](
-https://raw.github.com/sunaku/binman/master/EXAMPLE.png)
+![Obligatory screen-shot of binman(1) in action!](EXAMPLE.png)
 
 Here is [a complete example in Ruby][binman-bin] to help you get started.
 For examples in other scripting languages, see the "Usage" section below!
@@ -30,7 +34,7 @@ If you only want to view pre-built manual pages:
 
 If you also want to build your own manual pages:
 
-    gem install md2man -v '~> 2.0'
+    gem install md2man -v '~> 3.0'
 
 ### Prerequisites
 
@@ -227,7 +231,7 @@ Add this snippet to your gemspec file:
 
     s.files += Dir['man/man?/*.?']            # UNIX man pages
     s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-    s.add_development_dependency 'md2man', '~> 2.0'
+    s.add_development_dependency 'md2man', '~> 3.0'
 
 Add the following line to your Rakefile:
 
