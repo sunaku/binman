@@ -1,4 +1,4 @@
-.TH BINMAN 1 2013\-08\-30 3.3.2
+.TH BINMAN 1 2014\-06\-22 3.3.3
 .SH NAME
 .PP
 binman \- man pages for bin scripts
@@ -46,20 +46,20 @@ syntax from
 .BR md2man (5):
 .RS
 .IP \(bu 2
-There can be at most one top\-level heading (H1).  It is emitted as \fB\fC.TH\fR
+There can be at most one top\-level heading (H1).  It is emitted as \fB\fC\&.TH\fR
 in the 
 .BR roff (7) 
 output to define the UNIX manual page's header and footer.
 .IP \(bu 2
 Paragraphs whose lines are all uniformly indented by two spaces are
 considered to be "indented paragraphs".  They are unindented accordingly
-before emission as \fB\fC.IP\fR in the 
+before emission as \fB\fC\&.IP\fR in the 
 .BR roff (7) 
 output.
 .IP \(bu 2
 Paragraphs whose subsequent lines (all except the first) are uniformly
 indented by two spaces are considered to be a "tagged paragraphs".  They
-are unindented accordingly before emission as \fB\fC.TP\fR in the 
+are unindented accordingly before emission as \fB\fC\&.TP\fR in the 
 .BR roff (7) 
 output.
 .RE
@@ -84,13 +84,13 @@ fenced_code_blocks
 .RE
 .SH OPTIONS
 .TP
-\fB\fC-h\fR, \fB\fC--help\fR
+\fB\fC\-h\fR, \fB\fC\-\-help\fR
 Show this help manual.
 .SH COMMANDS
 .TP
 \fB\fChelp\fR \fIFILE\fP [\fIARGUMENT\fP]...
-If the given \fIARGUMENT\fP sequence contains \fB\fC-h\fR or \fB\fC--help\fR except after
-\fB\fC--\fR, then this program extracts the given \fIFILE\fP\&'s leading comment header,
+If the given \fIARGUMENT\fP sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR except after
+\fB\fC\-\-\fR, then this program extracts the given \fIFILE\fP\&'s leading comment header,
 converts it into 
 .BR roff (7), 
 and displays it using 

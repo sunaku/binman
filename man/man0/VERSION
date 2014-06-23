@@ -1,3 +1,18 @@
+.SH Version 3.3.3 (2014\-06\-22)
+.PP
+This release upgrades to md2man 3.0 for improved HTML manuals.
+.SS Other:
+.RS
+.IP \(bu 2
+README: add links to package, manuals, and GitHub.
+.IP \(bu 2
+GitHub now supports relative links from the README:
+.TP
+.UR https://help.github.com/articles/relative-links-in-readmes
+.UE
+.IP \(bu 2
+Upgrade to md2man 3.0 for improved HTML manuals.
+.RE
 .SH Version 3.3.2 (2013\-08\-30)
 .PP
 Patch:
@@ -7,14 +22,14 @@ Rescue error when designated opener is not found:
 .PP
 .RS
 .nf
-$ binman -h
-/gems/opener-0.1.0/lib/opener.rb:97:in `spawn': No such file or directory - xdg-open (Errno::ENOENT)
-        from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn'
-        from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show'
-        from /gems/binman-3.3.1/lib/binman.rb:55:in `each'
-        from /gems/binman-3.3.1/lib/binman.rb:55:in `show'
-        from /gems/binman-3.3.1/lib/binman.rb:88:in `help'
-        from /gems/binman-3.3.1/bin/binman:106:in `<top (required)>'
+$ binman \-h
+/gems/opener\-0.1.0/lib/opener.rb:97:in `spawn': No such file or directory \- xdg\-open (Errno::ENOENT)
+        from /gems/opener\-0.1.0/lib/opener.rb:97:in `spawn'
+        from /gems/binman\-3.3.1/lib/binman.rb:57:in `block in show'
+        from /gems/binman\-3.3.1/lib/binman.rb:55:in `each'
+        from /gems/binman\-3.3.1/lib/binman.rb:55:in `show'
+        from /gems/binman\-3.3.1/lib/binman.rb:88:in `help'
+        from /gems/binman\-3.3.1/bin/binman:106:in `<top (required)>'
         from /bin/binman:23:in `load'
         from /bin/binman:23:in `<main>'
 .fi
@@ -118,7 +133,7 @@ for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!
 Patch:
 .RS
 .IP \(bu 2
-Replace \fB\fCgem install binman --development\fR tip in \fB\fCBinMan::conv()\fR with
+Replace \fB\fCgem install binman \-\-development\fR tip in \fB\fCBinMan::conv()\fR with
 \fB\fCgem install md2man\fR tip because the former just hangs in RubyGems 1.8.
 .RE
 .PP
@@ -132,9 +147,9 @@ Shorten markdown headings; improve documentation; clean up.
 Patch:
 .RS
 .IP \(bu 2
-BinMan.help(): ignore \fB\fC-h\fR and \fB\fC--help\fR options after standard \fB\fC--\fR flag.
+BinMan.help(): ignore \fB\fC\-h\fR and \fB\fC\-\-help\fR options after standard \fB\fC\-\-\fR flag.
 .IP \(bu 2
-BinMan.show(): write temp file because not all systems support \fB\fCman -l\fR\&.
+BinMan.show(): write temp file because not all systems support \fB\fCman \-l\fR\&.
 .RE
 .PP
 Other:

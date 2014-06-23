@@ -6,6 +6,24 @@ binman
 produces UNIX manual pages for executable scripts using md2man
 .UR https://github.com/sunaku/md2man
 .UE \&.
+.RS
+.IP \(bu 2
+Package: 
+.UR https://rubygems.org/gems/binman
+.UE
+.IP \(bu 2
+Manuals: 
+.UR https://sunaku.github.io/binman
+.UE
+.IP \(bu 2
+Sources: 
+.UR https://github.com/sunaku/binman
+.UE
+.IP \(bu 2
+Support: 
+.UR https://github.com/sunaku/binman/issues
+.UE
+.RE
 .SH Features
 .RS
 .IP \(bu 2
@@ -23,9 +41,7 @@ Implemented in roughly 130 lines of pure Ruby code! :\-)
 .PP
 [Obligatory screen\-shot of 
 .BR binman (1) 
-in action!](
-.UR https://raw.github.com/sunaku/binman/master/EXAMPLE.png
-.UE )
+in action!](EXAMPLE.png)
 .PP
 Here is a complete example in Ruby
 .UR https://raw.github.com/sunaku/binman/master/bin/binman
@@ -46,7 +62,7 @@ If you also want to build your own manual pages:
 .PP
 .RS
 .nf
-gem install md2man -v '~> 2.0'
+gem install md2man \-v '~> 3.0'
 .fi
 .RE
 .SS Prerequisites
@@ -61,8 +77,8 @@ Ruby 1.8.7 or 1.9.2 or newer.
 git clone git://github.com/sunaku/binman
 cd binman
 bundle install
-bundle exec binman --help # run it directly
-bundle exec rake --tasks  # packaging tasks
+bundle exec binman \-\-help # run it directly
+bundle exec rake \-\-tasks  # packaging tasks
 .fi
 .RE
 .SH Usage
@@ -74,7 +90,7 @@ manual:
 .PP
 .RS
 .nf
-binman --help
+binman \-\-help
 .fi
 .RE
 .SS Inside a Ruby script
@@ -84,7 +100,7 @@ binman --help
 #!/usr/bin/env ruby
 # your program's manual page goes here
 require 'binman'
-# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+# OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 BinMan.help
 # OPTION 2: show manual unconditionally
 BinMan.show
@@ -96,7 +112,7 @@ You can also specify your program's source file encoding above the manual:
 .RS
 .nf
 #!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
+# \-*\- coding: utf\-8 \-*\-
 # your program's manual page goes here
 .fi
 .RE
@@ -117,7 +133,7 @@ You can also specify your program's source file encoding above the manual:
 .RS
 .nf
 #!/usr/bin/env ruby
-# -*- coding: utf-8 -*-
+# \-*\- coding: utf\-8 \-*\-
 =begin
 your program's manual page goes here
 =end
@@ -134,7 +150,7 @@ for even more possibilities!
 .nf
 #!/usr/bin/sh
 # your program's manual page goes here
-# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+# OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 binman help "$0" "$@" && exit
 # OPTION 2: show manual unconditionally
 binman show "$0"
@@ -146,7 +162,7 @@ binman show "$0"
 .nf
 #!/usr/bin/env perl
 # your program's manual page goes here
-# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+# OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 system('binman', 'help', __FILE__, @ARGV) == 0 and exit;
 # OPTION 2: show manual unconditionally
 system('binman', 'show', __FILE__);
@@ -172,7 +188,7 @@ your program's manual page goes here
 #!/usr/bin/env python
 # your program's manual page goes here
 import sys, subprocess
-# OPTION 1: show manual and exit if ARGV has -h or --help except after --
+# OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 subprocess.call(['binman', 'help', __file__] + sys.argv) == 0 and sys.exit()
 # OPTION 2: show manual unconditionally
 subprocess.call(['binman', 'show', __file__])
@@ -184,7 +200,7 @@ You can also specify your program's source file encoding above the manual:
 .RS
 .nf
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# \-*\- coding: utf\-8 \-*\-
 # your program's manual page goes here
 .fi
 .RE
@@ -207,7 +223,7 @@ You can also specify your program's source file encoding above the manual:
 .RS
 .nf
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# \-*\- coding: utf\-8 \-*\-
 """
 =begin
 your program's manual page goes here
@@ -223,13 +239,13 @@ The technique for determining current AWK script file name comes from here
 .PP
 .RS
 .nf
-#!/usr/bin/awk -f
+#!/usr/bin/awk \-f
 # your program's manual page goes here
-# OPTION 1: show manual and exit if ARGV has -h or --help except after --
-BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\\0"," ",c); gsub("\\0"," ",c);
+# OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); gsub("\\0"," ",c);
        if(system("binman help" c) == 0){ exit }}
 # OPTION 2: show manual unconditionally
-BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\\0"," ",c); sub("\\0.*","",c);
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); sub("\\0.*","",c);
        system("binman show" c)}
 .fi
 .RE
@@ -239,8 +255,8 @@ BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\\0"," ",c); sub("\\0.*","",c);
 .nf
 #!/usr/bin/env tclsh
 # your program's manual page goes here
-# OPTION 1: show manual and exit if ARGV has -h or --help except after --
-if {![catch {exec -- >/dev/tty binman help $argv0 {*}$argv}]} {exit}
+# OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
+if {![catch {exec \-\- >/dev/tty binman help $argv0 {*}$argv}]} {exit}
 # OPTION 2: show manual unconditionally
 exec >/dev/tty binman show $argv0
 .fi
@@ -268,7 +284,7 @@ your program's manual page goes here
 =end
 */
 var exec = require('child_process').exec;
-// OPTION 1: show manual and exit if ARGV has -h or --help except after --
+// OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 exec(['>/dev/tty', 'binman', 'help', __filename].concat(process.argv).
 join(' '), 
 .BR function (error){ 
@@ -287,7 +303,7 @@ manual:
 .PP
 .RS
 .nf
-binman-rake --help
+binman\-rake \-\-help
 .fi
 .RE
 .SS Inside a Ruby script
@@ -298,7 +314,7 @@ Add this snippet to your gemspec file:
 .nf
 s.files += Dir['man/man?/*.?']            # UNIX man pages
 s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-s.add_development_dependency 'md2man', '~> 2.0'
+s.add_development_dependency 'md2man', '~> 3.0'
 .fi
 .RE
 .PP
