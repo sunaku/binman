@@ -34,7 +34,7 @@ If you only want to view pre-built manual pages:
 
 If you also want to build your own manual pages:
 
-    gem install md2man -v '~> 2.0'
+    gem install md2man -v '~> 3.0'
 
 ### Prerequisites
 
@@ -231,7 +231,7 @@ Add this snippet to your gemspec file:
 
     s.files += Dir['man/man?/*.?']            # UNIX man pages
     s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-    s.add_development_dependency 'md2man', '~> 2.0'
+    s.add_development_dependency 'md2man', '~> 3.0'
 
 Add the following line to your Rakefile:
 
