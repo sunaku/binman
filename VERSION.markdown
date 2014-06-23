@@ -1,3 +1,17 @@
+## Version 3.3.3 (2014-06-22)
+
+This release upgrades to md2man 3.0 for improved HTML manuals.
+
+### Other:
+
+  * README: add links to package, manuals, and GitHub.
+
+  * GitHub now supports relative links from the README:
+
+    https://help.github.com/articles/relative-links-in-readmes
+
+  * Upgrade to md2man 3.0 for improved HTML manuals.
+
 ## Version 3.3.2 (2013-08-30)
 
 Patch:
