@@ -2,10 +2,10 @@
 
 [binman] produces UNIX manual pages for executable scripts using [md2man].
 
-* Package: <https://rubygems.org/gems/binman>
-* Manuals: <https://sunaku.github.io/binman>
+* Manuals: <https://sunaku.github.io/binman/man>
 * Sources: <https://github.com/sunaku/binman>
 * Support: <https://github.com/sunaku/binman/issues>
+* Package: <https://rubygems.org/gems/binman>
 
 ## Features
 
