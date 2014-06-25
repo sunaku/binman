@@ -8,12 +8,8 @@ produces UNIX manual pages for executable scripts using md2man
 .UE \&.
 .RS
 .IP \(bu 2
-Package: 
-.UR https://rubygems.org/gems/binman
-.UE
-.IP \(bu 2
 Manuals: 
-.UR https://sunaku.github.io/binman
+.UR https://sunaku.github.io/binman/man
 .UE
 .IP \(bu 2
 Sources: 
@@ -22,6 +18,10 @@ Sources:
 .IP \(bu 2
 Support: 
 .UR https://github.com/sunaku/binman/issues
+.UE
+.IP \(bu 2
+Package: 
+.UR https://rubygems.org/gems/binman
 .UE
 .RE
 .SH Features
