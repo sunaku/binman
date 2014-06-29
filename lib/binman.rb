@@ -1,4 +1,5 @@
-require "binman/version"
+require 'shellwords'
+require 'binman/version'
 
 module BinMan
   extend self
@@ -42,9 +43,10 @@ module BinMan
     conv load(source)
   end
 
-  # Shows leading comment header from given source as UNIX man page if
-  # possible, else falls back to showing leading comment header as-is.
-  def show source=nil
+  # Shows leading comment header from given source as UNIX man page and
+  # optionally jumps to first match of query regular expression if given.
+  # If not possible, falls back to showing leading comment header as-is.
+  def show source=nil, query=nil
     # try showing existing man page files for given source
     if file = find(source) and File.exist? file
       man_page = File.basename(file)
@@ -63,7 +65,7 @@ module BinMan
 
       # try showing roff manual page in man(1) reader in foreground;
       # close STDERR to avoid interference with the fall back below
-      return if system 'man', '-M', man_path, '-a', man_page, 2 => :close
+      return if view query, '-M', man_path, '-a', man_page, 2 => :close
     end
 
     # fall back to showing leading comment header as-is
@@ -75,7 +77,7 @@ module BinMan
       Tempfile.open 'binman' do |temp|
         temp.write roff
         temp.close
-        system 'man', temp.path
+        view query, temp.path
       end
     rescue => error
       warn "binman: #{error}"
@@ -84,12 +86,14 @@ module BinMan
   end
 
   # Shows leading comment header from given source as UNIX man page and exits
-  # if the given argument vector contains '-h' or '--help', except after '--'.
+  # if the given argument vector contains '-h' or '--help', except after '--',
+  # optionally followed by a regular expression argument that specifies text
+  # to search for and, if found, jump to inside the displayed UNIX man page.
   def help source=nil, argv=ARGV
     limit = argv.index('--') || argv.length
     index = [argv.index('-h'), argv.index('--help')].compact.min
     if index and index < limit
-      show source
+      show source, argv[index + 1]
       exit
     end
   end
@@ -104,6 +108,26 @@ module BinMan
   end
 
 private
+
+  # Launches man(1) with the given arguments and then tries to search for the
+  # query (if given) within.  If man(1) is not able to launch with the search
+  # capability, then it tries launching man(1) without the search capability.
+  def view query, *argv
+    if query
+      # man(1) uses `pager -s` as the pager command by default and both of the
+      # more(1) and less(1) pagers support the "+/pattern" command-line option
+      status = system('man', '-P', "pager -s +/#{query.shellescape}", *argv)
+
+      # exit status 3 means man(1) couldn't launch with the search capability:
+      #
+      #   man: can't execute pager: No such file or directory
+      #
+      # so don't return and try launching man(1) without the search capability
+      return status unless $?.exitstatus == 3
+    end
+
+    system 'man', *argv
+  end
 
   # Returns contents of given source I/O, file name, or string.
   def read source=nil
