@@ -17,7 +17,7 @@
 
   * Individual extraction, conversion, and display commands.
 
-  * Implemented in roughly 130 lines of pure Ruby code! :-)
+  * Implemented in roughly 150 lines of pure Ruby code! :-)
 
 ### Demonstration
 
