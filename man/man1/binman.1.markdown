@@ -1,4 +1,4 @@
-# BINMAN 1 2014-06-22 3.3.3
+# BINMAN 1 2014-06-29 3.4.0
 
 ## NAME
 
@@ -61,15 +61,18 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 
 ## COMMANDS
 
-`help` *FILE* [*ARGUMENT*]...
-  If the given *ARGUMENT* sequence contains `-h` or `--help` except after
-  `--`, then this program extracts the given *FILE*'s leading comment header,
-  converts it into roff(7), and displays it using man(1) before exiting with
+`help` *FILE* ... [`-h`|`--help` [*REGEXP*]] ... [`--`] ...
+  If the given argument sequence contains `-h` or `--help`, except after
+  `--`, optionally followed by a *REGEXP* regular expression that specifies
+  text to search for and, if found, jump to inside the displayed man page,
+  then this program extracts the given *FILE*'s leading comment header,
+  converts it into roff(7), displays it using man(1), and finally exits with
   status code `0`.  Otherwise, this program exits with status code `111`.
 
-`show` [*FILE*]
+`show` [*FILE*] [*REGEXP*]
   Use man(1) to display the roff(7) conversion of the leading comment header
-  extracted from the given *FILE* or STDIN.
+  extracted from the given *FILE* or STDIN.  If *REGEXP* is given, search for
+  it within the output displayed by man(1) and jump to first match if found.
 
 `load` [*FILE*]
   Print the leading comment header extracted from the given *FILE* or STDIN.

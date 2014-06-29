@@ -1,4 +1,4 @@
-.TH BINMAN 1 2014\-06\-22 3.3.3
+.TH BINMAN 1 2014\-06\-29 3.4.0
 .SH NAME
 .PP
 binman \- man pages for bin scripts
@@ -88,23 +88,28 @@ fenced_code_blocks
 Show this help manual.
 .SH COMMANDS
 .TP
-\fB\fChelp\fR \fIFILE\fP [\fIARGUMENT\fP]...
-If the given \fIARGUMENT\fP sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR except after
-\fB\fC\-\-\fR, then this program extracts the given \fIFILE\fP\&'s leading comment header,
+\fB\fChelp\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIREGEXP\fP]] ... [\fB\fC\-\-\fR] ...
+If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after
+\fB\fC\-\-\fR, optionally followed by a \fIREGEXP\fP regular expression that specifies
+text to search for and, if found, jump to inside the displayed man page,
+then this program extracts the given \fIFILE\fP\&'s leading comment header,
 converts it into 
 .BR roff (7), 
-and displays it using 
-.BR man (1) 
-before exiting with
+displays it using 
+.BR man (1), 
+and finally exits with
 status code \fB\fC0\fR\&.  Otherwise, this program exits with status code \fB\fC111\fR\&.
 .TP
-\fB\fCshow\fR [\fIFILE\fP]
+\fB\fCshow\fR [\fIFILE\fP] [\fIREGEXP\fP]
 Use 
 .BR man (1) 
 to display the 
 .BR roff (7) 
 conversion of the leading comment header
-extracted from the given \fIFILE\fP or STDIN.
+extracted from the given \fIFILE\fP or STDIN.  If \fIREGEXP\fP is given, search for
+it within the output displayed by 
+.BR man (1) 
+and jump to first match if found.
 .TP
 \fB\fCload\fR [\fIFILE\fP]
 Print the leading comment header extracted from the given \fIFILE\fP or STDIN.

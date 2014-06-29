@@ -1,3 +1,18 @@
+## Version 3.4.0 (2014-06-29)
+
+### Minor:
+
+  * GH-3: add optional regexp argument to `-h`/`--help` to search in man(1).
+
+    The `-h` and `--help` options in `BinMan.help()` can now be optionally
+    followed by a regular expression argument that specifies text to search
+    for and, if found, jump to inside the displayed UNIX man page.  Such a
+    regular expression argument can now also be passed into `BinMan.show()`.
+
+### Other:
+
+  * README: add syntax highlighting to code snippets.
+
 ## Version 3.3.3 (2014-06-22)
 
 This release upgrades to md2man 3.0 for improved HTML manuals.

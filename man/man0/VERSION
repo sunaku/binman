@@ -1,3 +1,20 @@
+.SH Version 3.4.0 (2014\-06\-29)
+.SS Minor:
+.RS
+.IP \(bu 2
+GH\-3: add optional regexp argument to \fB\fC\-h\fR/\fB\fC\-\-help\fR to search in 
+.BR man (1).
+.PP
+The \fB\fC\-h\fR and \fB\fC\-\-help\fR options in \fB\fCBinMan.help()\fR can now be optionally
+followed by a regular expression argument that specifies text to search
+for and, if found, jump to inside the displayed UNIX man page.  Such a
+regular expression argument can now also be passed into \fB\fCBinMan.show()\fR\&.
+.RE
+.SS Other:
+.RS
+.IP \(bu 2
+README: add syntax highlighting to code snippets.
+.RE
 .SH Version 3.3.3 (2014\-06\-22)
 .PP
 This release upgrades to md2man 3.0 for improved HTML manuals.
