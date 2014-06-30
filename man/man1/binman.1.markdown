@@ -56,8 +56,8 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 
 ## OPTIONS
 
-`-h`, `--help`
-  Show this help manual.
+`-h` [*REGEXP*], `--help` [*REGEXP*]
+  Show this help manual and search for *REGEXP* regular expression therein.
 
 ## COMMANDS
 
