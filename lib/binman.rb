@@ -113,20 +113,13 @@ private
   # query (if given) within.  If man(1) is not able to launch with the search
   # capability, then it tries launching man(1) without the search capability.
   def view query, *argv
-    if query
-      # man(1) uses `pager -s` as the pager command by default and both of the
-      # more(1) and less(1) pagers support the "+/pattern" command-line option
-      status = system('man', '-P', "pager -s +/#{query.shellescape}", *argv)
-
-      # exit status 3 means man(1) couldn't launch with the search capability:
-      #
-      #   man: can't execute pager: No such file or directory
-      #
-      # so don't return and try launching man(1) without the search capability
-      return status unless $?.exitstatus == 3
-    end
-
-    system 'man', *argv
+    # man(1) defaults to `pager -s` under Debian but `less -is` under CentOS
+    # so try different pagers, but always fall back to using no pager at all.
+    # See https://www.debian-administration.org/article/246/ for pager list.
+    query and %w[ pager less most more ].any? do |pager|
+      # the `-s` and `+/pattern` options are universally supported by pagers
+      system 'man', '-P', "#{pager} -s +/#{query.shellescape}", *argv
+    end or system 'man', *argv
   end
 
   # Returns contents of given source I/O, file name, or string.
