@@ -77,7 +77,7 @@ module BinMan
       Tempfile.open 'binman' do |temp|
         temp.write roff
         temp.close
-        view query, temp.path
+        view query, temp.path, 2 => :close
       end
     rescue => error
       warn "binman: #{error}"
