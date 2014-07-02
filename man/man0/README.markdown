@@ -29,6 +29,8 @@ And that's not all: [see the manual][binman-man] for even more possibilities!
 
 ![Obligatory screen-shot of binman(1) in action!](EXAMPLE.png)
 
+#### What can binman(1) do?
+
 Here are some working examples of Ruby bin scripts to help you get started:
 
 * tork(1):
@@ -85,6 +87,14 @@ Here are some working examples of Ruby bin scripts to help you get started:
   [roff result](https://sunaku.github.io/binman/man/man1/binman-rake.1)
 
 For examples in other scripting languages, see the "Usage" section below!
+
+#### What can binman-rake(1) do?
+
+Here are some examples of HTML manual _sets_ produced by binman-rake(1):
+
+* https://sunaku.github.io/tork/man
+* https://sunaku.github.io/binman/man
+* https://sunaku.github.io/md2man/man
 
 ## Installation
 

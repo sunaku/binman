@@ -54,6 +54,9 @@ Implemented in roughly 150 lines of pure Ruby code! :\-)
 [Obligatory screen\-shot of 
 .BR binman (1) 
 in action!](EXAMPLE.png)
+.SS What can 
+.BR binman (1) 
+do?
 .PP
 Here are some working examples of Ruby bin scripts to help you get started:
 .RS
@@ -229,6 +232,23 @@ roff result
 .RE
 .PP
 For examples in other scripting languages, see the "Usage" section below!
+.SS What can 
+.BR binman-rake (1) 
+do?
+.PP
+Here are some examples of HTML manual \fIsets\fP produced by 
+.BR binman-rake (1):
+.RS
+.IP \(bu 2
+.UR https://sunaku.github.io/tork/man
+.UE
+.IP \(bu 2
+.UR https://sunaku.github.io/binman/man
+.UE
+.IP \(bu 2
+.UR https://sunaku.github.io/md2man/man
+.UE
+.RE
 .SH Installation
 .PP
 If you only want to view pre\-built manual pages:
