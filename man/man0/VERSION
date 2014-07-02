@@ -1,3 +1,25 @@
+.SH Version 3.4.1 (2014\-07\-01)
+.PP
+This release fixes the help options' REGEXP argument under non\-Debian systems.
+.SS Patch:
+.RS
+.IP \(bu 2
+.BR pager (1) 
+isn't a universal command: CentOS uses \fB\fCless \-is\fR instead.
+.IP \(bu 2
+Silence 
+.BR man (1) 
+stderr when displaying dynamically extracted manual.
+.RE
+.SS Other:
+.RS
+.IP \(bu 2
+README: add intro hook and source+result examples.
+.IP \(bu 2
+Document REGEXP argument for help options in \fB\fCbin/*\fR\&.
+.IP \(bu 2
+Refer to REGEXP argument as PATTERN like less does.
+.RE
 .SH Version 3.4.0 (2014\-06\-29)
 .SS Minor:
 .RS

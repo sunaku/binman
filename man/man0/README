@@ -6,6 +6,18 @@ binman
 produces UNIX manual pages for executable scripts using md2man
 .UR https://github.com/sunaku/md2man
 .UE \&.
+Simply document your script in Markdown
+.UR https://sunaku.github.io/md2man/man/man5/md2man.5.html
+.UE
+as a comment at the
+top of your script and call \fB\fCbinman show\fR to display it as a UNIX manual page!
+Or, call \fB\fCbinman help\fR to display your manual \fIonly\fP when your script receives
+with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, call \fB\fCbinman load\fR to extract
+the manual from your script for your own custom processing, outside of binman.
+And that's not all: see the manual
+.UR https://sunaku.github.io/binman/man/man1/binman.1.html
+.UE
+for even more possibilities!
 .RS
 .IP \(bu 2
 Manuals: 
@@ -43,10 +55,179 @@ Implemented in roughly 150 lines of pure Ruby code! :\-)
 .BR binman (1) 
 in action!](EXAMPLE.png)
 .PP
-Here is a complete example in Ruby
+Here are some working examples of Ruby bin scripts to help you get started:
+.RS
+.IP \(bu 2
+.BR tork (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork.1
+.UE
+.IP \(bu 2
+.BR tork-runner (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-runner
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-runner.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-runner.1
+.UE
+.IP \(bu 2
+.BR tork-herald (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-herald
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-herald.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-herald.1
+.UE
+.IP \(bu 2
+.BR tork-driver (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-driver
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-driver.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-driver.1
+.UE
+.IP \(bu 2
+.BR tork-engine (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-engine
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-engine.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-engine.1
+.UE
+.IP \(bu 2
+.BR tork-master (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-master
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-master.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-master.1
+.UE
+.IP \(bu 2
+.BR tork-remote (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-remote
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-remote.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-remote.1
+.UE
+.IP \(bu 2
+.BR tork-notify (1):
+Ruby source
+.UR https://raw.github.com/sunaku/tork/master/bin/tork-notify
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/tork/man/man1/tork-notify.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/tork/man/man1/tork-notify.1
+.UE
+.IP \(bu 2
+.BR md2man-roff (1):
+Ruby source
+.UR https://raw.github.com/sunaku/md2man/master/bin/md2man-roff
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/md2man/man/man1/md2man-roff.1
+.UE
+.IP \(bu 2
+.BR md2man-html (1):
+Ruby source
+.UR https://raw.github.com/sunaku/md2man/master/bin/md2man-html
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/md2man/man/man1/md2man-html.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/md2man/man/man1/md2man-html.1
+.UE
+.IP \(bu 2
+.BR md2man-rake (1):
+Ruby source
+.UR https://raw.github.com/sunaku/md2man/master/bin/md2man-rake
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/md2man/man/man1/md2man-rake.1
+.UE
+.IP \(bu 2
+.BR binman (1):
+Ruby source
 .UR https://raw.github.com/sunaku/binman/master/bin/binman
 .UE
-to help you get started.
+\[->]
+HTML result
+.UR https://sunaku.github.io/binman/man/man1/binman.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/binman/man/man1/binman.1
+.UE
+.IP \(bu 2
+.BR binman-rake (1):
+Ruby source
+.UR https://raw.github.com/sunaku/binman/master/bin/binman-rake
+.UE
+\[->]
+HTML result
+.UR https://sunaku.github.io/binman/man/man1/binman-rake.1.html
+.UE
++
+roff result
+.UR https://sunaku.github.io/binman/man/man1/binman-rake.1
+.UE
+.RE
+.PP
 For examples in other scripting languages, see the "Usage" section below!
 .SH Installation
 .PP

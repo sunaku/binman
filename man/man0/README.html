@@ -7,7 +7,13 @@
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/README</span></div></div><div class="container-fluid"><h1 id="binman-man-pages-for"><a name="binman-man-pages-for" href="#binman-man-pages-for" class="md2man-permalink" title="permalink"></a><span class="md2man-title">binman</span> <span class="md2man-section">-</span> <span class="md2man-date">man</span> <span class="md2man-source">pages</span> <span class="md2man-manual">for</span></h1><p><a href="https://github.com/sunaku/binman">binman</a> produces UNIX manual pages for executable scripts using <a href="https://github.com/sunaku/md2man">md2man</a>.</p>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/README</span></div></div><div class="container-fluid"><h1 id="binman-man-pages-for"><a name="binman-man-pages-for" href="#binman-man-pages-for" class="md2man-permalink" title="permalink"></a><span class="md2man-title">binman</span> <span class="md2man-section">-</span> <span class="md2man-date">man</span> <span class="md2man-source">pages</span> <span class="md2man-manual">for</span></h1><p><a href="https://github.com/sunaku/binman">binman</a> produces UNIX manual pages for executable scripts using <a href="https://github.com/sunaku/md2man">md2man</a>.
+Simply <a href="https://sunaku.github.io/md2man/man/man5/md2man.5.html">document your script in Markdown</a> as a comment at the
+top of your script and call <code>binman show</code> to display it as a UNIX manual page!
+Or, call <code>binman help</code> to display your manual <em>only</em> when your script receives
+with <code>-h</code> or <code>--help</code> command-line options.  Or, call <code>binman load</code> to extract
+the manual from your script for your own custom processing, outside of binman.
+And that&#39;s not all: <a href="https://sunaku.github.io/binman/man/man1/binman.1.html">see the manual</a> for even more possibilities!</p>
 <ul>
 <li>Manuals: <a href="https://sunaku.github.io/binman/man">https://sunaku.github.io/binman/man</a></li>
 <li>Sources: <a href="https://github.com/sunaku/binman">https://github.com/sunaku/binman</a></li>
@@ -23,8 +29,62 @@ Perl, Python, Node.js, Tcl, AWK, UNIX shell, and more!</p></li>
 <li><p>Individual extraction, conversion, and display commands.</p></li>
 <li><p>Implemented in roughly 150 lines of pure Ruby code! :-)</p></li>
 </ul>
-<h3 id="demonstration"><a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a>Demonstration</h3><p><img src="EXAMPLE.png" alt="Obligatory screen-shot of binman(1) in action!"></p><p>Here is <a href="https://raw.github.com/sunaku/binman/master/bin/binman">a complete example in Ruby</a> to help you get started.
-For examples in other scripting languages, see the &quot;Usage&quot; section below!</p><h2 id="installation"><a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a>Installation</h2><p>If you only want to view pre-built manual pages:</p>
+<h3 id="demonstration"><a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a>Demonstration</h3><p><img src="EXAMPLE.png" alt="Obligatory screen-shot of binman(1) in action!"></p><p>Here are some working examples of Ruby bin scripts to help you get started:</p>
+<ul>
+<li><a class="md2man-reference">tork(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork.1">roff result</a></li>
+<li><a class="md2man-reference">tork-runner(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-runner.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-runner.1">roff result</a></li>
+<li><a class="md2man-reference">tork-herald(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-herald.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-herald.1">roff result</a></li>
+<li><a class="md2man-reference">tork-driver(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-driver.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-driver.1">roff result</a></li>
+<li><a class="md2man-reference">tork-engine(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-engine.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-engine.1">roff result</a></li>
+<li><a class="md2man-reference">tork-master(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-master.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-master.1">roff result</a></li>
+<li><a class="md2man-reference">tork-remote(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-remote.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-remote.1">roff result</a></li>
+<li><a class="md2man-reference">tork-notify(1)</a>:
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/tork/man/man1/tork-notify.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/tork/man/man1/tork-notify.1">roff result</a></li>
+<li><a class="md2man-reference">md2man-roff(1)</a>:
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/md2man/man/man1/md2man-roff.1">roff result</a></li>
+<li><a class="md2man-reference">md2man-html(1)</a>:
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/md2man/man/man1/md2man-html.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/md2man/man/man1/md2man-html.1">roff result</a></li>
+<li><a class="md2man-reference">md2man-rake(1)</a>:
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/md2man/man/man1/md2man-rake.1">roff result</a></li>
+<li><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>:
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/binman/man/man1/binman.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/binman/man/man1/binman.1">roff result</a></li>
+<li><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>:
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">Ruby source</a> &rarr;
+<a href="https://sunaku.github.io/binman/man/man1/binman-rake.1.html">HTML result</a> +
+<a href="https://sunaku.github.io/binman/man/man1/binman-rake.1">roff result</a></li>
+</ul>
+<p>For examples in other scripting languages, see the &quot;Usage&quot; section below!</p><h2 id="installation"><a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a>Installation</h2><p>If you only want to view pre-built manual pages:</p>
 <pre><code class="sh">gem install binman
 </code></pre>
 <p>If you also want to build your own manual pages:</p>

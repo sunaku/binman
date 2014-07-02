@@ -1,4 +1,4 @@
-.TH BINMAN 1 2014\-06\-29 3.4.0
+.TH BINMAN 1 2014\-07\-01 3.4.1
 .SH NAME
 .PP
 binman \- man pages for bin scripts
@@ -84,13 +84,13 @@ fenced_code_blocks
 .RE
 .SH OPTIONS
 .TP
-\fB\fC\-h\fR [\fIREGEXP\fP], \fB\fC\-\-help\fR [\fIREGEXP\fP]
-Show this help manual and search for \fIREGEXP\fP regular expression therein.
+\fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
+Show this help manual and search for \fIPATTERN\fP regular expression therein.
 .SH COMMANDS
 .TP
-\fB\fChelp\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIREGEXP\fP]] ... [\fB\fC\-\-\fR] ...
+\fB\fChelp\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIPATTERN\fP]] ... [\fB\fC\-\-\fR] ...
 If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after
-\fB\fC\-\-\fR, optionally followed by a \fIREGEXP\fP regular expression that specifies
+\fB\fC\-\-\fR, optionally followed by a \fIPATTERN\fP regular expression that specifies
 text to search for and, if found, jump to inside the displayed man page,
 then this program extracts the given \fIFILE\fP\&'s leading comment header,
 converts it into 
@@ -100,13 +100,13 @@ displays it using
 and finally exits with
 status code \fB\fC0\fR\&.  Otherwise, this program exits with status code \fB\fC111\fR\&.
 .TP
-\fB\fCshow\fR [\fIFILE\fP] [\fIREGEXP\fP]
+\fB\fCshow\fR [\fIFILE\fP] [\fIPATTERN\fP]
 Use 
 .BR man (1) 
 to display the 
 .BR roff (7) 
 conversion of the leading comment header
-extracted from the given \fIFILE\fP or STDIN.  If \fIREGEXP\fP is given, search for
+extracted from the given \fIFILE\fP or STDIN.  If \fIPATTERN\fP is given, search for
 it within the output displayed by 
 .BR man (1) 
 and jump to first match if found.
