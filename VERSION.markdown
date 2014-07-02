@@ -1,3 +1,21 @@
+## Version 3.4.1 (2014-07-01)
+
+This release fixes the help options' REGEXP argument under non-Debian systems.
+
+### Patch:
+
+  * pager(1) isn't a universal command: CentOS uses `less -is` instead.
+
+  * Silence man(1) stderr when displaying dynamically extracted manual.
+
+### Other:
+
+  * README: add intro hook and source+result examples.
+
+  * Document REGEXP argument for help options in `bin/*`.
+
+  * Refer to REGEXP argument as PATTERN like less does.
+
 ## Version 3.4.0 (2014-06-29)
 
 ### Minor:
