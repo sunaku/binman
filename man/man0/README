@@ -11,7 +11,7 @@ Simply document your script in Markdown
 .UE
 as a comment at the
 top of your script and call \fB\fCbinman show\fR to display it as a UNIX manual page!
-Or, call \fB\fCbinman help\fR to display your manual \fIonly\fP when your script receives
+Or, call \fB\fCbinman help\fR to display your manual \fIonly\fP when your script is run
 with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, call \fB\fCbinman load\fR to extract
 the manual from your script for your own custom processing, outside of binman.
 And that's not all: see the manual
