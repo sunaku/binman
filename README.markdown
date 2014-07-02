@@ -1,6 +1,12 @@
 # binman - man pages for bin scripts
 
 [binman] produces UNIX manual pages for executable scripts using [md2man].
+Simply [document your script in Markdown][md2man-markdown] as a comment at the
+top of your script and call `binman show` to display it as a UNIX manual page!
+Or, call `binman help` to display your manual _only_ when your script receives
+with `-h` or `--help` command-line options.  Or, call `binman load` to extract
+the manual from your script for your own custom processing, outside of binman.
+And that's not all: [see the manual][binman-man] for even more possibilities!
 
 * Manuals: <https://sunaku.github.io/binman/man>
 * Sources: <https://github.com/sunaku/binman>
@@ -23,7 +29,61 @@
 
 ![Obligatory screen-shot of binman(1) in action!](EXAMPLE.png)
 
-Here is [a complete example in Ruby][binman-bin] to help you get started.
+Here are some working examples of Ruby bin scripts to help you get started:
+
+* tork(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork.1)
+* tork-runner(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-runner) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-runner.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-runner.1)
+* tork-herald(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-herald) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-herald.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-herald.1)
+* tork-driver(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-driver) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-driver.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-driver.1)
+* tork-engine(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-engine) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-engine.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-engine.1)
+* tork-master(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-master) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-master.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-master.1)
+* tork-remote(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-remote) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-remote.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-remote.1)
+* tork-notify(1):
+  [Ruby source](https://raw.github.com/sunaku/tork/master/bin/tork-notify) &rarr;
+  [HTML result](https://sunaku.github.io/tork/man/man1/tork-notify.1.html) +
+  [roff result](https://sunaku.github.io/tork/man/man1/tork-notify.1)
+* md2man-roff(1):
+  [Ruby source](https://raw.github.com/sunaku/md2man/master/bin/md2man-roff) &rarr;
+  [HTML result](https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html) +
+  [roff result](https://sunaku.github.io/md2man/man/man1/md2man-roff.1)
+* md2man-html(1):
+  [Ruby source](https://raw.github.com/sunaku/md2man/master/bin/md2man-html) &rarr;
+  [HTML result](https://sunaku.github.io/md2man/man/man1/md2man-html.1.html) +
+  [roff result](https://sunaku.github.io/md2man/man/man1/md2man-html.1)
+* md2man-rake(1):
+  [Ruby source](https://raw.github.com/sunaku/md2man/master/bin/md2man-rake) &rarr;
+  [HTML result](https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html) +
+  [roff result](https://sunaku.github.io/md2man/man/man1/md2man-rake.1)
+* binman(1):
+  [Ruby source](https://raw.github.com/sunaku/binman/master/bin/binman) &rarr;
+  [HTML result](https://sunaku.github.io/binman/man/man1/binman.1.html) +
+  [roff result](https://sunaku.github.io/binman/man/man1/binman.1)
+* binman-rake(1):
+  [Ruby source](https://raw.github.com/sunaku/binman/master/bin/binman-rake) &rarr;
+  [HTML result](https://sunaku.github.io/binman/man/man1/binman-rake.1.html) +
+  [roff result](https://sunaku.github.io/binman/man/man1/binman-rake.1)
+
 For examples in other scripting languages, see the "Usage" section below!
 
 ## Installation
@@ -300,6 +360,7 @@ Released under the ISC license.  See the LICENSE file for details.
 
 [roff]: http://troff.org
 [binman]: https://github.com/sunaku/binman
+[binman-man]: https://sunaku.github.io/binman/man/man1/binman.1.html
 [binman-api]: http://rubydoc.info/gems/binman/frames
-[binman-bin]: https://raw.github.com/sunaku/binman/master/bin/binman
 [md2man]: https://github.com/sunaku/md2man
+[md2man-markdown]: https://sunaku.github.io/md2man/man/man5/md2man.5.html
