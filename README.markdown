@@ -2,9 +2,9 @@
 
 [binman] produces UNIX manual pages for executable scripts using [md2man].
 Simply [document your script in Markdown][md2man-markdown] as a comment at the
-top of your script and run `binman show` to display it as a UNIX manual page!
-Or, run `binman help` to display your manual _only_ when your script is run
-with `-h` or `--help` command-line options.  Or, run `binman load` to extract
+top of your script and call `binman show` to display it as a UNIX manual page!
+Or, call `binman help` to display your manual _only_ when your script receives
+with `-h` or `--help` command-line options.  Or, call `binman snip` to extract
 the manual from your script for your own custom processing, outside of binman.
 And that's not all: [see the manual page][binman-man] for more possibilities!
 
