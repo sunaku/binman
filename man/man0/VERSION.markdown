@@ -1,3 +1,16 @@
+## Version 4.0.0 (2014-10-26)
+
+### Major:
+
+  * binman(1): Rename the `load` command to `snip` and remove `conv`.
+
+    * The `binman conv` command has been removed; use `md2man-roff` instead.
+
+    * We no longer require a specific md2man version at runtime; any will do.
+
+  * Upgrade to md2man 4.0, which no longer expands cross references in code
+    spans and code blocks.  Your manuals might be rendered differently now.
+
 ## Version 3.4.1 (2014-07-01)
 
 This release fixes the help options' REGEXP argument under non-Debian systems.

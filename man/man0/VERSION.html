@@ -2,12 +2,22 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 3.0.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 4.0.0 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-0-0-2014-10-26"><a name="version-4-0-0-2014-10-26" href="#version-4-0-0-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 4.0.0 (2014-10-26)</h2><h3 id="major"><a name="major" href="#major" class="md2man-permalink" title="permalink"></a>Major:</h3>
+<ul>
+<li><p><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>: Rename the <code>load</code> command to <code>snip</code> and remove <code>conv</code>.</p>
+<ul>
+<li>The <code>binman conv</code> command has been removed; use <code>md2man-roff</code> instead.</li>
+<li>We no longer require a specific md2man version at runtime; any will do.</li>
+</ul></li>
+<li><p>Upgrade to md2man 4.0, which no longer expands cross references in code
+spans and code blocks.  Your manuals might be rendered differently now.</p></li>
+</ul>
+<h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p><a class="md2man-reference">pager(1)</a> isn&#39;t a universal command: CentOS uses <code>less -is</code> instead.</p></li>
 <li><p>Silence <a class="md2man-reference">man(1)</a> stderr when displaying dynamically extracted manual.</p></li>
@@ -37,8 +47,7 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
 </ul>
 <h2 id="version-3-3-2-2013-08-30"><a name="version-3-3-2-2013-08-30" href="#version-3-3-2-2013-08-30" class="md2man-permalink" title="permalink"></a>Version 3.3.2 (2013-08-30)</h2><p>Patch:</p>
 <ul>
-<li><p>Rescue error when designated opener is not found:</p>
-<pre><code>$ binman -h
+<li><p>Rescue error when designated opener is not found:</p><pre><code>$ binman -h
 /gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;: No such file or directory - xdg-open (Errno::ENOENT)
         from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;
         from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show&#39;
@@ -49,8 +58,7 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
         from /bin/binman:23:in `load&#39;
         from /bin/binman:23:in `&lt;main&gt;&#39;
 </code></pre></li>
-<li><p>Fix an undefined local variable or method error:</p>
-<pre><code>binman: undefined local variable or method `library&#39; for BinMan:Module
+<li><p>Fix an undefined local variable or method error:</p><pre><code>binman: undefined local variable or method `library&#39; for BinMan:Module
 </code></pre></li>
 </ul>
 <p>Other:</p>

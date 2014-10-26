@@ -5,9 +5,9 @@ binman
 \[la]https://github.com/sunaku/md2man\[ra]\&.
 Simply document your script in Markdown
 \[la]https://sunaku.github.io/md2man/man/man5/md2man.5.html\[ra] as a comment at the
-top of your script and run \fB\fCbinman show\fR to display it as a UNIX manual page!
-Or, run \fB\fCbinman help\fR to display your manual \fIonly\fP when your script is run
-with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, run \fB\fCbinman load\fR to extract
+top of your script and call \fB\fCbinman show\fR to display it as a UNIX manual page!
+Or, call \fB\fCbinman help\fR to display your manual \fIonly\fP when your script receives
+with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, call \fB\fCbinman snip\fR to extract
 the manual from your script for your own custom processing, outside of binman.
 And that's not all: see the manual page
 \[la]https://sunaku.github.io/binman/man/man1/binman.1.html\[ra] for more possibilities!
@@ -197,7 +197,7 @@ If you also want to build your own manual pages:
 .PP
 .RS
 .nf
-gem install md2man \-v '~> 3.0'
+gem install md2man \-v '~> 4.0'
 .fi
 .RE
 .SS Prerequisites
@@ -418,9 +418,7 @@ your program's manual page goes here
 var exec = require('child_process').exec;
 // OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 exec(['>/dev/tty', 'binman', 'help', __filename].concat(process.argv).
-join(' '), 
-.BR function (error){ 
-if (error === null){ process.exit(); } });
+join(' '), function(error){ if (error === null){ process.exit(); } });
 // OPTION 2: show manual unconditionally
 exec(['>/dev/tty', 'binman', 'show', __filename].join(' '));
 .fi
@@ -446,7 +444,7 @@ Add this snippet to your gemspec file:
 .nf
 s.files += Dir['man/man?/*.?']            # UNIX man pages
 s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-s.add_development_dependency 'md2man', '~> 3.0'
+s.add_development_dependency 'md2man', '~> 4.0'
 .fi
 .RE
 .PP
