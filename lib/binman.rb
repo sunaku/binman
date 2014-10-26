@@ -15,7 +15,7 @@ module BinMan
   #
   # Comment markers and shebang/encoding comments are omitted from result.
   #
-  def load source=nil
+  def snip source=nil
     header = read(source)
 
     # strip shebang and encoding comments
@@ -30,22 +30,16 @@ module BinMan
     end.strip
   end
 
-  # Converts given markdown(7) source into roff(7).
-  def conv source=nil
-    require_md2man
-    require 'md2man/roff/engine'
-    Md2Man::Roff::ENGINE.render(read(source))
-  end
-
   # Extracts leading comment header content from given
   # source and returns the roff(7) conversion thereof.
   def dump source=nil
-    conv load(source)
+    conv snip(source)
   end
 
   # Shows leading comment header from given source as UNIX man page and
   # optionally jumps to first match of query regular expression if given.
   # If not possible, falls back to showing leading comment header as-is.
+  # Tries to display a pre-rendered UNIX man page under ./man/ if possible.
   def show source=nil, query=nil
     # try showing existing man page files for given source
     if file = find(source) and File.exist? file
@@ -69,7 +63,7 @@ module BinMan
     end
 
     # fall back to showing leading comment header as-is
-    header = load(source)
+    header = snip(source)
 
     begin
       roff = conv(header)
@@ -98,15 +92,6 @@ module BinMan
     end
   end
 
-  # Requires that the correct version of Md2Man is available on this system.
-  def require_md2man
-    require 'rubygems' unless respond_to? :gem
-    gem 'md2man', '~> 4.0' if respond_to? :gem
-    require 'md2man/version'
-  rescue LoadError
-    raise 'Run `gem install md2man --version "~> 4.0"` to use BinMan::conv().'
-  end
-
 private
 
   # Launches man(1) with the given arguments and then tries to search for the
@@ -120,6 +105,14 @@ private
       # the `-s` and `+/pattern` options are universally supported by pagers
       system 'man', '-P', "#{pager} -s +/#{query.shellescape}", *argv
     end or system 'man', *argv
+  end
+
+  # Converts given markdown(7) source into roff(7).
+  def conv source=nil
+    require 'md2man/roff/engine'
+    Md2Man::Roff::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::dump() or BinMan::show().'
   end
 
   # Returns contents of given source I/O, file name, or string.
