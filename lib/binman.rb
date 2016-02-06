@@ -46,6 +46,10 @@ module BinMan
       man_page = File.basename(file)
       man_path = File.expand_path('../../man', file)
 
+      # try showing roff manual page in man(1) reader in foreground;
+      # close STDERR to avoid interference with the fall back below
+      return if view query, '-M', man_path, '-a', man_page, 2 => :close
+
       # try showing HTML manual page in a web browser in background
       require 'opener'
       Dir["#{man_path}/**/#{man_page}.*.html"].each do |man_html|
@@ -56,10 +60,6 @@ module BinMan
           # designated opener program could not be found on this system
         end
       end
-
-      # try showing roff manual page in man(1) reader in foreground;
-      # close STDERR to avoid interference with the fall back below
-      return if view query, '-M', man_path, '-a', man_page, 2 => :close
     end
 
     # fall back to showing leading comment header as-is
