@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'shellwords'
 require 'binman/version'
 
@@ -69,9 +70,22 @@ module BinMan
       roff = conv(header)
       require 'tempfile'
       Tempfile.open 'binman' do |temp|
-        temp.write roff
-        temp.close
-        return if view query, temp.path, 2 => :close
+        temp_man_root = temp.path + '_'
+        begin
+
+          # create a temporary man/ directory structure for `man -M ...`
+          temp_man_path = File.join(temp_man_root, man_path)
+          temp_man_page = File.join(temp_man_path, 'man1', man_page + '.1')
+          FileUtils.mkdir_p File.dirname(temp_man_page)
+          File.open(temp_man_page, 'w') {|page| page << roff }
+
+          # try showing roff manual page in man(1) reader in foreground;
+          # close STDERR to avoid interference with the fall back below
+          return if view query, '-M', temp_man_path, '-a', man_page, 2 => :close
+
+        ensure
+          FileUtils.rm_rf temp_man_root
+        end
       end
     rescue => error
       warn "binman: #{error}"
