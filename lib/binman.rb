@@ -96,16 +96,12 @@ module BinMan
 private
 
   # Launches man(1) with the given arguments and then tries to search for the
-  # query (if given) within.  If man(1) is not able to launch with the search
-  # capability, then it tries launching man(1) without the search capability.
+  # query (if given) within.  This is achieved by specifying the LESS and MORE
+  # environment variables used by the less(1) and more(1) pagers respectively.
   def view query, *argv
-    # man(1) defaults to `pager -s` under Debian but `less -is` under CentOS
-    # so try different pagers, but always fall back to using no pager at all.
-    # See https://www.debian-administration.org/article/246/ for pager list.
-    query and %w[ pager less most more ].any? do |pager|
-      # the `-s` and `+/pattern` options are universally supported by pagers
-      system 'man', '-P', "#{pager} -s +/#{query.shellescape}", *argv
-    end or system 'man', *argv
+    env = query ? {'LESS' => [ENV['LESS'], "+/#{query}"].compact.join(' '),
+                   'MORE' => [ENV['MORE'], "+/#{query}"].compact.join(' ')} : {}
+    system env, 'man', *argv
   end
 
   # Converts given markdown(7) source into roff(7).
