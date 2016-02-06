@@ -64,11 +64,15 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 
 ## COMMANDS
 
-`snip` [*FILE*]
+`text` [*FILE*]
   Print the leading comment header extracted from the given *FILE* or STDIN.
 
-`dump` [*FILE*]
+`roff` [*FILE*]
   Print the roff(7) conversion of the leading comment header extracted from
+  the given *FILE* or STDIN.
+
+`html` [*FILE*]
+  Print the HTML conversion of the leading comment header extracted from
   the given *FILE* or STDIN.
 
 `show` [*FILE*] [*PATTERN*]
@@ -107,7 +111,7 @@ else
   case command
   when 'show'
     BinMan.send(command, source)
-  when 'snip', 'dump'
+  when 'text', 'roff', 'html'
     puts BinMan.send(command, source)
   else
     warn 'binman: invalid command; try --help'

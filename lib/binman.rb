@@ -16,7 +16,7 @@ module BinMan
   #
   # Comment markers and shebang/encoding comments are omitted from result.
   #
-  def snip source=nil
+  def text source=nil
     header = read(source)
 
     # strip shebang and encoding comments
@@ -31,10 +31,20 @@ module BinMan
     end.strip
   end
 
-  # Extracts leading comment header content from given
-  # source and returns the roff(7) conversion thereof.
-  def dump source=nil
-    conv snip(source)
+  # Converts given markdown(7) source into roff(7).
+  def roff source=nil
+    require 'md2man/roff/engine'
+    Md2Man::Roff::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::roff().'
+  end
+
+  # Converts given markdown(7) source into roff(7).
+  def html source=nil
+    require 'md2man/html/engine'
+    Md2Man::HTML::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::html().'
   end
 
   # Shows leading comment header from given source as UNIX man page and
@@ -50,7 +60,7 @@ module BinMan
     end
 
     # fall back to rendering leading comment header or showing it as-is
-    header = snip(source)
+    header = text(source)
     return if show_str(header, query)
     puts header
   end
@@ -78,14 +88,6 @@ private
     env = query ? {'LESS' => [ENV['LESS'], "+/#{query}"].compact.join(' '),
                    'MORE' => [ENV['MORE'], "+/#{query}"].compact.join(' ')} : {}
     system env, 'man', *argv
-  end
-
-  # Converts given markdown(7) source into roff(7).
-  def conv source=nil
-    require 'md2man/roff/engine'
-    Md2Man::Roff::ENGINE.render(read(source))
-  rescue LoadError
-    raise 'Run `gem install md2man` to use BinMan::dump() or BinMan::show().'
   end
 
   # Returns contents of given source I/O, file name, or string.
@@ -132,7 +134,7 @@ private
   # Tries to display the given header string in man(1) reader
   # and returns true if successful; else you need a fallback.
   def show_str header, query=nil
-    roff = conv(header)
+    roff = roff(header)
 
     require 'tempfile'
     Tempfile.open 'binman' do |temp|
