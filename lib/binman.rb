@@ -109,7 +109,9 @@ private
   # and returns true if successful; else you need a fallback.
   def show_man path, page, query=nil
     # try showing roff manual page in man(1) reader in foreground
-    view query, '-M', path, '-a', page, 2 => :close or begin
+    Dir["#{path}/man?/#{page}.?"].any? and
+    view query, '-M', path, '-a', page, 2 => :close or
+    begin
       # try showing HTML manual page in a web browser in background
       require 'opener'
       Dir["#{path}/**/#{page}.*.html"].map do |html|
