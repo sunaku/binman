@@ -62,7 +62,7 @@ module BinMan
       end
     end
 
-    # fall back to showing leading comment header as-is
+    # fall back to rendering leading comment header or showing it as-is
     header = snip(source)
 
     begin
@@ -71,12 +71,13 @@ module BinMan
       Tempfile.open 'binman' do |temp|
         temp.write roff
         temp.close
-        view query, temp.path, 2 => :close
+        return if view query, temp.path, 2 => :close
       end
     rescue => error
       warn "binman: #{error}"
-      puts header
     end
+
+    puts header
   end
 
   # Shows leading comment header from given source as UNIX man page and exits
