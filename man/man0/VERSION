@@ -1,3 +1,47 @@
+.SH Version 4.1.0 (2016\-02\-10)
+.SS Minor:
+.RS
+.IP \(bu 2
+Print path of HTML man page to STDOUT when launching browser.
+.RE
+.SS Patch:
+.RS
+.IP \(bu 2
+Revert "ensure 'binman:web' task works the first time thru".
+.PP
+This reverts commit dd0511e78e02546cac4903b5c6de6243607a8bba,
+which was causing the following error under Ruby 2.3.0p0.
+.IP
+% rake build
+mkdir \-p man/man1
+rake aborted!
+LoadError: cannot load such file \-\- md2man/rakefile.rb
+./lib/binman/rakefile.rb:29:in \fB\fCload'
+./lib/binman/rakefile.rb:29:in\fRblock in <top (required)>'
+Tasks: TOP => build => binman => binman:man
+(See full trace by running task with \-\-trace)
+exit 1
+.IP \(bu 2
+Show HTML manual only as fallback to TTY man page.
+.PP
+This prevents annoying browser launches every time you run \fB\fC\-\-help\fR\&.
+.IP \(bu 2
+\fB\fCBinMan::show()\fR didn't always fallback to plain text header.
+.IP \(bu 2
+Don't override \fB\fCman \-P\fR pager; set \fB\fC$LESS\fR and \fB\fC$MORE\fR instead.
+.PP
+Also, shell escaping the pattern prevents you from using regexp syntax.
+.IP \(bu 2
+\fB\fCman FILE\fR isn't portable; use \fB\fCman \-M ...\fR instead.
+.PP
+\fB\fCman FILE\fR used to work in Debian, but doesn't work under Void Linux.
+.PP
+\fB\fCman \-l FILE\fR works in Linux and OpenBSD but not on MacOSX / FreeBSD.
+.PP
+Therefore, avoid all this portability mess using \fB\fCman \-M ...\fR instead.
+.IP \(bu 2
+Handle case where roff manual page is missing but HTML version exists.
+.RE
 .SH Version 4.0.0 (2014\-10\-26)
 .SS Major:
 .RS

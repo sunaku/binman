@@ -2,12 +2,34 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 4.0.0 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 4.0.1 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-0-0-2014-10-26"><a name="version-4-0-0-2014-10-26" href="#version-4-0-0-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 4.0.0 (2014-10-26)</h2><h3 id="major"><a name="major" href="#major" class="md2man-permalink" title="permalink"></a>Major:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-1-0-2016-02-10"><a name="version-4-1-0-2016-02-10" href="#version-4-1-0-2016-02-10" class="md2man-permalink" title="permalink"></a>Version 4.1.0 (2016-02-10)</h2><h3 id="minor"><a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a>Minor:</h3>
+<ul>
+<li>Print path of HTML man page to STDOUT when launching browser.</li>
+</ul>
+<h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<ul>
+<li><p>Revert &quot;ensure &#39;binman:web&#39; task works the first time thru&quot;.</p><p>This reverts commit dd0511e78e02546cac4903b5c6de6243607a8bba,
+which was causing the following error under Ruby 2.3.0p0.</p><dl><dd>% rake build
+mkdir -p man/man1
+rake aborted!
+LoadError: cannot load such file -- md2man/rakefile.rb
+./lib/binman/rakefile.rb:29:in <code>load&#39;
+./lib/binman/rakefile.rb:29:in</code>block in <top (required)>&#39;
+Tasks: TOP =&gt; build =&gt; binman =&gt; binman:man
+(See full trace by running task with --trace)
+exit 1</dd></dl></li>
+<li><p>Show HTML manual only as fallback to TTY man page.</p><p>This prevents annoying browser launches every time you run <code>--help</code>.</p></li>
+<li><p><code>BinMan::show()</code> didn&#39;t always fallback to plain text header.</p></li>
+<li><p>Don&#39;t override <code>man -P</code> pager; set <code>$LESS</code> and <code>$MORE</code> instead.</p><p>Also, shell escaping the pattern prevents you from using regexp syntax.</p></li>
+<li><p><code>man FILE</code> isn&#39;t portable; use <code>man -M ...</code> instead.</p><p><code>man FILE</code> used to work in Debian, but doesn&#39;t work under Void Linux.</p><p><code>man -l FILE</code> works in Linux and OpenBSD but not on MacOSX / FreeBSD.</p><p>Therefore, avoid all this portability mess using <code>man -M ...</code> instead.</p></li>
+<li><p>Handle case where roff manual page is missing but HTML version exists.</p></li>
+</ul>
+<h2 id="version-4-0-0-2014-10-26"><a name="version-4-0-0-2014-10-26" href="#version-4-0-0-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 4.0.0 (2014-10-26)</h2><h3 id="major"><a name="major" href="#major" class="md2man-permalink" title="permalink"></a>Major:</h3>
 <ul>
 <li><p><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>: Rename the <code>load</code> command to <code>snip</code> and remove <code>conv</code>.</p>
 <ul>
@@ -17,7 +39,7 @@
 <li><p>Upgrade to md2man 4.0, which no longer expands cross references in code
 spans and code blocks.  Your manuals might be rendered differently now.</p></li>
 </ul>
-<h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p><a class="md2man-reference">pager(1)</a> isn&#39;t a universal command: CentOS uses <code>less -is</code> instead.</p></li>
 <li><p>Silence <a class="md2man-reference">man(1)</a> stderr when displaying dynamically extracted manual.</p></li>
@@ -28,7 +50,7 @@ spans and code blocks.  Your manuals might be rendered differently now.</p></li>
 <li><p>Document REGEXP argument for help options in <code>bin/*</code>.</p></li>
 <li><p>Refer to REGEXP argument as PATTERN like less does.</p></li>
 </ul>
-<h2 id="version-3-4-0-2014-06-29"><a name="version-3-4-0-2014-06-29" href="#version-3-4-0-2014-06-29" class="md2man-permalink" title="permalink"></a>Version 3.4.0 (2014-06-29)</h2><h3 id="minor"><a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a>Minor:</h3>
+<h2 id="version-3-4-0-2014-06-29"><a name="version-3-4-0-2014-06-29" href="#version-3-4-0-2014-06-29" class="md2man-permalink" title="permalink"></a>Version 3.4.0 (2014-06-29)</h2><h3 id="minor-1"><a name="minor-1" href="#minor-1" class="md2man-permalink" title="permalink"></a>Minor:</h3>
 <ul>
 <li><p>GH-3: add optional regexp argument to <code>-h</code>/<code>--help</code> to search in <a class="md2man-reference">man(1)</a>.</p><p>The <code>-h</code> and <code>--help</code> options in <code>BinMan.help()</code> can now be optionally
 followed by a regular expression argument that specifies text to search
