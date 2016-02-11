@@ -26,7 +26,7 @@ end
 desc 'Build UNIX manual pages for bin/ scripts.'
 task 'binman:man' => mkds do
 #-----------------------------------------------------------------------------
-  load 'md2man/rakefile.rb'
+  require 'md2man/rakefile'
   Rake::Task['md2man:man'].invoke
 end
 
@@ -34,6 +34,6 @@ end
 desc 'Build HTML manual pages for bin/ scripts.'
 task 'binman:web' => mkds do
 #-----------------------------------------------------------------------------
-  load 'md2man/rakefile.rb'
+  require 'md2man/rakefile'
   Rake::Task['md2man:web'].invoke
 end

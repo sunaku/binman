@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'shellwords'
 require 'binman/version'
 
@@ -45,38 +46,13 @@ module BinMan
     if file = find(source) and File.exist? file
       man_page = File.basename(file)
       man_path = File.expand_path('../../man', file)
-
-      # try showing HTML manual page in a web browser in background
-      require 'opener'
-      Dir["#{man_path}/**/#{man_page}.*.html"].each do |man_html|
-        # close streams to avoid interference with man(1) reader below
-        begin
-          Opener.spawn man_html, 0 => :close, 1 => :close, 2 => :close
-        rescue Errno::ENOENT
-          # designated opener program could not be found on this system
-        end
-      end
-
-      # try showing roff manual page in man(1) reader in foreground;
-      # close STDERR to avoid interference with the fall back below
-      return if view query, '-M', man_path, '-a', man_page, 2 => :close
+      return if show_man(man_path, man_page, query)
     end
 
-    # fall back to showing leading comment header as-is
+    # fall back to rendering leading comment header or showing it as-is
     header = snip(source)
-
-    begin
-      roff = conv(header)
-      require 'tempfile'
-      Tempfile.open 'binman' do |temp|
-        temp.write roff
-        temp.close
-        view query, temp.path, 2 => :close
-      end
-    rescue => error
-      warn "binman: #{error}"
-      puts header
-    end
+    return if show_str(header, query)
+    puts header
   end
 
   # Shows leading comment header from given source as UNIX man page and exits
@@ -95,16 +71,12 @@ module BinMan
 private
 
   # Launches man(1) with the given arguments and then tries to search for the
-  # query (if given) within.  If man(1) is not able to launch with the search
-  # capability, then it tries launching man(1) without the search capability.
+  # query (if given) within.  This is achieved by specifying the LESS and MORE
+  # environment variables used by the less(1) and more(1) pagers respectively.
   def view query, *argv
-    # man(1) defaults to `pager -s` under Debian but `less -is` under CentOS
-    # so try different pagers, but always fall back to using no pager at all.
-    # See https://www.debian-administration.org/article/246/ for pager list.
-    query and %w[ pager less most more ].any? do |pager|
-      # the `-s` and `+/pattern` options are universally supported by pagers
-      system 'man', '-P', "#{pager} -s +/#{query.shellescape}", *argv
-    end or system 'man', *argv
+    env = query ? {'LESS' => [ENV['LESS'], "+/#{query}"].compact.join(' '),
+                   'MORE' => [ENV['MORE'], "+/#{query}"].compact.join(' ')} : {}
+    system env, 'man', *argv
   end
 
   # Converts given markdown(7) source into roff(7).
@@ -131,5 +103,53 @@ private
     source || if first_caller = caller.find {|f| not f.start_with? __FILE__ }
       first_caller.sub(/:\d+.*$/, '')
     end
+  end
+
+  # Tries to show the given manual page file in man(1) reader
+  # and returns true if successful; else you need a fallback.
+  def show_man path, page, query=nil
+    # try showing roff manual page in man(1) reader in foreground
+    Dir["#{path}/man?/#{page}.?"].any? and
+    view query, '-M', path, '-a', page, 2 => :close or
+    begin
+      # try showing HTML manual page in a web browser in background
+      require 'opener'
+      Dir["#{path}/**/#{page}.*.html"].map do |html|
+        begin
+          # close streams to avoid interference with man(1) reader
+          Opener.spawn html, 0 => :close, 1 => :close, 2 => :close
+        rescue Errno::ENOENT
+          # designated opener program was not found on this system
+        end
+      end.compact.any?
+    end
+  end
+
+  # Tries to display the given header string in man(1) reader
+  # and returns true if successful; else you need a fallback.
+  def show_str header, query=nil
+    roff = conv(header)
+
+    require 'tempfile'
+    Tempfile.open 'binman' do |temp|
+      temp_man_root = temp.path + '_man'
+      begin
+        # create a temporary man/ directory structure for `man -M ...`
+        temp_man_page = 'temporary_manual_page'
+        temp_man_path = "#{temp_man_root}/man"
+        temp_man_file = "#{temp_man_path}/man1/#{temp_man_page}.1"
+        FileUtils.mkdir_p File.dirname(temp_man_file)
+
+        # write the given header string to temporary file and show it
+        File.open(temp_man_file, 'w') {|file| file << roff }
+        return true if show_man(temp_man_path, temp_man_page, query)
+      ensure
+        FileUtils.rm_rf temp_man_root
+      end
+    end
+
+    false
+  rescue => error
+    warn "binman: #{error}"
   end
 end
