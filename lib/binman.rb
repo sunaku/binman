@@ -107,6 +107,7 @@ private
 
   # Tries to show the given manual page file in man(1) reader
   # and returns true if successful; else you need a fallback.
+  # If HTML manual page shown, its path is printed to stdout.
   def show_man path, page, query=nil
     # try showing roff manual page in man(1) reader in foreground
     Dir["#{path}/man?/#{page}.?"].any? and
@@ -118,6 +119,8 @@ private
         begin
           # close streams to avoid interference with man(1) reader
           Opener.spawn html, 0 => :close, 1 => :close, 2 => :close
+          puts html
+          true
         rescue Errno::ENOENT
           # designated opener program was not found on this system
         end
