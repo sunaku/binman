@@ -1,3 +1,46 @@
+## Version 4.1.0 (2016-02-10)
+
+### Minor:
+
+  * Print path of HTML man page to STDOUT when launching browser.
+
+### Patch:
+
+  * Revert "ensure 'binman:web' task works the first time thru".
+
+    This reverts commit dd0511e78e02546cac4903b5c6de6243607a8bba,
+    which was causing the following error under Ruby 2.3.0p0.
+
+      % rake build
+      mkdir -p man/man1
+      rake aborted!
+      LoadError: cannot load such file -- md2man/rakefile.rb
+      ./lib/binman/rakefile.rb:29:in `load'
+      ./lib/binman/rakefile.rb:29:in `block in <top (required)>'
+      Tasks: TOP => build => binman => binman:man
+      (See full trace by running task with --trace)
+      exit 1
+
+  * Show HTML manual only as fallback to TTY man page.
+
+    This prevents annoying browser launches every time you run `--help`.
+
+  * `BinMan::show()` didn't always fallback to plain text header.
+
+  * Don't override `man -P` pager; set `$LESS` and `$MORE` instead.
+
+    Also, shell escaping the pattern prevents you from using regexp syntax.
+
+  * `man FILE` isn't portable; use `man -M ...` instead.
+
+    `man FILE` used to work in Debian, but doesn't work under Void Linux.
+
+    `man -l FILE` works in Linux and OpenBSD but not on MacOSX / FreeBSD.
+
+    Therefore, avoid all this portability mess using `man -M ...` instead.
+
+  * Handle case where roff manual page is missing but HTML version exists.
+
 ## Version 4.0.0 (2014-10-26)
 
 ### Major:
