@@ -22,16 +22,19 @@ bins.zip(mkds).each do |src, dst|
   end
 end
 
+desc 'Extract manuals embedded in bin/ scripts.'
+task 'binman:mkd' => mkds
+
 #-----------------------------------------------------------------------------
 desc 'Build UNIX manual pages for bin/ scripts.'
-task 'binman:man' => mkds do
+task 'binman:man' => 'binman:mkd' do
 #-----------------------------------------------------------------------------
   sh 'md2man-rake', 'md2man:man'
 end
 
 #-----------------------------------------------------------------------------
 desc 'Build HTML manual pages for bin/ scripts.'
-task 'binman:web' => mkds do
+task 'binman:web' => 'binman:mkd' do
 #-----------------------------------------------------------------------------
   sh 'md2man-rake', 'md2man:web'
 end

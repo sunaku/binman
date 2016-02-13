@@ -25,6 +25,11 @@ If no *TASK* is specified, then the `binman` task is run by default.
 `binman`
   Runs the `binman:man` and `binman:web` tasks, in that order.
 
+`binman:mkd`
+  Extracts manual page sources embedded in scripts found in your `bin/`
+  directory and saves them as `man/man1/*.1.markdown` files, which can
+  then be rendered as HTML or UNIX manual pages using md2man-rake(1).
+
 `binman:man`
   Builds UNIX manual pages from scripts found in your `bin/` directory.
   It also runs the `md2man:man` task, provided by md2man-rake(1), which
