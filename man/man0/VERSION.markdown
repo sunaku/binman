@@ -19,14 +19,6 @@
 
 ## Version 4.2.1 (2016-02-12)
 
-### Patch:
-
-  * Failure when `binman show` is given input on STDIN.
-
-    binman.rb:51:in `basename': no implicit conversion of IO into String (TypeError)
-
-## Version 4.2.0 (2016-02-12)
-
 ### Minor:
 
   * Add `binman:mkd` rake task to extract `man/man1/*.1.markdown` files.
@@ -48,6 +40,12 @@
   * Failure when `binman show` is called without ARGV.
 
     binman.rb:47:in `basename': no implicit conversion of IO into String (TypeError)
+
+  * Failure when `binman show` is given input on STDIN.
+
+    binman.rb:51:in `basename': no implicit conversion of IO into String (TypeError)
+
+### Patch:
 
 ## Version 4.1.0 (2016-02-10)
 

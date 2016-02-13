@@ -21,14 +21,6 @@ When a HTML manual page is shown, \fB\fCbinman\fR now blocks until the launched
 web browser exits.  Previously, it used to exit immediately (nonblocking).
 .RE
 .SH Version 4.2.1 (2016\-02\-12)
-.SS Patch:
-.RS
-.IP \(bu 2
-Failure when \fB\fCbinman show\fR is given input on STDIN.
-.PP
-binman.rb:51:in `basename': no implicit conversion of IO into String (TypeError)
-.RE
-.SH Version 4.2.0 (2016\-02\-12)
 .SS Minor:
 .RS
 .IP \(bu 2
@@ -56,7 +48,12 @@ binman.rb:63:in \fB\fChelp': undefined method\fRindex' for nil:NilClass (NoMetho
 Failure when \fB\fCbinman show\fR is called without ARGV.
 .PP
 binman.rb:47:in `basename': no implicit conversion of IO into String (TypeError)
+.IP \(bu 2
+Failure when \fB\fCbinman show\fR is given input on STDIN.
+.PP
+binman.rb:51:in `basename': no implicit conversion of IO into String (TypeError)
 .RE
+.SS Patch:
 .SH Version 4.1.0 (2016\-02\-10)
 .SS Minor:
 .RS
