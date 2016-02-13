@@ -1,3 +1,11 @@
+## Version 4.2.1 (2016-02-12)
+
+### Patch:
+
+  * Failure when `binman show` is given input on STDIN.
+
+    binman.rb:51:in `basename': no implicit conversion of IO into String (TypeError)
+
 ## Version 4.2.0 (2016-02-12)
 
 ### Minor:
