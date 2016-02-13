@@ -7,11 +7,15 @@
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-2-0-2016-02-12"><a name="version-4-2-0-2016-02-12" href="#version-4-2-0-2016-02-12" class="md2man-permalink" title="permalink"></a>Version 4.2.0 (2016-02-12)</h2><h3 id="minor"><a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a>Minor:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-2-1-2016-02-12"><a name="version-4-2-1-2016-02-12" href="#version-4-2-1-2016-02-12" class="md2man-permalink" title="permalink"></a>Version 4.2.1 (2016-02-12)</h2><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<ul>
+<li><p>Failure when <code>binman show</code> is given input on STDIN.</p><p>binman.rb:51:in `basename&#39;: no implicit conversion of IO into String (TypeError)</p></li>
+</ul>
+<h2 id="version-4-2-0-2016-02-12"><a name="version-4-2-0-2016-02-12" href="#version-4-2-0-2016-02-12" class="md2man-permalink" title="permalink"></a>Version 4.2.0 (2016-02-12)</h2><h3 id="minor"><a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a>Minor:</h3>
 <ul>
 <li>Add <code>binman:mkd</code> rake task to extract <code>man/man1/*.1.markdown</code> files.</li>
 </ul>
-<h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>Shell out to <a class="md2man-reference">md2man-rake(1)</a> for dynamic man pages.</p><p>Requiring the md2man/rakefile.rb script builds Rake tasks only once, so
 it ignores any man page files generated dynamically after the require().</p><p>This fix shells out to <a class="md2man-reference">md2man-rake(1)</a> causing that script to be required
@@ -23,7 +27,7 @@ every time afresh, so that such dynamically generated files are handled.</p></li
 <ul>
 <li>Print path of HTML man page to STDOUT when launching browser.</li>
 </ul>
-<h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h3 id="patch-2"><a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p>Revert &quot;ensure &#39;binman:web&#39; task works the first time thru&quot;.</p><p>This reverts commit dd0511e78e02546cac4903b5c6de6243607a8bba,
 which was causing the following error under Ruby 2.3.0p0.</p><dl><dd>% rake build
@@ -51,7 +55,7 @@ exit 1</dd></dl></li>
 <li><p>Upgrade to md2man 4.0, which no longer expands cross references in code
 spans and code blocks.  Your manuals might be rendered differently now.</p></li>
 </ul>
-<h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-2"><a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-3"><a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a>Patch:</h3>
 <ul>
 <li><p><a class="md2man-reference">pager(1)</a> isn&#39;t a universal command: CentOS uses <code>less -is</code> instead.</p></li>
 <li><p>Silence <a class="md2man-reference">man(1)</a> stderr when displaying dynamically extracted manual.</p></li>
