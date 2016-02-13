@@ -1,3 +1,22 @@
+## Version 5.0.0 (2016-02-13)
+
+### Major:
+
+  * Rename `binman snip` command to `binman text`.
+
+  * Rename `binman conv` command to `binman roff` and make it operate on a bin
+    script containing an embedded manual page rather than the extracted latter.
+
+  * Add `binman html` command which extracts embedded manual page from a given
+    bin script, converts it into HTML, and then prints the result to STDOUT.
+
+  * `binman show` now falls back to displaying a temporary HTML manual page if
+    man(1) fails to display the temporary UNIX manual page.  This is useful in
+    Windows where there is no man(1) reader, but a web browser can be started.
+
+  * When a HTML manual page is shown, `binman` now blocks until the launched
+    web browser exits.  Previously, it used to exit immediately (nonblocking).
+
 ## Version 4.2.1 (2016-02-12)
 
 ### Patch:
