@@ -31,20 +31,14 @@ module BinMan
     end.strip
   end
 
-  # Converts given markdown(7) source into roff(7).
+  # Renders leading comment header from given source as UNIX man page.
   def roff source=nil
-    require 'md2man/roff/engine'
-    Md2Man::Roff::ENGINE.render(read(source))
-  rescue LoadError
-    raise 'Run `gem install md2man` to use BinMan::roff().'
+    to_roff text(source)
   end
 
-  # Converts given markdown(7) source into roff(7).
+  # Renders leading comment header from given source as HTML man page.
   def html source=nil
-    require 'md2man/html/engine'
-    Md2Man::HTML::ENGINE.render(read(source))
-  rescue LoadError
-    raise 'Run `gem install md2man` to use BinMan::html().'
+    to_html text(source)
   end
 
   # Shows leading comment header from given source as UNIX man page and
@@ -133,8 +127,8 @@ private
   # Tries to display the given header string in man(1) reader
   # and returns true if successful; else you need a fallback.
   def show_str header, query=nil
-    roff = roff(header)
-    html = html(header)
+    roff = to_roff(header)
+    html = to_html(header)
 
     require 'tempfile'
     Tempfile.open 'binman' do |temp|
@@ -158,5 +152,21 @@ private
     false
   rescue => error
     warn "binman: #{error}"
+  end
+
+  # Converts given markdown(7) source into roff(7).
+  def to_roff source=nil
+    require 'md2man/roff/engine'
+    Md2Man::Roff::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::roff().'
+  end
+
+  # Converts given markdown(7) source into roff(7).
+  def to_html source=nil
+    require 'md2man/html/engine'
+    Md2Man::HTML::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::html().'
   end
 end
