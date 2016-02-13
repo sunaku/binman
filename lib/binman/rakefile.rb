@@ -17,7 +17,7 @@ mkds = bins.pathmap("#{dir}/%n.1.markdown")
 
 bins.zip(mkds).each do |src, dst|
   file dst => [dir, src] do
-    output = BinMan.snip(src)
+    output = BinMan.text(src)
     File.open(dst, 'w') {|f| f << output }
   end
 end

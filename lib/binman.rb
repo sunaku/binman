@@ -16,7 +16,7 @@ module BinMan
   #
   # Comment markers and shebang/encoding comments are omitted from result.
   #
-  def snip source=nil
+  def text source=nil
     header = read(source)
 
     # strip shebang and encoding comments
@@ -31,10 +31,14 @@ module BinMan
     end.strip
   end
 
-  # Extracts leading comment header content from given
-  # source and returns the roff(7) conversion thereof.
-  def dump source=nil
-    conv snip(source)
+  # Renders leading comment header from given source as UNIX man page.
+  def roff source=nil
+    to_roff text(source)
+  end
+
+  # Renders leading comment header from given source as HTML man page.
+  def html source=nil
+    to_html text(source)
   end
 
   # Shows leading comment header from given source as UNIX man page and
@@ -50,7 +54,7 @@ module BinMan
     end
 
     # fall back to rendering leading comment header or showing it as-is
-    header = snip(source)
+    header = text(source)
     return if show_str(header, query)
     puts header
   end
@@ -78,14 +82,6 @@ private
     env = query ? {'LESS' => [ENV['LESS'], "+/#{query}"].compact.join(' '),
                    'MORE' => [ENV['MORE'], "+/#{query}"].compact.join(' ')} : {}
     system env, 'man', *argv
-  end
-
-  # Converts given markdown(7) source into roff(7).
-  def conv source=nil
-    require 'md2man/roff/engine'
-    Md2Man::Roff::ENGINE.render(read(source))
-  rescue LoadError
-    raise 'Run `gem install md2man` to use BinMan::dump() or BinMan::show().'
   end
 
   # Returns contents of given source I/O, file name, or string.
@@ -117,11 +113,10 @@ private
       # try showing HTML manual page in a web browser in background
       require 'opener'
       Dir["#{path}/**/#{page}.*.html"].map do |html|
+        puts html
         begin
           # close streams to avoid interference with man(1) reader
-          Opener.spawn html, 0 => :close, 1 => :close, 2 => :close
-          puts html
-          true
+          Opener.system html, 0 => :close, 1 => :close, 2 => :close
         rescue Errno::ENOENT
           # designated opener program was not found on this system
         end
@@ -132,7 +127,8 @@ private
   # Tries to display the given header string in man(1) reader
   # and returns true if successful; else you need a fallback.
   def show_str header, query=nil
-    roff = conv(header)
+    roff = to_roff(header)
+    html = to_html(header)
 
     require 'tempfile'
     Tempfile.open 'binman' do |temp|
@@ -146,6 +142,7 @@ private
 
         # write the given header string to temporary file and show it
         File.open(temp_man_file, 'w') {|file| file << roff }
+        File.open(temp_man_file + '.html', 'w') {|file| file << html }
         return true if show_man(temp_man_path, temp_man_page, query)
       ensure
         FileUtils.rm_rf temp_man_root
@@ -155,5 +152,21 @@ private
     false
   rescue => error
     warn "binman: #{error}"
+  end
+
+  # Converts given markdown(7) source into roff(7).
+  def to_roff source=nil
+    require 'md2man/roff/engine'
+    Md2Man::Roff::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::roff().'
+  end
+
+  # Converts given markdown(7) source into roff(7).
+  def to_html source=nil
+    require 'md2man/html/engine'
+    Md2Man::HTML::ENGINE.render(read(source))
+  rescue LoadError
+    raise 'Run `gem install md2man` to use BinMan::html().'
   end
 end
