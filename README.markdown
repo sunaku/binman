@@ -23,7 +23,7 @@ And that's not all: [see the manual page][binman-man] for more possibilities!
 
   * Individual extraction, conversion, and display commands.
 
-  * Implemented in roughly 150 lines of pure Ruby code! :-)
+  * Implemented in roughly 165 lines of pure Ruby code! :-)
 
 ### Demonstration
 
@@ -172,7 +172,7 @@ gem install binman
 If you also want to build your own manual pages:
 
 ```sh
-gem install md2man -v '~> 4.0'
+gem install md2man -v '~> 5.0'
 ```
 
 ### Prerequisites
@@ -182,7 +182,7 @@ gem install md2man -v '~> 4.0'
 ### Development
 
 ```sh
-git clone git://github.com/sunaku/binman
+git clone https://github.com/sunaku/binman
 cd binman
 bundle install
 bundle exec binman --help # run it directly
@@ -407,7 +407,7 @@ Add this snippet to your gemspec file:
 ```ruby
 s.files += Dir['man/man?/*.?']            # UNIX man pages
 s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-s.add_development_dependency 'md2man', '~> 4.0'
+s.add_development_dependency 'md2man', '~> 5.0'
 ```
 
 Add the following line to your Rakefile:
