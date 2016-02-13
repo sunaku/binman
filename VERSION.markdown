@@ -1,3 +1,27 @@
+## Version 4.2.0 (2016-02-12)
+
+### Minor:
+
+  * Add `binman:mkd` rake task to extract `man/man1/*.1.markdown` files.
+
+### Patch:
+
+  * Shell out to md2man-rake(1) for dynamic man pages.
+
+    Requiring the md2man/rakefile.rb script builds Rake tasks only once, so
+    it ignores any man page files generated dynamically after the require().
+
+    This fix shells out to md2man-rake(1) causing that script to be required
+    every time afresh, so that such dynamically generated files are handled.
+
+  * Failure when `binman help` is called without ARGV.
+
+    binman.rb:63:in `help': undefined method `index' for nil:NilClass (NoMethodError)
+
+  * Failure when `binman show` is called without ARGV.
+
+    binman.rb:47:in `basename': no implicit conversion of IO into String (TypeError)
+
 ## Version 4.1.0 (2016-02-10)
 
 ### Minor:
