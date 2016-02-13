@@ -1,4 +1,4 @@
-.TH BINMAN\-RAKE 1 2016\-02\-10 4.1.0
+.TH BINMAN\-RAKE 1 2016\-02\-12 4.2.0
 .SH NAME
 .PP
 binman\-rake \- run 
@@ -28,6 +28,12 @@ If no \fITASK\fP is specified, then the \fB\fCbinman\fR task is run by default.
 .TP
 \fB\fCbinman\fR
 Runs the \fB\fCbinman:man\fR and \fB\fCbinman:web\fR tasks, in that order.
+.TP
+\fB\fCbinman:mkd\fR
+Extracts manual page sources embedded in scripts found in your \fB\fCbin/\fR
+directory and saves them as \fB\fCman/man1/*.1.markdown\fR files, which can
+then be rendered as HTML or UNIX manual pages using 
+.BR md2man-rake (1).
 .TP
 \fB\fCbinman:man\fR
 Builds UNIX manual pages from scripts found in your \fB\fCbin/\fR directory.

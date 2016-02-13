@@ -1,3 +1,32 @@
+.SH Version 4.2.0 (2016\-02\-12)
+.SS Minor:
+.RS
+.IP \(bu 2
+Add \fB\fCbinman:mkd\fR rake task to extract \fB\fCman/man1/*.1.markdown\fR files.
+.RE
+.SS Patch:
+.RS
+.IP \(bu 2
+Shell out to 
+.BR md2man-rake (1) 
+for dynamic man pages.
+.PP
+Requiring the md2man/rakefile.rb script builds Rake tasks only once, so
+it ignores any man page files generated dynamically after the require().
+.PP
+This fix shells out to 
+.BR md2man-rake (1) 
+causing that script to be required
+every time afresh, so that such dynamically generated files are handled.
+.IP \(bu 2
+Failure when \fB\fCbinman help\fR is called without ARGV.
+.PP
+binman.rb:63:in \fB\fChelp': undefined method\fRindex' for nil:NilClass (NoMethodError)
+.IP \(bu 2
+Failure when \fB\fCbinman show\fR is called without ARGV.
+.PP
+binman.rb:47:in `basename': no implicit conversion of IO into String (TypeError)
+.RE
 .SH Version 4.1.0 (2016\-02\-10)
 .SS Minor:
 .RS
