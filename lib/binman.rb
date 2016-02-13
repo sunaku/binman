@@ -59,7 +59,8 @@ module BinMan
   # if the given argument vector contains '-h' or '--help', except after '--',
   # optionally followed by a regular expression argument that specifies text
   # to search for and, if found, jump to inside the displayed UNIX man page.
-  def help source=nil, argv=ARGV
+  def help source=nil, argv=nil
+    argv = Array(argv || ARGV)
     limit = argv.index('--') || argv.length
     index = [argv.index('-h'), argv.index('--help')].compact.min
     if index and index < limit
