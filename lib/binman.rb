@@ -119,11 +119,10 @@ private
       # try showing HTML manual page in a web browser in background
       require 'opener'
       Dir["#{path}/**/#{page}.*.html"].map do |html|
+        puts html
         begin
           # close streams to avoid interference with man(1) reader
-          Opener.spawn html, 0 => :close, 1 => :close, 2 => :close
-          puts html
-          true
+          Opener.system html, 0 => :close, 1 => :close, 2 => :close
         rescue Errno::ENOENT
           # designated opener program was not found on this system
         end
@@ -135,6 +134,7 @@ private
   # and returns true if successful; else you need a fallback.
   def show_str header, query=nil
     roff = roff(header)
+    html = html(header)
 
     require 'tempfile'
     Tempfile.open 'binman' do |temp|
@@ -148,6 +148,7 @@ private
 
         # write the given header string to temporary file and show it
         File.open(temp_man_file, 'w') {|file| file << roff }
+        File.open(temp_man_file + '.html', 'w') {|file| file << html }
         return true if show_man(temp_man_path, temp_man_page, query)
       ensure
         FileUtils.rm_rf temp_man_root

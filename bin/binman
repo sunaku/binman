@@ -79,6 +79,8 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
   Use man(1) to display the roff(7) conversion of the leading comment header
   extracted from the given *FILE* or STDIN.  If *PATTERN* is given, search for
   it within the output displayed by man(1) and jump to first match if found.
+  If man(1) cannot display the roff(1) conversion, fall back to the showing
+  the HTML conversion; if that fails too, display the extracted text as-is.
 
 `help` *FILE* ... [`-h`|`--help` [*PATTERN*]] ... [`--`] ...
   If the given argument sequence contains `-h` or `--help`, except after
