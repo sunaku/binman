@@ -75,15 +75,6 @@ module BinMan
 
 private
 
-  # Launches man(1) with the given arguments and then tries to search for the
-  # query (if given) within.  This is achieved by specifying the LESS and MORE
-  # environment variables used by the less(1) and more(1) pagers respectively.
-  def view query, *argv
-    env = query ? {'LESS' => [ENV['LESS'], "+/#{query}"].compact.join(' '),
-                   'MORE' => [ENV['MORE'], "+/#{query}"].compact.join(' ')} : {}
-    system env, 'man', *argv
-  end
-
   # Returns contents of given source I/O, file name, or string.
   def read source=nil
     if source.respond_to? :read
@@ -108,7 +99,7 @@ private
   def show_man path, page, query=nil
     # try showing roff manual page in man(1) reader in foreground
     Dir["#{path}/man?/#{page}.?"].any? and
-    view query, '-M', path, '-a', page, 2 => :close or
+    launch_man query, '-M', path, '-a', page, 2 => :close or
     begin
       # try showing HTML manual page in a web browser in background
       require 'opener'
@@ -122,6 +113,15 @@ private
         end
       end.compact.any?
     end
+  end
+
+  # Launches man(1) with the given arguments and then tries to search for the
+  # query (if given) within.  This is achieved by specifying the LESS and MORE
+  # environment variables used by the less(1) and more(1) pagers respectively.
+  def launch_man query, *argv
+    env = query ? {'LESS' => [ENV['LESS'], "+/#{query}"].compact.join(' '),
+                   'MORE' => [ENV['MORE'], "+/#{query}"].compact.join(' ')} : {}
+    system env, 'man', *argv
   end
 
   # Tries to display the given header string in man(1) reader
