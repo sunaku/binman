@@ -41,8 +41,8 @@ If no *TASK* is specified, then the `binman` task is run by default.
 
 ## OPTIONS
 
-`-h` [*REGEXP*], `--help` [*REGEXP*]
-  Show this help manual and search for *REGEXP* regular expression therein.
+`-h` [*PATTERN*], `--help` [*PATTERN*]
+  Show this help manual and search for *PATTERN* regular expression therein.
 
 ...
   Anything else is passed to rake(1); run `rake --help` for documentation.
