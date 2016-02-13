@@ -1,3 +1,25 @@
+.SH Version 5.0.1 (2016\-02\-13)
+.SS Major:
+.RS
+.IP \(bu 2
+Rename \fB\fCbinman snip\fR command to \fB\fCbinman text\fR\&.
+.IP \(bu 2
+Rename \fB\fCbinman conv\fR command to \fB\fCbinman roff\fR and make it operate on a bin
+script containing an embedded manual page rather than the extracted latter.
+.IP \(bu 2
+Add \fB\fCbinman html\fR command which extracts embedded manual page from a given
+bin script, converts it into HTML, and then prints the result to STDOUT.
+.IP \(bu 2
+\fB\fCbinman show\fR now falls back to displaying a temporary HTML manual page if
+.BR man (1) 
+fails to display the temporary UNIX manual page.  This is useful in
+Windows where there is no 
+.BR man (1) 
+reader, but a web browser can be started.
+.IP \(bu 2
+When a HTML manual page is shown, \fB\fCbinman\fR now blocks until the launched
+web browser exits.  Previously, it used to exit immediately (nonblocking).
+.RE
 .SH Version 4.2.1 (2016\-02\-12)
 .SS Patch:
 .RS

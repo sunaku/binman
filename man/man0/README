@@ -7,7 +7,7 @@ Simply document your script in Markdown
 \[la]https://sunaku.github.io/md2man/man/man5/md2man.5.html\[ra] as a comment at the
 top of your script and call \fB\fCbinman show\fR to display it as a UNIX manual page!
 Or, call \fB\fCbinman help\fR to display your manual \fIonly\fP when your script receives
-with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, call \fB\fCbinman snip\fR to extract
+with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, call \fB\fCbinman text\fR to extract
 the manual from your script for your own custom processing, outside of binman.
 And that's not all: see the manual page
 \[la]https://sunaku.github.io/binman/man/man1/binman.1.html\[ra] for more possibilities!
@@ -36,7 +36,7 @@ Provides a Ruby library and a command\-line client too.
 .IP \(bu 2
 Individual extraction, conversion, and display commands.
 .IP \(bu 2
-Implemented in roughly 150 lines of pure Ruby code! :\-)
+Implemented in roughly 165 lines of pure Ruby code! :\-)
 .RE
 .SS Demonstration
 .PP
@@ -50,121 +50,238 @@ do?
 Here are some real examples of processed bin scripts to help you get started:
 .RS
 .IP \(bu 2
-bin/tork
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork\[ra] \[rA]
-tork.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork.1.markdown\[ra] \[rA]
-tork.1
-\[la]https://sunaku.github.io/tork/man/man1/tork.1\[ra] +
-tork.1.html
+\fB\fCbinman text\fR
+< tork
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork\[ra]
+> tork.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork\[ra]
+> tork.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork\[ra]
+> tork.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork.1.html\[ra]
 .IP \(bu 2
-bin/tork\-runner
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-runner\[ra] \[rA]
-tork\-runner.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-runner.1.markdown\[ra] \[rA]
-tork\-runner.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-runner.1\[ra] +
-tork\-runner.1.html
+\fB\fCbinman text\fR
+< tork\-runner
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-runner\[ra]
+> tork\-runner.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-runner
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-runner\[ra]
+> tork\-runner.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-runner
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-runner\[ra]
+> tork\-runner.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-runner.1.html\[ra]
 .IP \(bu 2
-bin/tork\-herald
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-herald\[ra] \[rA]
-tork\-herald.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-herald.1.markdown\[ra] \[rA]
-tork\-herald.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-herald.1\[ra] +
-tork\-herald.1.html
+\fB\fCbinman text\fR
+< tork\-herald
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-herald\[ra]
+> tork\-herald.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-herald
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-herald\[ra]
+> tork\-herald.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-herald
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-herald\[ra]
+> tork\-herald.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-herald.1.html\[ra]
 .IP \(bu 2
-bin/tork\-driver
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-driver\[ra] \[rA]
-tork\-driver.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-driver.1.markdown\[ra] \[rA]
-tork\-driver.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-driver.1\[ra] +
-tork\-driver.1.html
+\fB\fCbinman text\fR
+< tork\-driver
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-driver\[ra]
+> tork\-driver.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-driver
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-driver\[ra]
+> tork\-driver.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-driver
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-driver\[ra]
+> tork\-driver.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-driver.1.html\[ra]
 .IP \(bu 2
-bin/tork\-engine
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-engine\[ra] \[rA]
-tork\-engine.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-engine.1.markdown\[ra] \[rA]
-tork\-engine.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-engine.1\[ra] +
-tork\-engine.1.html
+\fB\fCbinman text\fR
+< tork\-engine
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-engine\[ra]
+> tork\-engine.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-engine
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-engine\[ra]
+> tork\-engine.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-engine
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-engine\[ra]
+> tork\-engine.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-engine.1.html\[ra]
 .IP \(bu 2
-bin/tork\-master
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-master\[ra] \[rA]
-tork\-master.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-master.1.markdown\[ra] \[rA]
-tork\-master.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-master.1\[ra] +
-tork\-master.1.html
+\fB\fCbinman text\fR
+< tork\-master
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-master\[ra]
+> tork\-master.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-master
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-master\[ra]
+> tork\-master.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-master
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-master\[ra]
+> tork\-master.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-master.1.html\[ra]
 .IP \(bu 2
-bin/tork\-remote
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-remote\[ra] \[rA]
-tork\-remote.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-remote.1.markdown\[ra] \[rA]
-tork\-remote.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-remote.1\[ra] +
-tork\-remote.1.html
+\fB\fCbinman text\fR
+< tork\-remote
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-remote\[ra]
+> tork\-remote.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-remote
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-remote\[ra]
+> tork\-remote.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-remote
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-remote\[ra]
+> tork\-remote.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-remote.1.html\[ra]
 .IP \(bu 2
-bin/tork\-notify
-\[la]https://raw.github.com/sunaku/tork/master/bin/tork-notify\[ra] \[rA]
-tork\-notify.1.markdown
-\[la]https://sunaku.github.io/tork/man/man1/tork-notify.1.markdown\[ra] \[rA]
-tork\-notify.1
-\[la]https://sunaku.github.io/tork/man/man1/tork-notify.1\[ra] +
-tork\-notify.1.html
+\fB\fCbinman text\fR
+< tork\-notify
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-notify\[ra]
+> tork\-notify.1.markdown
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< tork\-notify
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-notify\[ra]
+> tork\-notify.1
+\[la]https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< tork\-notify
+\[la]https://raw.github.com/sunaku/tork/master/bin/tork-notify\[ra]
+> tork\-notify.1.html
 \[la]https://sunaku.github.io/tork/man/man1/tork-notify.1.html\[ra]
 .IP \(bu 2
-bin/md2man\-roff
-\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-roff\[ra] \[rA]
-md2man\-roff.1.markdown
-\[la]https://sunaku.github.io/md2man/man/man1/md2man-roff.1.markdown\[ra] \[rA]
-md2man\-roff.1
-\[la]https://sunaku.github.io/md2man/man/man1/md2man-roff.1\[ra] +
-md2man\-roff.1.html
+\fB\fCbinman text\fR
+< md2man\-roff
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-roff\[ra]
+> md2man\-roff.1.markdown
+\[la]https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< md2man\-roff
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-roff\[ra]
+> md2man\-roff.1
+\[la]https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< md2man\-roff
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-roff\[ra]
+> md2man\-roff.1.html
 \[la]https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html\[ra]
 .IP \(bu 2
-bin/md2man\-html
-\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-html\[ra] \[rA]
-md2man\-html.1.markdown
-\[la]https://sunaku.github.io/md2man/man/man1/md2man-html.1.markdown\[ra] \[rA]
-md2man\-html.1
-\[la]https://sunaku.github.io/md2man/man/man1/md2man-html.1\[ra] +
-md2man\-html.1.html
+\fB\fCbinman text\fR
+< md2man\-html
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-html\[ra]
+> md2man\-html.1.markdown
+\[la]https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< md2man\-html
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-html\[ra]
+> md2man\-html.1
+\[la]https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< md2man\-html
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-html\[ra]
+> md2man\-html.1.html
 \[la]https://sunaku.github.io/md2man/man/man1/md2man-html.1.html\[ra]
 .IP \(bu 2
-bin/md2man\-rake
-\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-rake\[ra] \[rA]
-md2man\-rake.1.markdown
-\[la]https://sunaku.github.io/md2man/man/man1/md2man-rake.1.markdown\[ra] \[rA]
-md2man\-rake.1
-\[la]https://sunaku.github.io/md2man/man/man1/md2man-rake.1\[ra] +
-md2man\-rake.1.html
+\fB\fCbinman text\fR
+< md2man\-rake
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-rake\[ra]
+> md2man\-rake.1.markdown
+\[la]https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< md2man\-rake
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-rake\[ra]
+> md2man\-rake.1
+\[la]https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< md2man\-rake
+\[la]https://raw.github.com/sunaku/md2man/master/bin/md2man-rake\[ra]
+> md2man\-rake.1.html
 \[la]https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html\[ra]
 .IP \(bu 2
-bin/binman
-\[la]https://raw.github.com/sunaku/binman/master/bin/binman\[ra] \[rA]
-binman.1.markdown
-\[la]https://sunaku.github.io/binman/man/man1/binman.1.markdown\[ra] \[rA]
-binman.1
-\[la]https://sunaku.github.io/binman/man/man1/binman.1\[ra] +
-binman.1.html
+\fB\fCbinman text\fR
+< binman
+\[la]https://raw.github.com/sunaku/binman/master/bin/binman\[ra]
+> binman.1.markdown
+\[la]https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< binman
+\[la]https://raw.github.com/sunaku/binman/master/bin/binman\[ra]
+> binman.1
+\[la]https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< binman
+\[la]https://raw.github.com/sunaku/binman/master/bin/binman\[ra]
+> binman.1.html
 \[la]https://sunaku.github.io/binman/man/man1/binman.1.html\[ra]
 .IP \(bu 2
-bin/binman\-rake
-\[la]https://raw.github.com/sunaku/binman/master/bin/binman-rake\[ra] \[rA]
-binman\-rake.1.markdown
-\[la]https://sunaku.github.io/binman/man/man1/binman-rake.1.markdown\[ra] \[rA]
-binman\-rake.1
-\[la]https://sunaku.github.io/binman/man/man1/binman-rake.1\[ra] +
-binman\-rake.1.html
+\fB\fCbinman text\fR
+< binman\-rake
+\[la]https://raw.github.com/sunaku/binman/master/bin/binman-rake\[ra]
+> binman\-rake.1.markdown
+\[la]https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown\[ra]
+.IP \(bu 2
+\fB\fCbinman roff\fR
+< binman\-rake
+\[la]https://raw.github.com/sunaku/binman/master/bin/binman-rake\[ra]
+> binman\-rake.1
+\[la]https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1\[ra]
+.IP \(bu 2
+\fB\fCbinman html\fR
+< binman\-rake
+\[la]https://raw.github.com/sunaku/binman/master/bin/binman-rake\[ra]
+> binman\-rake.1.html
 \[la]https://sunaku.github.io/binman/man/man1/binman-rake.1.html\[ra]
 .RE
 .PP
@@ -197,7 +314,7 @@ If you also want to build your own manual pages:
 .PP
 .RS
 .nf
-gem install md2man \-v '~> 4.0'
+gem install md2man \-v '~> 5.0'
 .fi
 .RE
 .SS Prerequisites
@@ -209,7 +326,7 @@ Ruby 1.8.7 or 1.9.2 or newer.
 .PP
 .RS
 .nf
-git clone git://github.com/sunaku/binman
+git clone https://github.com/sunaku/binman
 cd binman
 bundle install
 bundle exec binman \-\-help # run it directly
@@ -444,7 +561,7 @@ Add this snippet to your gemspec file:
 .nf
 s.files += Dir['man/man?/*.?']            # UNIX man pages
 s.files += Dir['man/**/*.{html,css,js}']  # HTML man pages
-s.add_development_dependency 'md2man', '~> 4.0'
+s.add_development_dependency 'md2man', '~> 5.0'
 .fi
 .RE
 .PP

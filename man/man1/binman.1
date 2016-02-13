@@ -1,4 +1,4 @@
-.TH BINMAN 1 2016\-02\-12 4.2.1
+.TH BINMAN 1 2016\-02\-13 5.0.1
 .SH NAME
 .PP
 binman \- man pages for bin scripts
@@ -83,13 +83,17 @@ fenced_code_blocks
 Show this help manual and search for \fIPATTERN\fP regular expression therein.
 .SH COMMANDS
 .TP
-\fB\fCsnip\fR [\fIFILE\fP]
+\fB\fCtext\fR [\fIFILE\fP]
 Print the leading comment header extracted from the given \fIFILE\fP or STDIN.
 .TP
-\fB\fCdump\fR [\fIFILE\fP]
+\fB\fCroff\fR [\fIFILE\fP]
 Print the 
 .BR roff (7) 
 conversion of the leading comment header extracted from
+the given \fIFILE\fP or STDIN.
+.TP
+\fB\fChtml\fR [\fIFILE\fP]
+Print the HTML conversion of the leading comment header extracted from
 the given \fIFILE\fP or STDIN.
 .TP
 \fB\fCshow\fR [\fIFILE\fP] [\fIPATTERN\fP]
@@ -102,6 +106,12 @@ extracted from the given \fIFILE\fP or STDIN.  If \fIPATTERN\fP is given, search
 it within the output displayed by 
 .BR man (1) 
 and jump to first match if found.
+If 
+.BR man (1) 
+cannot display the 
+.BR roff (1) 
+conversion, fall back to the showing
+the HTML conversion; if that fails too, display the extracted text as\-is.
 .TP
 \fB\fChelp\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIPATTERN\fP]] ... [\fB\fC\-\-\fR] ...
 If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after

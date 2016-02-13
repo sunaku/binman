@@ -2,14 +2,14 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 4.0.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.0.1 https://github.com/sunaku/md2man" />
   <title>binman(1) &mdash; man pages for bin scripts</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/binman.1</span></div></div><div class="container-fluid"><h1 id="binman-1-2016-02-12-4-2-1"><a name="binman-1-2016-02-12-4-2-1" href="#binman-1-2016-02-12-4-2-1" class="md2man-permalink" title="permalink"></a><span class="md2man-title">BINMAN</span> <span class="md2man-section">1</span> <span class="md2man-date">2016-02-12</span> <span class="md2man-source">4.2.1</span></h1><h2 id="name"><a name="name" href="#name" class="md2man-permalink" title="permalink"></a>NAME</h2><p>binman - man pages for bin scripts</p><h2 id="synopsis"><a name="synopsis" href="#synopsis" class="md2man-permalink" title="permalink"></a>SYNOPSIS</h2><p><code>binman</code> [<em>OPTION</em>]... <em>COMMAND</em></p><h2 id="description"><a name="description" href="#description" class="md2man-permalink" title="permalink"></a>DESCRIPTION</h2><p><a href="https://github.com/sunaku/binman">binman</a> produces UNIX manual pages for your executable scripts. It can
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/binman.1</span></div></div><div class="container-fluid"><h1 id="binman-1-2016-02-13-5-0-1"><span class="md2man-title">BINMAN</span> <span class="md2man-section">1</span> <span class="md2man-date">2016-02-13</span> <span class="md2man-source">5.0.1</span><a name="binman-1-2016-02-13-5-0-1" href="#binman-1-2016-02-13-5-0-1" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>binman - man pages for bin scripts</p><h2 id="synopsis">SYNOPSIS<a name="synopsis" href="#synopsis" class="md2man-permalink" title="permalink"></a></h2><p><code>binman</code> [<em>OPTION</em>]... <em>COMMAND</em></p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p><a href="https://github.com/sunaku/binman">binman</a> produces UNIX manual pages for your executable scripts. It can
 extract their leading comment headers (defined below), convert them from
-<a class="md2man-reference">markdown(7)</a> into <a class="md2man-reference">roff(7)</a> using <a href="https://github.com/sunaku/md2man">md2man</a>, and display them using <a class="md2man-reference">man(1)</a>.</p><h3 id="leading-comment-headers"><a name="leading-comment-headers" href="#leading-comment-headers" class="md2man-permalink" title="permalink"></a>Leading comment headers</h3><p>A leading comment header can be one of the following two things:</p>
+<a class="md2man-reference">markdown(7)</a> into <a class="md2man-reference">roff(7)</a> using <a href="https://github.com/sunaku/md2man">md2man</a>, and display them using <a class="md2man-reference">man(1)</a>.</p><h3 id="leading-comment-headers">Leading comment headers<a name="leading-comment-headers" href="#leading-comment-headers" class="md2man-permalink" title="permalink"></a></h3><p>A leading comment header can be one of the following two things:</p>
 <ol>
 <li><p> A contiguous sequence of single-line comments (which begin with <code>#</code>
 and optionally continue with a single space followed by any number of
@@ -20,7 +20,7 @@ ending at the first single blank line.</p></li>
 begin with the respective delimiters and optionally continue with a single
 space followed by any number of characters until the end of the line.</p></li>
 </ol>
-<h3 id="markdown-processing-divergence"><a name="markdown-processing-divergence" href="#markdown-processing-divergence" class="md2man-permalink" title="permalink"></a>Markdown processing divergence</h3><p>Although your leading comment headers are written in <a class="md2man-reference">markdown(7)</a>, <code>binman
+<h3 id="markdown-processing-divergence">Markdown processing divergence<a name="markdown-processing-divergence" href="#markdown-processing-divergence" class="md2man-permalink" title="permalink"></a></h3><p>Although your leading comment headers are written in <a class="md2man-reference">markdown(7)</a>, <code>binman
 conv</code> inherits the following additions to <a class="md2man-reference">markdown(7)</a> syntax from <a class="md2man-reference">md2man(5)</a>:</p>
 <ul>
 <li><p>There can be at most one top-level heading (H1).  It is emitted as <code>.TH</code>
@@ -32,7 +32,7 @@ before emission as <code>.IP</code> in the <a class="md2man-reference">roff(7)</
 indented by two spaces are considered to be a &quot;tagged paragraphs&quot;.  They
 are unindented accordingly before emission as <code>.TP</code> in the <a class="md2man-reference">roff(7)</a> output.</p></li>
 </ul>
-<h3 id="markdown-processing-extensions"><a name="markdown-processing-extensions" href="#markdown-processing-extensions" class="md2man-permalink" title="permalink"></a>Markdown processing extensions</h3><p>The following <a href="https://github.com/vmg/redcarpet">Redcarpet</a> extensions are enabled while processing <a class="md2man-reference">markdown(7)</a>:</p>
+<h3 id="markdown-processing-extensions">Markdown processing extensions<a name="markdown-processing-extensions" href="#markdown-processing-extensions" class="md2man-permalink" title="permalink"></a></h3><p>The following <a href="https://github.com/vmg/redcarpet">Redcarpet</a> extensions are enabled while processing <a class="md2man-reference">markdown(7)</a>:</p>
 <ul>
 <li>tables</li>
 <li>autolink</li>
@@ -40,13 +40,16 @@ are unindented accordingly before emission as <code>.TP</code> in the <a class="
 <li>strikethrough</li>
 <li>fenced_code_blocks</li>
 </ul>
-<h2 id="options"><a name="options" href="#options" class="md2man-permalink" title="permalink"></a>OPTIONS</h2><dl><dt><code>-h</code> [<em>PATTERN</em>], <code>--help</code> [<em>PATTERN</em>]</dt><dd>Show this help manual and search for <em>PATTERN</em> regular expression therein.</dd></dl><h2 id="commands"><a name="commands" href="#commands" class="md2man-permalink" title="permalink"></a>COMMANDS</h2><dl><dt><code>snip</code> [<em>FILE</em>]</dt><dd>Print the leading comment header extracted from the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>dump</code> [<em>FILE</em>]</dt><dd>Print the <a class="md2man-reference">roff(7)</a> conversion of the leading comment header extracted from
+<h2 id="options">OPTIONS<a name="options" href="#options" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>-h</code> [<em>PATTERN</em>], <code>--help</code> [<em>PATTERN</em>]</dt><dd>Show this help manual and search for <em>PATTERN</em> regular expression therein.</dd></dl><h2 id="commands">COMMANDS<a name="commands" href="#commands" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>text</code> [<em>FILE</em>]</dt><dd>Print the leading comment header extracted from the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>roff</code> [<em>FILE</em>]</dt><dd>Print the <a class="md2man-reference">roff(7)</a> conversion of the leading comment header extracted from
+the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>html</code> [<em>FILE</em>]</dt><dd>Print the HTML conversion of the leading comment header extracted from
 the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>show</code> [<em>FILE</em>] [<em>PATTERN</em>]</dt><dd>Use <a class="md2man-reference">man(1)</a> to display the <a class="md2man-reference">roff(7)</a> conversion of the leading comment header
 extracted from the given <em>FILE</em> or STDIN.  If <em>PATTERN</em> is given, search for
-it within the output displayed by <a class="md2man-reference">man(1)</a> and jump to first match if found.</dd></dl><dl><dt><code>help</code> <em>FILE</em> ... [<code>-h</code>|<code>--help</code> [<em>PATTERN</em>]] ... [<code>--</code>] ...</dt><dd>If the given argument sequence contains <code>-h</code> or <code>--help</code>, except after
+it within the output displayed by <a class="md2man-reference">man(1)</a> and jump to first match if found.
+If <a class="md2man-reference">man(1)</a> cannot display the <a class="md2man-reference">roff(1)</a> conversion, fall back to the showing
+the HTML conversion; if that fails too, display the extracted text as-is.</dd></dl><dl><dt><code>help</code> <em>FILE</em> ... [<code>-h</code>|<code>--help</code> [<em>PATTERN</em>]] ... [<code>--</code>] ...</dt><dd>If the given argument sequence contains <code>-h</code> or <code>--help</code>, except after
 <code>--</code>, optionally followed by a <em>PATTERN</em> regular expression that specifies
 text to search for and, if found, jump to inside the displayed man page,
 then this program extracts the given <em>FILE</em>&#39;s leading comment header,
 converts it into <a class="md2man-reference">roff(7)</a>, displays it using <a class="md2man-reference">man(1)</a>, and finally exits with
-status code <code>0</code>.  Otherwise, this program exits with status code <code>111</code>.</dd></dl><h2 id="see-also"><a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a>SEE ALSO</h2><p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>, <a class="md2man-reference">man(1)</a>, <a class="md2man-reference">roff(7)</a>, <a class="md2man-reference">markdown(7)</a></p></div></body>
+status code <code>0</code>.  Otherwise, this program exits with status code <code>111</code>.</dd></dl><h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>, <a class="md2man-reference">man(1)</a>, <a class="md2man-reference">roff(7)</a>, <a class="md2man-reference">markdown(7)</a></p></div></body>
 </html>

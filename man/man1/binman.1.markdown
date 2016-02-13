@@ -1,4 +1,4 @@
-# BINMAN 1 2016-02-12 4.2.1
+# BINMAN 1 2016-02-13 5.0.1
 
 ## NAME
 
@@ -61,17 +61,23 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 
 ## COMMANDS
 
-`snip` [*FILE*]
+`text` [*FILE*]
   Print the leading comment header extracted from the given *FILE* or STDIN.
 
-`dump` [*FILE*]
+`roff` [*FILE*]
   Print the roff(7) conversion of the leading comment header extracted from
+  the given *FILE* or STDIN.
+
+`html` [*FILE*]
+  Print the HTML conversion of the leading comment header extracted from
   the given *FILE* or STDIN.
 
 `show` [*FILE*] [*PATTERN*]
   Use man(1) to display the roff(7) conversion of the leading comment header
   extracted from the given *FILE* or STDIN.  If *PATTERN* is given, search for
   it within the output displayed by man(1) and jump to first match if found.
+  If man(1) cannot display the roff(1) conversion, fall back to the showing
+  the HTML conversion; if that fails too, display the extracted text as-is.
 
 `help` *FILE* ... [`-h`|`--help` [*PATTERN*]] ... [`--`] ...
   If the given argument sequence contains `-h` or `--help`, except after

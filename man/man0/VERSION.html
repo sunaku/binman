@@ -2,20 +2,33 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 4.0.1 https://github.com/sunaku/md2man" />
+  <meta name="generator" content="md2man 5.0.1 https://github.com/sunaku/md2man" />
   <title>VERSION</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-4-2-1-2016-02-12"><a name="version-4-2-1-2016-02-12" href="#version-4-2-1-2016-02-12" class="md2man-permalink" title="permalink"></a>Version 4.2.1 (2016-02-12)</h2><h3 id="patch"><a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-0-1-2016-02-13">Version 5.0.1 (2016-02-13)<a name="version-5-0-1-2016-02-13" href="#version-5-0-1-2016-02-13" class="md2man-permalink" title="permalink"></a></h2><h3 id="major">Major:<a name="major" href="#major" class="md2man-permalink" title="permalink"></a></h3>
+<ul>
+<li><p>Rename <code>binman snip</code> command to <code>binman text</code>.</p></li>
+<li><p>Rename <code>binman conv</code> command to <code>binman roff</code> and make it operate on a bin
+script containing an embedded manual page rather than the extracted latter.</p></li>
+<li><p>Add <code>binman html</code> command which extracts embedded manual page from a given
+bin script, converts it into HTML, and then prints the result to STDOUT.</p></li>
+<li><p><code>binman show</code> now falls back to displaying a temporary HTML manual page if
+<a class="md2man-reference">man(1)</a> fails to display the temporary UNIX manual page.  This is useful in
+Windows where there is no <a class="md2man-reference">man(1)</a> reader, but a web browser can be started.</p></li>
+<li><p>When a HTML manual page is shown, <code>binman</code> now blocks until the launched
+web browser exits.  Previously, it used to exit immediately (nonblocking).</p></li>
+</ul>
+<h2 id="version-4-2-1-2016-02-12">Version 4.2.1 (2016-02-12)<a name="version-4-2-1-2016-02-12" href="#version-4-2-1-2016-02-12" class="md2man-permalink" title="permalink"></a></h2><h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Failure when <code>binman show</code> is given input on STDIN.</p><p>binman.rb:51:in `basename&#39;: no implicit conversion of IO into String (TypeError)</p></li>
 </ul>
-<h2 id="version-4-2-0-2016-02-12"><a name="version-4-2-0-2016-02-12" href="#version-4-2-0-2016-02-12" class="md2man-permalink" title="permalink"></a>Version 4.2.0 (2016-02-12)</h2><h3 id="minor"><a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a>Minor:</h3>
+<h2 id="version-4-2-0-2016-02-12">Version 4.2.0 (2016-02-12)<a name="version-4-2-0-2016-02-12" href="#version-4-2-0-2016-02-12" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor">Minor:<a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>Add <code>binman:mkd</code> rake task to extract <code>man/man1/*.1.markdown</code> files.</li>
 </ul>
-<h3 id="patch-1"><a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h3 id="patch-1">Patch:<a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Shell out to <a class="md2man-reference">md2man-rake(1)</a> for dynamic man pages.</p><p>Requiring the md2man/rakefile.rb script builds Rake tasks only once, so
 it ignores any man page files generated dynamically after the require().</p><p>This fix shells out to <a class="md2man-reference">md2man-rake(1)</a> causing that script to be required
@@ -23,11 +36,11 @@ every time afresh, so that such dynamically generated files are handled.</p></li
 <li><p>Failure when <code>binman help</code> is called without ARGV.</p><p>binman.rb:63:in <code>help&#39;: undefined method</code>index&#39; for nil:NilClass (NoMethodError)</p></li>
 <li><p>Failure when <code>binman show</code> is called without ARGV.</p><p>binman.rb:47:in `basename&#39;: no implicit conversion of IO into String (TypeError)</p></li>
 </ul>
-<h2 id="version-4-1-0-2016-02-10"><a name="version-4-1-0-2016-02-10" href="#version-4-1-0-2016-02-10" class="md2man-permalink" title="permalink"></a>Version 4.1.0 (2016-02-10)</h2><h3 id="minor-1"><a name="minor-1" href="#minor-1" class="md2man-permalink" title="permalink"></a>Minor:</h3>
+<h2 id="version-4-1-0-2016-02-10">Version 4.1.0 (2016-02-10)<a name="version-4-1-0-2016-02-10" href="#version-4-1-0-2016-02-10" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-1">Minor:<a name="minor-1" href="#minor-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>Print path of HTML man page to STDOUT when launching browser.</li>
 </ul>
-<h3 id="patch-2"><a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h3 id="patch-2">Patch:<a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Revert &quot;ensure &#39;binman:web&#39; task works the first time thru&quot;.</p><p>This reverts commit dd0511e78e02546cac4903b5c6de6243607a8bba,
 which was causing the following error under Ruby 2.3.0p0.</p><dl><dd>% rake build
@@ -45,7 +58,7 @@ exit 1</dd></dl></li>
 <li><p><code>man FILE</code> isn&#39;t portable; use <code>man -M ...</code> instead.</p><p><code>man FILE</code> used to work in Debian, but doesn&#39;t work under Void Linux.</p><p><code>man -l FILE</code> works in Linux and OpenBSD but not on MacOSX / FreeBSD.</p><p>Therefore, avoid all this portability mess using <code>man -M ...</code> instead.</p></li>
 <li><p>Handle case where roff manual page is missing but HTML version exists.</p></li>
 </ul>
-<h2 id="version-4-0-0-2014-10-26"><a name="version-4-0-0-2014-10-26" href="#version-4-0-0-2014-10-26" class="md2man-permalink" title="permalink"></a>Version 4.0.0 (2014-10-26)</h2><h3 id="major"><a name="major" href="#major" class="md2man-permalink" title="permalink"></a>Major:</h3>
+<h2 id="version-4-0-0-2014-10-26">Version 4.0.0 (2014-10-26)<a name="version-4-0-0-2014-10-26" href="#version-4-0-0-2014-10-26" class="md2man-permalink" title="permalink"></a></h2><h3 id="major-1">Major:<a name="major-1" href="#major-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>: Rename the <code>load</code> command to <code>snip</code> and remove <code>conv</code>.</p>
 <ul>
@@ -55,35 +68,35 @@ exit 1</dd></dl></li>
 <li><p>Upgrade to md2man 4.0, which no longer expands cross references in code
 spans and code blocks.  Your manuals might be rendered differently now.</p></li>
 </ul>
-<h2 id="version-3-4-1-2014-07-01"><a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a>Version 3.4.1 (2014-07-01)</h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-3"><a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a>Patch:</h3>
+<h2 id="version-3-4-1-2014-07-01">Version 3.4.1 (2014-07-01)<a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a></h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-3">Patch:<a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p><a class="md2man-reference">pager(1)</a> isn&#39;t a universal command: CentOS uses <code>less -is</code> instead.</p></li>
 <li><p>Silence <a class="md2man-reference">man(1)</a> stderr when displaying dynamically extracted manual.</p></li>
 </ul>
-<h3 id="other"><a name="other" href="#other" class="md2man-permalink" title="permalink"></a>Other:</h3>
+<h3 id="other">Other:<a name="other" href="#other" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>README: add intro hook and source+result examples.</p></li>
 <li><p>Document REGEXP argument for help options in <code>bin/*</code>.</p></li>
 <li><p>Refer to REGEXP argument as PATTERN like less does.</p></li>
 </ul>
-<h2 id="version-3-4-0-2014-06-29"><a name="version-3-4-0-2014-06-29" href="#version-3-4-0-2014-06-29" class="md2man-permalink" title="permalink"></a>Version 3.4.0 (2014-06-29)</h2><h3 id="minor-2"><a name="minor-2" href="#minor-2" class="md2man-permalink" title="permalink"></a>Minor:</h3>
+<h2 id="version-3-4-0-2014-06-29">Version 3.4.0 (2014-06-29)<a name="version-3-4-0-2014-06-29" href="#version-3-4-0-2014-06-29" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-2">Minor:<a name="minor-2" href="#minor-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>GH-3: add optional regexp argument to <code>-h</code>/<code>--help</code> to search in <a class="md2man-reference">man(1)</a>.</p><p>The <code>-h</code> and <code>--help</code> options in <code>BinMan.help()</code> can now be optionally
 followed by a regular expression argument that specifies text to search
 for and, if found, jump to inside the displayed UNIX man page.  Such a
 regular expression argument can now also be passed into <code>BinMan.show()</code>.</p></li>
 </ul>
-<h3 id="other-1"><a name="other-1" href="#other-1" class="md2man-permalink" title="permalink"></a>Other:</h3>
+<h3 id="other-1">Other:<a name="other-1" href="#other-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>README: add syntax highlighting to code snippets.</li>
 </ul>
-<h2 id="version-3-3-3-2014-06-22"><a name="version-3-3-3-2014-06-22" href="#version-3-3-3-2014-06-22" class="md2man-permalink" title="permalink"></a>Version 3.3.3 (2014-06-22)</h2><p>This release upgrades to md2man 3.0 for improved HTML manuals.</p><h3 id="other-2"><a name="other-2" href="#other-2" class="md2man-permalink" title="permalink"></a>Other:</h3>
+<h2 id="version-3-3-3-2014-06-22">Version 3.3.3 (2014-06-22)<a name="version-3-3-3-2014-06-22" href="#version-3-3-3-2014-06-22" class="md2man-permalink" title="permalink"></a></h2><p>This release upgrades to md2man 3.0 for improved HTML manuals.</p><h3 id="other-2">Other:<a name="other-2" href="#other-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>README: add links to package, manuals, and GitHub.</p></li>
 <li><p>GitHub now supports relative links from the README:</p><p><a href="https://help.github.com/articles/relative-links-in-readmes">https://help.github.com/articles/relative-links-in-readmes</a></p></li>
 <li><p>Upgrade to md2man 3.0 for improved HTML manuals.</p></li>
 </ul>
-<h2 id="version-3-3-2-2013-08-30"><a name="version-3-3-2-2013-08-30" href="#version-3-3-2-2013-08-30" class="md2man-permalink" title="permalink"></a>Version 3.3.2 (2013-08-30)</h2><p>Patch:</p>
+<h2 id="version-3-3-2-2013-08-30">Version 3.3.2 (2013-08-30)<a name="version-3-3-2-2013-08-30" href="#version-3-3-2-2013-08-30" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
 <li><p>Rescue error when designated opener is not found:</p><pre><code>$ binman -h
 /gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;: No such file or directory - xdg-open (Errno::ENOENT)
@@ -103,11 +116,11 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
 <ul>
 <li>Add screenshot to git repo since OmpLoader is dead.</li>
 </ul>
-<h2 id="version-3-3-1-2013-06-01"><a name="version-3-3-1-2013-06-01" href="#version-3-3-1-2013-06-01" class="md2man-permalink" title="permalink"></a>Version 3.3.1 (2013-06-01)</h2><p>Patch:</p>
+<h2 id="version-3-3-1-2013-06-01">Version 3.3.1 (2013-06-01)<a name="version-3-3-1-2013-06-01" href="#version-3-3-1-2013-06-01" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
 <li>Ensure that md2man 2.0 is loaded before running any BinMan rake tasks.</li>
 </ul>
-<h2 id="version-3-3-0-2013-05-08"><a name="version-3-3-0-2013-05-08" href="#version-3-3-0-2013-05-08" class="md2man-permalink" title="permalink"></a>Version 3.3.0 (2013-05-08)</h2><p>Minor:</p>
+<h2 id="version-3-3-0-2013-05-08">Version 3.3.0 (2013-05-08)<a name="version-3-3-0-2013-05-08" href="#version-3-3-0-2013-05-08" class="md2man-permalink" title="permalink"></a></h2><p>Minor:</p>
 <ul>
 <li><p>Add <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a> script to provide access to <code>binman/rakefile</code> tasks.</p></li>
 <li><p>Always try showing HTML manual page in web browser from <code>BinMan.show()</code>.</p></li>
@@ -118,13 +131,13 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
 <li><p>Rename HISTORY to VERSION so it sorts after README.</p></li>
 <li><p>Add man/man0/ subdir containing README and VERSION.</p></li>
 </ul>
-<h2 id="version-3-2-1-2013-05-04"><a name="version-3-2-1-2013-05-04" href="#version-3-2-1-2013-05-04" class="md2man-permalink" title="permalink"></a>Version 3.2.1 (2013-05-04)</h2><p>Patch:</p>
+<h2 id="version-3-2-1-2013-05-04">Version 3.2.1 (2013-05-04)<a name="version-3-2-1-2013-05-04" href="#version-3-2-1-2013-05-04" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
 <li><p>Ensure that the <code>binman:web</code> Rake task works the first time through.</p></li>
 <li><p>Fix &quot;uninitialized constant Md2Man::VERSION&quot; errors in <code>binman/rakefile</code>.</p></li>
 <li><p>Hook into the <code>build</code> Rake task only if Bundler&#39;s Rake tasks are loaded:</p><p><a href="https://github.com/sunaku/md2man/pull/7#issuecomment-9467621">https://github.com/sunaku/md2man/pull/7#issuecomment-9467621</a></p><p>Thanks to Postmodern for raising this issue.</p></li>
 </ul>
-<h2 id="version-3-2-0-2012-10-14"><a name="version-3-2-0-2012-10-14" href="#version-3-2-0-2012-10-14" class="md2man-permalink" title="permalink"></a>Version 3.2.0 (2012-10-14)</h2><p>Minor:</p>
+<h2 id="version-3-2-0-2012-10-14">Version 3.2.0 (2012-10-14)<a name="version-3-2-0-2012-10-14" href="#version-3-2-0-2012-10-14" class="md2man-permalink" title="permalink"></a></h2><p>Minor:</p>
 <ul>
 <li>add binman:web task to produce man pages in HTML</li>
 </ul>
@@ -132,7 +145,7 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
 <ul>
 <li>gemspec: package only roff files from inside man/</li>
 </ul>
-<h2 id="version-3-1-1-2012-10-13"><a name="version-3-1-1-2012-10-13" href="#version-3-1-1-2012-10-13" class="md2man-permalink" title="permalink"></a>Version 3.1.1 (2012-10-13)</h2><p>Patch:</p>
+<h2 id="version-3-1-1-2012-10-13">Version 3.1.1 (2012-10-13)<a name="version-3-1-1-2012-10-13" href="#version-3-1-1-2012-10-13" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
 <li><p>load() failed when leading comment header missing</p></li>
 <li><p>lstrip() is too powerful; consume lines carefully</p></li>
@@ -141,7 +154,7 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
 <ul>
 <li>fix broken link to redcarpet library home page</li>
 </ul>
-<h2 id="version-3-1-0-2012-02-06"><a name="version-3-1-0-2012-02-06" href="#version-3-1-0-2012-02-06" class="md2man-permalink" title="permalink"></a>Version 3.1.0 (2012-02-06)</h2><p>Minor:</p>
+<h2 id="version-3-1-0-2012-02-06">Version 3.1.0 (2012-02-06)<a name="version-3-1-0-2012-02-06" href="#version-3-1-0-2012-02-06" class="md2man-permalink" title="permalink"></a></h2><p>Minor:</p>
 <ul>
 <li>Added <code>binman help</code> command for use by non-Ruby bin scripts.  See README
 for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!</li>
@@ -155,7 +168,7 @@ for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!</li>
 <ul>
 <li>Shorten markdown headings; improve documentation; clean up.</li>
 </ul>
-<h2 id="version-3-0-1-2012-02-02"><a name="version-3-0-1-2012-02-02" href="#version-3-0-1-2012-02-02" class="md2man-permalink" title="permalink"></a>Version 3.0.1 (2012-02-02)</h2><p>Patch:</p>
+<h2 id="version-3-0-1-2012-02-02">Version 3.0.1 (2012-02-02)<a name="version-3-0-1-2012-02-02" href="#version-3-0-1-2012-02-02" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
 <li><p>BinMan.help(): ignore <code>-h</code> and <code>--help</code> options after standard <code>--</code> flag.</p></li>
 <li><p>BinMan.show(): write temp file because not all systems support <code>man -l</code>.</p></li>
@@ -167,7 +180,7 @@ for usage examples from Perl, Python, Node.js, Tcl, AWK, and UNIX shell!</li>
 <li><p>README: fix installation commands for development.</p></li>
 <li><p>bundler suggests moving all dev deps into gemspec.</p></li>
 </ul>
-<h2 id="version-3-0-0-2012-01-09"><a name="version-3-0-0-2012-01-09" href="#version-3-0-0-2012-01-09" class="md2man-permalink" title="permalink"></a>Version 3.0.0 (2012-01-09)</h2><p>Major:</p>
+<h2 id="version-3-0-0-2012-01-09">Version 3.0.0 (2012-01-09)<a name="version-3-0-0-2012-01-09" href="#version-3-0-0-2012-01-09" class="md2man-permalink" title="permalink"></a></h2><p>Major:</p>
 <ul>
 <li>Removed the <code>binman/gemspec</code> helper library because it did not play well
 with Bundler.  Use the standard <code>add_runtime_dependency</code> method instead.
@@ -178,7 +191,7 @@ with Bundler.  Use the standard <code>add_runtime_dependency</code> method inste
 <li>The <code>binman/Rakefile</code> helper library now hooks into Bundler&#39;s Rake tasks.
 Be sure to add the <code>man/**/*</code> files to your gemspec <a href="https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20">accordingly</a>.</li>
 </ul>
-<h2 id="version-2-0-0-2011-12-06"><a name="version-2-0-0-2011-12-06" href="#version-2-0-0-2011-12-06" class="md2man-permalink" title="permalink"></a>Version 2.0.0 (2011-12-06)</h2><p>Major:</p>
+<h2 id="version-2-0-0-2011-12-06">Version 2.0.0 (2011-12-06)<a name="version-2-0-0-2011-12-06" href="#version-2-0-0-2011-12-06" class="md2man-permalink" title="permalink"></a></h2><p>Major:</p>
 <ul>
 <li>Removed the deprecated <code>binman/rake_tasks</code> helper library.  Use
 <code>binman/rakefile</code> instead.</li>
@@ -192,7 +205,7 @@ Be sure to add the <code>man/**/*</code> files to your gemspec <a href="https://
 <li><p>Upgraded to md2man v1 for Markdown to UNIX man page conversion.</p></li>
 <li><p>Do not hard-code the version number in <code>binman/gemspec</code> helper.</p></li>
 </ul>
-<h2 id="version-1-1-0-2011-11-05"><a name="version-1-1-0-2011-11-05" href="#version-1-1-0-2011-11-05" class="md2man-permalink" title="permalink"></a>Version 1.1.0 (2011-11-05)</h2><p>Alert:</p>
+<h2 id="version-1-1-0-2011-11-05">Version 1.1.0 (2011-11-05)<a name="version-1-1-0-2011-11-05" href="#version-1-1-0-2011-11-05" class="md2man-permalink" title="permalink"></a></h2><p>Alert:</p>
 <ul>
 <li>The <code>binman/rake_tasks</code> library has been renamed (with deprecation) to
 <code>binman/rakefile</code>.  The deprecation warning will be removed in the next
@@ -204,7 +217,7 @@ major release.</li>
 builds and includes your UNIX man page files in your gem packages and also
 adds binman as a runtime and development gem dependency.</li>
 </ul>
-<h2 id="version-1-0-0-2011-10-13"><a name="version-1-0-0-2011-10-13" href="#version-1-0-0-2011-10-13" class="md2man-permalink" title="permalink"></a>Version 1.0.0 (2011-10-13)</h2><p>Major:</p>
+<h2 id="version-1-0-0-2011-10-13">Version 1.0.0 (2011-10-13)<a name="version-1-0-0-2011-10-13" href="#version-1-0-0-2011-10-13" class="md2man-permalink" title="permalink"></a></h2><p>Major:</p>
 <ul>
 <li><p>The <code>BinMan::dump()</code> method and corresponding <code>binman dump</code> command now
 extract the leading comment header from their input before returning the
@@ -227,7 +240,7 @@ comment header from the <code>bin/</code> script into a UNIX man page for displa
 <ul>
 <li>README: explain dev deps and <code>man/</code> dir packaging.</li>
 </ul>
-<h2 id="version-0-1-2-2011-10-13"><a name="version-0-1-2-2011-10-13" href="#version-0-1-2-2011-10-13" class="md2man-permalink" title="permalink"></a>Version 0.1.2 (2011-10-13)</h2><p>Minor:</p>
+<h2 id="version-0-1-2-2011-10-13">Version 0.1.2 (2011-10-13)<a name="version-0-1-2-2011-10-13" href="#version-0-1-2-2011-10-13" class="md2man-permalink" title="permalink"></a></h2><p>Minor:</p>
 <ul>
 <li>The <a href="https://github.com/tanoku/redcarpet">Redcarpet2</a> library is not a runtime gem dependency anymore.</li>
 </ul>
@@ -236,7 +249,7 @@ comment header from the <code>bin/</code> script into a UNIX man page for displa
 <li><p>Extracted <code>BinMan::Renderer</code> into <a href="http://rdoc.info/github/sunaku/redcarpet-manpage">redcarpet-manpage</a> library.</p></li>
 <li><p>Forgot to introduce leading comment headers in <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> man page.</p></li>
 </ul>
-<h2 id="version-0-1-1-2011-10-13"><a name="version-0-1-1-2011-10-13" href="#version-0-1-1-2011-10-13" class="md2man-permalink" title="permalink"></a>Version 0.1.1 (2011-10-13)</h2><p>Minor:</p>
+<h2 id="version-0-1-1-2011-10-13">Version 0.1.1 (2011-10-13)<a name="version-0-1-1-2011-10-13" href="#version-0-1-1-2011-10-13" class="md2man-permalink" title="permalink"></a></h2><p>Minor:</p>
 <ul>
 <li><code>BinMan.read()</code> now supports embedded document (=begin/=end) comments
 also.  See <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> for the new description of leading comment headers.</li>
@@ -253,5 +266,5 @@ also.  See <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a
 <li><p>README: add link to example of binman markdown.</p></li>
 <li><p>README: add obligatory screenshot! &gt;:-)</p></li>
 </ul>
-<h2 id="version-0-0-1-2011-10-12"><a name="version-0-0-1-2011-10-12" href="#version-0-0-1-2011-10-12" class="md2man-permalink" title="permalink"></a>Version 0.0.1 (2011-10-12)</h2><p>First release!  Happy birthday!  Woohoo!  :-)</p></div></body>
+<h2 id="version-0-0-1-2011-10-12">Version 0.0.1 (2011-10-12)<a name="version-0-0-1-2011-10-12" href="#version-0-0-1-2011-10-12" class="md2man-permalink" title="permalink"></a></h2><p>First release!  Happy birthday!  Woohoo!  :-)</p></div></body>
 </html>
