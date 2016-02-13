@@ -43,7 +43,7 @@ module BinMan
   # Tries to display a pre-rendered UNIX man page under ./man/ if possible.
   def show source=nil, query=nil
     # try showing existing man page files for given source
-    if file = find(source) and File.exist? file
+    if file = find(source) and File.file? file
       man_page = File.basename(file)
       man_path = File.expand_path('../../man', file)
       return if show_man(man_path, man_page, query)
@@ -92,7 +92,7 @@ private
   def read source=nil
     if source.respond_to? :read
       source.read
-    elsif file = find(source) and File.exist? file
+    elsif file = find(source) and File.file? file
       File.read file
     else
       source
