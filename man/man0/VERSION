@@ -162,7 +162,7 @@ This release upgrades to md2man 3.0 for improved HTML manuals.
 README: add links to package, manuals, and GitHub.
 .IP \(bu 2
 GitHub now supports relative links from the README:
-.TP
+.PP
 \[la]https://help.github.com/articles/relative-links-in-readmes\[ra]
 .IP \(bu 2
 Upgrade to md2man 3.0 for improved HTML manuals.
@@ -241,7 +241,7 @@ Ensure that the \fB\fCbinman:web\fR Rake task works the first time through.
 Fix "uninitialized constant Md2Man::VERSION" errors in \fB\fCbinman/rakefile\fR\&.
 .IP \(bu 2
 Hook into the \fB\fCbuild\fR Rake task only if Bundler's Rake tasks are loaded:
-.TP
+.PP
 \[la]https://github.com/sunaku/md2man/pull/7#issuecomment-9467621\[ra]
 .PP
 Thanks to Postmodern for raising this issue.
@@ -323,16 +323,14 @@ Major:
 .IP \(bu 2
 Removed the \fB\fCbinman/gemspec\fR helper library because it did not play well
 with Bundler.  Use the standard \fB\fCadd_runtime_dependency\fR method instead.
-This example
-\[la]https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20\[ra] shows what work is involved in upgrading.
+This example \[la]https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20\[ra] shows what work is involved in upgrading.
 .RE
 .PP
 Minor:
 .RS
 .IP \(bu 2
 The \fB\fCbinman/Rakefile\fR helper library now hooks into Bundler's Rake tasks.
-Be sure to add the \fB\fCman/**/*\fR files to your gemspec accordingly
-\[la]https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20\[ra]\&.
+Be sure to add the \fB\fCman/**/*\fR files to your gemspec accordingly \[la]https://github.com/sunaku/md2man/commit/75d7a0064fa86f1c98dd01391ad82245fd387c20\[ra]\&.
 .RE
 .SH Version 2.0.0 (2011\-12\-06)
 .PP
@@ -411,15 +409,13 @@ README: explain dev deps and \fB\fCman/\fR dir packaging.
 Minor:
 .RS
 .IP \(bu 2
-The Redcarpet2
-\[la]https://github.com/tanoku/redcarpet\[ra] library is not a runtime gem dependency anymore.
+The Redcarpet2 \[la]https://github.com/tanoku/redcarpet\[ra] library is not a runtime gem dependency anymore.
 .RE
 .PP
 Other:
 .RS
 .IP \(bu 2
-Extracted \fB\fCBinMan::Renderer\fR into redcarpet\-manpage
-\[la]http://rdoc.info/github/sunaku/redcarpet-manpage\[ra] library.
+Extracted \fB\fCBinMan::Renderer\fR into redcarpet\-manpage \[la]http://rdoc.info/github/sunaku/redcarpet-manpage\[ra] library.
 .IP \(bu 2
 Forgot to introduce leading comment headers in 
 .BR binman (1) 

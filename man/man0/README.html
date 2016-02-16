@@ -27,131 +27,238 @@ Perl, Python, Node.js, Tcl, AWK, UNIX shell, and more!</p></li>
 <li><p>Individual extraction, conversion, and display commands.</p></li>
 <li><p>Implemented in roughly 165 lines of pure Ruby code! :-)</p></li>
 </ul>
-<h3 id="demonstration">Demonstration<a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a></h3><p><img src="EXAMPLE.png" alt="Obligatory screen-shot of binman(1) in action!"></p><h4 id="what-can-binman-1-do">What can <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> do?<a name="what-can-binman-1-do" href="#what-can-binman-1-do" class="md2man-permalink" title="permalink"></a></h4><p>Here are some real examples of processed bin scripts to help you get started:</p>
+<h3 id="demonstration">Demonstration<a name="demonstration" href="#demonstration" class="md2man-permalink" title="permalink"></a></h3><p><img src="EXAMPLE.png" alt="Obligatory screen-shot of binman(1) in action!"></p><p>For examples in even more scripting languages, see the &quot;Usage&quot; section below!</p><h4 id="what-can-binman-rake-1-do">What can <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a> do?<a name="what-can-binman-rake-1-do" href="#what-can-binman-rake-1-do" class="md2man-permalink" title="permalink"></a></h4><p>Here are some examples of HTML manual <em>sets</em> produced by <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1.markdown">tork.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1">tork.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork.1.html">tork.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1.markdown">tork-runner.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1">tork-runner.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-runner.1.html">tork-runner.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1.markdown">tork-herald.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1">tork-herald.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-herald.1.html">tork-herald.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1.markdown">tork-driver.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1">tork-driver.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-driver.1.html">tork-driver.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1.markdown">tork-engine.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1">tork-engine.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-engine.1.html">tork-engine.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1.markdown">tork-master.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1">tork-master.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-master.1.html">tork-master.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1.markdown">tork-remote.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1">tork-remote.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-remote.1.html">tork-remote.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1.markdown">tork-notify.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
-&gt; <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1">tork-notify.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
-&gt; <a href="https://sunaku.github.io/tork/man/man1/tork-notify.1.html">tork-notify.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
-&gt; <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1.markdown">md2man-roff.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
-&gt; <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1">md2man-roff.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
-&gt; <a href="https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html">md2man-roff.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
-&gt; <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1.markdown">md2man-html.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
-&gt; <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1">md2man-html.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
-&gt; <a href="https://sunaku.github.io/md2man/man/man1/md2man-html.1.html">md2man-html.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
-&gt; <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1.markdown">md2man-rake.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
-&gt; <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1">md2man-rake.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
-&gt; <a href="https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html">md2man-rake.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
-&gt; <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown">binman.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
-&gt; <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1">binman.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
-&gt; <a href="https://sunaku.github.io/binman/man/man1/binman.1.html">binman.1.html</a></li>
-<li><code>binman text</code>
-&lt; <a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
-&gt; <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown">binman-rake.1.markdown</a></li>
-<li><code>binman roff</code>
-&lt; <a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
-&gt; <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1">binman-rake.1</a></li>
-<li><code>binman html</code>
-&lt; <a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
-&gt; <a href="https://sunaku.github.io/binman/man/man1/binman-rake.1.html">binman-rake.1.html</a></li>
-</ul>
-<p>For examples in even more scripting languages, see the &quot;Usage&quot; section below!</p><h4 id="what-can-binman-rake-1-do">What can <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a> do?<a name="what-can-binman-rake-1-do" href="#what-can-binman-rake-1-do" class="md2man-permalink" title="permalink"></a></h4><p>Here are some examples of HTML manual <em>sets</em> produced by <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>:</p>
-<ul>
+<li><a href="https://sunaku.github.io/dasht/man">https://sunaku.github.io/dasht/man</a></li>
 <li><a href="https://sunaku.github.io/tork/man">https://sunaku.github.io/tork/man</a></li>
 <li><a href="https://sunaku.github.io/binman/man">https://sunaku.github.io/binman/man</a></li>
 <li><a href="https://sunaku.github.io/md2man/man">https://sunaku.github.io/md2man/man</a></li>
+</ul>
+<h4 id="what-can-binman-1-do">What can <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> do?<a name="what-can-binman-1-do" href="#what-can-binman-1-do" class="md2man-permalink" title="permalink"></a></h4><p>Here are some real-life examples of processing bin scripts with <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>:</p>
+<ul>
+<li>dasht:
+
+<ul>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht">dasht</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht.1.markdown">dasht.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht">dasht</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht.1">dasht.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht">dasht</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht.1.html">dasht.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets">dasht-docsets</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets.1.markdown">dasht-docsets.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets">dasht-docsets</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets.1">dasht-docsets.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets">dasht-docsets</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets.1.html">dasht-docsets.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install">dasht-docsets-install</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-install.1.markdown">dasht-docsets-install.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install">dasht-docsets-install</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-install.1">dasht-docsets-install.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install">dasht-docsets-install</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets-install.1.html">dasht-docsets-install.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove">dasht-docsets-remove</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-remove.1.markdown">dasht-docsets-remove.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove">dasht-docsets-remove</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-remove.1">dasht-docsets-remove.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove">dasht-docsets-remove</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets-remove.1.html">dasht-docsets-remove.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update">dasht-docsets-update</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-update.1.markdown">dasht-docsets-update.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update">dasht-docsets-update</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-update.1">dasht-docsets-update.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update">dasht-docsets-update</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets-update.1.html">dasht-docsets-update.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec">dasht-query-exec</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-exec.1.markdown">dasht-query-exec.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec">dasht-query-exec</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-exec.1">dasht-query-exec.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec">dasht-query-exec</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-query-exec.1.html">dasht-query-exec.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html">dasht-query-html</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-html.1.markdown">dasht-query-html.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html">dasht-query-html</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-html.1">dasht-query-html.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html">dasht-query-html</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-query-html.1.html">dasht-query-html.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line">dasht-query-line</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-line.1.markdown">dasht-query-line.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line">dasht-query-line</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-line.1">dasht-query-line.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line">dasht-query-line</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-query-line.1.html">dasht-query-line.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server">dasht-server</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server.1.markdown">dasht-server.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server">dasht-server</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server.1">dasht-server.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server">dasht-server</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-server.1.html">dasht-server.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http">dasht-server-http</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server-http.1.markdown">dasht-server-http.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http">dasht-server-http</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server-http.1">dasht-server-http.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http">dasht-server-http</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-server-http.1.html">dasht-server-http.1.html</a></li>
+</ul></li>
+<li>tork:
+
+<ul>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1.markdown">tork.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1">tork.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork.1.html">tork.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1.markdown">tork-runner.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1">tork-runner.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-runner.1.html">tork-runner.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1.markdown">tork-herald.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1">tork-herald.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-herald.1.html">tork-herald.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1.markdown">tork-driver.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1">tork-driver.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-driver.1.html">tork-driver.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1.markdown">tork-engine.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1">tork-engine.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-engine.1.html">tork-engine.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1.markdown">tork-master.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1">tork-master.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-master.1.html">tork-master.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1.markdown">tork-remote.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1">tork-remote.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-remote.1.html">tork-remote.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1.markdown">tork-notify.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1">tork-notify.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-notify.1.html">tork-notify.1.html</a></li>
+</ul></li>
+<li>m2dman:
+
+<ul>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1.markdown">md2man-roff.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1">md2man-roff.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html">md2man-roff.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1.markdown">md2man-html.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1">md2man-html.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/md2man/man/man1/md2man-html.1.html">md2man-html.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1.markdown">md2man-rake.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1">md2man-rake.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html">md2man-rake.1.html</a></li>
+</ul></li>
+<li>binman:
+
+<ul>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown">binman.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1">binman.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman.1.html">binman.1.html</a></li>
+<li><code>binman text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown">binman-rake.1.markdown</a></li>
+<li><code>binman roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1">binman-rake.1</a></li>
+<li><code>binman html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-rake.1.html">binman-rake.1.html</a></li>
+</ul></li>
 </ul>
 <h2 id="installation">Installation<a name="installation" href="#installation" class="md2man-permalink" title="permalink"></a></h2><p>If you only want to view pre-built manual pages:</p><pre><code>gem install binman
 </code></pre>
