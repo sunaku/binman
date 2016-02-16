@@ -1,3 +1,7 @@
+* Code: <https://github.com/sunaku/binman>
+* Docs: <https://sunaku.github.io/binman/man>
+* Bugs: <https://github.com/sunaku/binman/issues>
+
 # binman - man pages for bin scripts
 
 [binman] produces UNIX manual pages for executable scripts using [md2man].
@@ -7,11 +11,6 @@ Or, call `binman help` to display your manual _only_ when your script receives
 with `-h` or `--help` command-line options.  Or, call `binman text` to extract
 the manual from your script for your own custom processing, outside of binman.
 And that's not all: [see the manual page][binman-man] for more possibilities!
-
-* Manuals: <https://sunaku.github.io/binman/man>
-* Sources: <https://github.com/sunaku/binman>
-* Support: <https://github.com/sunaku/binman/issues>
-* Package: <https://rubygems.org/gems/binman>
 
 ## Features
 

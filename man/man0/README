@@ -1,3 +1,14 @@
+.RS
+.IP \(bu 2
+Code: 
+\[la]https://github.com/sunaku/binman\[ra]
+.IP \(bu 2
+Docs: 
+\[la]https://sunaku.github.io/binman/man\[ra]
+.IP \(bu 2
+Bugs: 
+\[la]https://github.com/sunaku/binman/issues\[ra]
+.RE
 .TH binman \- man pages for bin scripts
 .PP
 binman
@@ -11,20 +22,6 @@ with \fB\fC\-h\fR or \fB\fC\-\-help\fR command\-line options.  Or, call \fB\fCbi
 the manual from your script for your own custom processing, outside of binman.
 And that's not all: see the manual page
 \[la]https://sunaku.github.io/binman/man/man1/binman.1.html\[ra] for more possibilities!
-.RS
-.IP \(bu 2
-Manuals: 
-\[la]https://sunaku.github.io/binman/man\[ra]
-.IP \(bu 2
-Sources: 
-\[la]https://github.com/sunaku/binman\[ra]
-.IP \(bu 2
-Support: 
-\[la]https://github.com/sunaku/binman/issues\[ra]
-.IP \(bu 2
-Package: 
-\[la]https://rubygems.org/gems/binman\[ra]
-.RE
 .SH Features
 .RS
 .IP \(bu 2
