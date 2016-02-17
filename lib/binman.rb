@@ -5,7 +5,7 @@ require 'binman/version'
 module BinMan
   extend self
 
-  # Extracts content of leading comment header (which can be one of the
+  # Extracts content of embedded manpage source (which can be one of the
   # following two choices) from given source (IO, file name, or string).
   #
   # (1) A contiguous sequence of single-line comments starting at the
@@ -23,7 +23,7 @@ module BinMan
     header.sub! /\A#!.+\n?/, ''
     header.sub! /\A#.*coding:.+\n?/, ''
 
-    # extract the leading comment header
+    # extract the embedded manpage source
     if header =~ /\A\s*^#/
       header.split(/^\s*$/, 2).first.gsub(/^# ?/, '')
     else
@@ -31,19 +31,19 @@ module BinMan
     end.strip
   end
 
-  # Renders leading comment header from given source as UNIX man page.
+  # Renders embedded manpage source from given source as UNIX man page.
   def roff source=nil
     to_roff text(source)
   end
 
-  # Renders leading comment header from given source as HTML man page.
+  # Renders embedded manpage source from given source as HTML man page.
   def html source=nil
     to_html text(source)
   end
 
-  # Shows leading comment header from given source as UNIX man page and
+  # Shows embedded manpage source from given source as UNIX man page and
   # optionally jumps to first match of query regular expression if given.
-  # If not possible, falls back to showing leading comment header as-is.
+  # If not possible, falls back to showing embedded manpage source as-is.
   # Tries to display a pre-rendered UNIX man page under ./man/ if possible.
   def show source=nil, query=nil
     # try showing existing man page files for given source
@@ -53,13 +53,13 @@ module BinMan
       return if show_man(man_path, man_page, query)
     end
 
-    # fall back to rendering leading comment header or showing it as-is
+    # fall back to rendering embedded manpage source or showing it as-is
     header = text(source)
     return if show_str(header, query)
     puts header
   end
 
-  # Shows leading comment header from given source as UNIX man page and exits
+  # Shows embedded manpage source from given source as UNIX man page and exits
   # if the given argument vector contains '-h' or '--help', except after '--',
   # optionally followed by a regular expression argument that specifies text
   # to search for and, if found, jump to inside the displayed UNIX man page.
