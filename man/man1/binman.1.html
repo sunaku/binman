@@ -3,53 +3,66 @@
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="md2man 5.0.1 https://github.com/sunaku/md2man" />
-  <title>binman(1) &mdash; man pages for bin scripts</title>
+  <title>binman(1) &mdash; manpages from header comments</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/binman.1</span></div></div><div class="container-fluid"><h1 id="binman-1-2016-02-13-5-0-1"><span class="md2man-title">BINMAN</span> <span class="md2man-section">1</span> <span class="md2man-date">2016-02-13</span> <span class="md2man-source">5.0.1</span><a name="binman-1-2016-02-13-5-0-1" href="#binman-1-2016-02-13-5-0-1" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>binman - man pages for bin scripts</p><h2 id="synopsis">SYNOPSIS<a name="synopsis" href="#synopsis" class="md2man-permalink" title="permalink"></a></h2><p><code>binman</code> [<em>OPTION</em>]... <em>COMMAND</em></p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p><a href="https://github.com/sunaku/binman">binman</a> produces UNIX manual pages for your executable scripts. It can
-extract their leading comment headers (defined below), convert them from
-<a class="md2man-reference">markdown(7)</a> into <a class="md2man-reference">roff(7)</a> using <a href="https://github.com/sunaku/md2man">md2man</a>, and display them using <a class="md2man-reference">man(1)</a>.</p><h3 id="leading-comment-headers">Leading comment headers<a name="leading-comment-headers" href="#leading-comment-headers" class="md2man-permalink" title="permalink"></a></h3><p>A leading comment header can be one of the following two things:</p>
-<ol>
-<li><p> A contiguous sequence of single-line comments (which begin with <code>#</code>
-and optionally continue with a single space followed by any number of
-characters until the end of the line) starting at the beginning of the
-file (after shebang and encoding comments plus optional blank lines) and
-ending at the first single blank line.</p></li>
-<li><p> The first embedded document delimited by <code>=begin</code> and <code>=end</code> lines, which
-begin with the respective delimiters and optionally continue with a single
-space followed by any number of characters until the end of the line.</p></li>
-</ol>
-<h3 id="markdown-processing-divergence">Markdown processing divergence<a name="markdown-processing-divergence" href="#markdown-processing-divergence" class="md2man-permalink" title="permalink"></a></h3><p>Although your leading comment headers are written in <a class="md2man-reference">markdown(7)</a>, <code>binman
-conv</code> inherits the following additions to <a class="md2man-reference">markdown(7)</a> syntax from <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>:</p>
-<ul>
-<li><p>There can be at most one top-level heading (H1).  It is emitted as <code>.TH</code>
-in the <a class="md2man-reference">roff(7)</a> output to define the UNIX manual page&#39;s header and footer.</p></li>
-<li><p>Paragraphs whose lines are all uniformly indented by two spaces are
-considered to be &quot;indented paragraphs&quot;.  They are unindented accordingly
-before emission as <code>.IP</code> in the <a class="md2man-reference">roff(7)</a> output.</p></li>
-<li><p>Paragraphs whose subsequent lines (all except the first) are uniformly
-indented by two spaces are considered to be a &quot;tagged paragraphs&quot;.  They
-are unindented accordingly before emission as <code>.TP</code> in the <a class="md2man-reference">roff(7)</a> output.</p></li>
-</ul>
-<h3 id="markdown-processing-extensions">Markdown processing extensions<a name="markdown-processing-extensions" href="#markdown-processing-extensions" class="md2man-permalink" title="permalink"></a></h3><p>The following <a href="https://github.com/vmg/redcarpet">Redcarpet</a> extensions are enabled while processing <a class="md2man-reference">markdown(7)</a>:</p>
-<ul>
-<li>tables</li>
-<li>autolink</li>
-<li>superscript</li>
-<li>strikethrough</li>
-<li>fenced_code_blocks</li>
-</ul>
-<h2 id="options">OPTIONS<a name="options" href="#options" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>-h</code> [<em>PATTERN</em>], <code>--help</code> [<em>PATTERN</em>]</dt><dd>Show this help manual and search for <em>PATTERN</em> regular expression therein.</dd></dl><h2 id="commands">COMMANDS<a name="commands" href="#commands" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>text</code> [<em>FILE</em>]</dt><dd>Print the leading comment header extracted from the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>roff</code> [<em>FILE</em>]</dt><dd>Print the <a class="md2man-reference">roff(7)</a> conversion of the leading comment header extracted from
-the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>html</code> [<em>FILE</em>]</dt><dd>Print the HTML conversion of the leading comment header extracted from
-the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>show</code> [<em>FILE</em>] [<em>PATTERN</em>]</dt><dd>Use <a class="md2man-reference">man(1)</a> to display the <a class="md2man-reference">roff(7)</a> conversion of the leading comment header
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/binman.1</span></div></div><div class="container-fluid"><h1 id="binman-1-2016-02-13-5-0-1"><span class="md2man-title">BINMAN</span> <span class="md2man-section">1</span> <span class="md2man-date">2016-02-13</span> <span class="md2man-source">5.0.1</span><a name="binman-1-2016-02-13-5-0-1" href="#binman-1-2016-02-13-5-0-1" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>binman - manpages from header comments</p><h2 id="synopsis">SYNOPSIS<a name="synopsis" href="#synopsis" class="md2man-permalink" title="permalink"></a></h2><p><code>binman</code> [<em>OPTION</em>]... <em>COMMAND</em></p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p><a href="https://github.com/sunaku/binman">binman</a> generates manual pages from header comments in your scripts.  It can
+extract their embedded manpage sources (described below), convert them from
+<a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> into <a class="md2man-reference">roff(7)</a> and HTML using <a href="https://github.com/sunaku/md2man">md2man</a>, and display them using <a class="md2man-reference">man(1)</a>.</p><h3 id="embedded-manpage-sources">Embedded manpage sources<a name="embedded-manpage-sources" href="#embedded-manpage-sources" class="md2man-permalink" title="permalink"></a></h3><p>An &quot;embedded manpage source&quot; is an <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> document that is embedded in your
+script, typically inside a multi-line block comment or &quot;here document&quot;; or in
+a header comment composed of single-line comments near the top of your script.</p><h4 id="in-multi-line-comments">In multi-line comments<a name="in-multi-line-comments" href="#in-multi-line-comments" class="md2man-permalink" title="permalink"></a></h4><p>In the former case, where it&#39;s possible to write a freeform block of text, the
+embedded manpage source must be delimited by <code>=begin</code> and <code>=end</code> lines, which
+start with their respective delimiters and, optionally, continue with a single
+space followed by any amount and kind of characters until the end of line.</p><p>To illustrate, here is the simplest case:</p><pre><code>=begin
+This is an embedded manpage source!
+=end
+</code></pre>
+<p>Next, we can add decorations after the delimiters:</p><pre><code>=begin \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+This is an embedded manpage source!
+=end //////////////////////////////
+</code></pre>
+<p>Similarly, using different characters this time:</p><pre><code>=begin abcdefghijklmnopqrstuvwxyz&#39;&quot;
+This is an embedded manpage source!
+=end 0123456789!@#$%^&amp;*()=+-_:;,\/?
+</code></pre>
+<h4 id="in-single-line-comments">In single-line comments<a name="in-single-line-comments" href="#in-single-line-comments" class="md2man-permalink" title="permalink"></a></h4><p>In the latter case, the embedded manpage source is expected to be found in a
+contiguous block of single-line comments that begins at the top of the script
+(optionally after a <code>#!</code> line, <code>coding:</code> line, and any number of blank lines)
+and ends at the first blank line.  Each single-line comment inside this block
+must begin with a <code>#</code> character and may, optionally, continue with a single
+space followed by any amount and kind of characters until the end of line.</p><p>To illustrate, here is the simplest case:</p><pre><code># This is an embedded manpage source!
+</code></pre>
+<p>Next, we can add a <code>#!</code> line at the top:</p><pre><code>#!/bin/sh
+# This is an embedded manpage source!
+</code></pre>
+<p>Next, we can add a <code>coding:</code> line after <code>#!</code>:</p><pre><code>#!/bin/sh
+# coding: utf-8
+# This is an embedded manpage source!
+</code></pre>
+<p>Or, using the Emacs coding system syntax:</p><pre><code>#!/bin/sh
+# -*- encoding: utf-8 -*-
+# This is an embedded manpage source!
+</code></pre>
+<p>Next, we can add blank lines between them:</p><pre><code>#!/bin/sh
+# coding: utf-8
+
+# This is an embedded manpage source!
+</code></pre>
+<p>Here is another permutation of the above:</p><pre><code>#!/bin/sh
+
+# This is an embedded manpage source!
+</code></pre>
+<h2 id="options">OPTIONS<a name="options" href="#options" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>-h</code> [<em>PATTERN</em>], <code>--help</code> [<em>PATTERN</em>]</dt><dd>Show this help manual and search for <em>PATTERN</em> regular expression therein.</dd></dl><h2 id="commands">COMMANDS<a name="commands" href="#commands" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>text</code> [<em>FILE</em>]</dt><dd>Print the embedded manpage source extracted from the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>roff</code> [<em>FILE</em>]</dt><dd>Print the <a class="md2man-reference">roff(7)</a> conversion of the embedded manpage source extracted from
+the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>html</code> [<em>FILE</em>]</dt><dd>Print the HTML conversion of the embedded manpage source extracted from
+the given <em>FILE</em> or STDIN.</dd></dl><dl><dt><code>show</code> [<em>FILE</em>] [<em>PATTERN</em>]</dt><dd>Use <a class="md2man-reference">man(1)</a> to display the <a class="md2man-reference">roff(7)</a> conversion of the embedded manpage source
 extracted from the given <em>FILE</em> or STDIN.  If <em>PATTERN</em> is given, search for
 it within the output displayed by <a class="md2man-reference">man(1)</a> and jump to first match if found.
 If <a class="md2man-reference">man(1)</a> cannot display the <a class="md2man-reference">roff(1)</a> conversion, fall back to the showing
 the HTML conversion; if that fails too, display the extracted text as-is.</dd></dl><dl><dt><code>help</code> <em>FILE</em> ... [<code>-h</code>|<code>--help</code> [<em>PATTERN</em>]] ... [<code>--</code>] ...</dt><dd>If the given argument sequence contains <code>-h</code> or <code>--help</code>, except after
 <code>--</code>, optionally followed by a <em>PATTERN</em> regular expression that specifies
 text to search for and, if found, jump to inside the displayed man page,
-then this program extracts the given <em>FILE</em>&#39;s leading comment header,
+then this program extracts the given <em>FILE</em>&#39;s embedded manpage source,
 converts it into <a class="md2man-reference">roff(7)</a>, displays it using <a class="md2man-reference">man(1)</a>, and finally exits with
-status code <code>0</code>.  Otherwise, this program exits with status code <code>111</code>.</dd></dl><h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>, <a class="md2man-reference">man(1)</a>, <a class="md2man-reference">roff(7)</a>, <a class="md2man-reference">markdown(7)</a></p></div></body>
+status code <code>0</code>.  Otherwise, this program exits with status code <code>111</code>.</dd></dl><h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>, <a class="md2man-reference">man(1)</a>, <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>, <a class="md2man-reference">roff(7)</a>, <a class="md2man-reference">markdown(7)</a></p></div></body>
 </html>

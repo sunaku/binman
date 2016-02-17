@@ -2,7 +2,7 @@
 
 ## NAME
 
-binman - man pages for bin scripts
+binman - manpages from header comments
 
 ## SYNOPSIS
 
@@ -10,49 +10,83 @@ binman - man pages for bin scripts
 
 ## DESCRIPTION
 
-[binman] produces UNIX manual pages for your executable scripts. It can
-extract their leading comment headers (defined below), convert them from
-markdown(7) into roff(7) using [md2man], and display them using man(1).
+[binman] generates manual pages from header comments in your scripts.  It can
+extract their embedded manpage sources (described below), convert them from
+md2man(5) into roff(7) and HTML using [md2man], and display them using man(1).
 
-### Leading comment headers
+### Embedded manpage sources
 
-A leading comment header can be one of the following two things:
+An "embedded manpage source" is an md2man(5) document that is embedded in your
+script, typically inside a multi-line block comment or "here document"; or in
+a header comment composed of single-line comments near the top of your script.
 
-1.  A contiguous sequence of single-line comments (which begin with `#`
-    and optionally continue with a single space followed by any number of
-    characters until the end of the line) starting at the beginning of the
-    file (after shebang and encoding comments plus optional blank lines) and
-    ending at the first single blank line.
+#### In multi-line comments
 
-2.  The first embedded document delimited by `=begin` and `=end` lines, which
-    begin with the respective delimiters and optionally continue with a single
-    space followed by any number of characters until the end of the line.
+In the former case, where it's possible to write a freeform block of text, the
+embedded manpage source must be delimited by `=begin` and `=end` lines, which
+start with their respective delimiters and, optionally, continue with a single
+space followed by any amount and kind of characters until the end of line.
 
-### Markdown processing divergence
+To illustrate, here is the simplest case:
 
-Although your leading comment headers are written in markdown(7), `binman
-conv` inherits the following additions to markdown(7) syntax from md2man(5):
+    =begin
+    This is an embedded manpage source!
+    =end
 
-  * There can be at most one top-level heading (H1).  It is emitted as `.TH`
-    in the roff(7) output to define the UNIX manual page's header and footer.
+Next, we can add decorations after the delimiters:
 
-  * Paragraphs whose lines are all uniformly indented by two spaces are
-    considered to be "indented paragraphs".  They are unindented accordingly
-    before emission as `.IP` in the roff(7) output.
+    =begin \\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    This is an embedded manpage source!
+    =end //////////////////////////////
 
-  * Paragraphs whose subsequent lines (all except the first) are uniformly
-    indented by two spaces are considered to be a "tagged paragraphs".  They
-    are unindented accordingly before emission as `.TP` in the roff(7) output.
+Similarly, using different characters this time:
 
-### Markdown processing extensions
+    =begin abcdefghijklmnopqrstuvwxyz'"
+    This is an embedded manpage source!
+    =end 0123456789!@#$%^&*()=+-_:;,\/?
 
-The following [Redcarpet] extensions are enabled while processing markdown(7):
+#### In single-line comments
 
-  * tables
-  * autolink
-  * superscript
-  * strikethrough
-  * fenced\_code\_blocks
+In the latter case, the embedded manpage source is expected to be found in a
+contiguous block of single-line comments that begins at the top of the script
+(optionally after a `#!` line, `coding:` line, and any number of blank lines)
+and ends at the first blank line.  Each single-line comment inside this block
+must begin with a `#` character and may, optionally, continue with a single
+space followed by any amount and kind of characters until the end of line.
+
+To illustrate, here is the simplest case:
+
+    # This is an embedded manpage source!
+
+Next, we can add a `#!` line at the top:
+
+    #!/bin/sh
+    # This is an embedded manpage source!
+
+Next, we can add a `coding:` line after `#!`:
+
+    #!/bin/sh
+    # coding: utf-8
+    # This is an embedded manpage source!
+
+Or, using the Emacs coding system syntax:
+
+    #!/bin/sh
+    # -*- encoding: utf-8 -*-
+    # This is an embedded manpage source!
+
+Next, we can add blank lines between them:
+
+    #!/bin/sh
+    # coding: utf-8
+
+    # This is an embedded manpage source!
+
+Here is another permutation of the above:
+
+    #!/bin/sh
+
+    # This is an embedded manpage source!
 
 ## OPTIONS
 
@@ -62,18 +96,18 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
 ## COMMANDS
 
 `text` [*FILE*]
-  Print the leading comment header extracted from the given *FILE* or STDIN.
+  Print the embedded manpage source extracted from the given *FILE* or STDIN.
 
 `roff` [*FILE*]
-  Print the roff(7) conversion of the leading comment header extracted from
+  Print the roff(7) conversion of the embedded manpage source extracted from
   the given *FILE* or STDIN.
 
 `html` [*FILE*]
-  Print the HTML conversion of the leading comment header extracted from
+  Print the HTML conversion of the embedded manpage source extracted from
   the given *FILE* or STDIN.
 
 `show` [*FILE*] [*PATTERN*]
-  Use man(1) to display the roff(7) conversion of the leading comment header
+  Use man(1) to display the roff(7) conversion of the embedded manpage source
   extracted from the given *FILE* or STDIN.  If *PATTERN* is given, search for
   it within the output displayed by man(1) and jump to first match if found.
   If man(1) cannot display the roff(1) conversion, fall back to the showing
@@ -83,13 +117,13 @@ The following [Redcarpet] extensions are enabled while processing markdown(7):
   If the given argument sequence contains `-h` or `--help`, except after
   `--`, optionally followed by a *PATTERN* regular expression that specifies
   text to search for and, if found, jump to inside the displayed man page,
-  then this program extracts the given *FILE*'s leading comment header,
+  then this program extracts the given *FILE*'s embedded manpage source,
   converts it into roff(7), displays it using man(1), and finally exits with
   status code `0`.  Otherwise, this program exits with status code `111`.
 
 ## SEE ALSO
 
-binman-rake(1), man(1), roff(7), markdown(7)
+binman-rake(1), man(1), md2man(5), roff(7), markdown(7)
 
 [binman]: https://github.com/sunaku/binman
 [md2man]: https://github.com/sunaku/md2man
