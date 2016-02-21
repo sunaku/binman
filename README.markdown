@@ -8,7 +8,7 @@ binman generates manual pages from header comments in your scripts so that you
 can keep your documentation and implementation together, in the same file, for
 easy maintenance.  But keeping them apart, in separate files, is supported too.
 
-![Obligatory screen-shot of binman(1) in action!](EXAMPLE.png)
+![screenshot](https://github.com/sunaku/binman/raw/gh-pages/EXAMPLE.png)
 
 ## Features
 
