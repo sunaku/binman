@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta name="generator" content="md2man 5.0.1 https://github.com/sunaku/md2man" />
-  <title>VERSION</title>
+  <meta name="generator" content="md2man 5.0.3 https://github.com/sunaku/md2man" />
+  <title>VERSION &mdash; binman</title>
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
@@ -95,18 +95,18 @@ regular expression argument can now also be passed into <code>BinMan.show()</cod
 </ul>
 <h2 id="version-3-3-2-2013-08-30">Version 3.3.2 (2013-08-30)<a name="version-3-3-2-2013-08-30" href="#version-3-3-2-2013-08-30" class="md2man-permalink" title="permalink"></a></h2><p>Patch:</p>
 <ul>
-<li><p>Rescue error when designated opener is not found:</p><pre><code>$ binman -h
-/gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;: No such file or directory - xdg-open (Errno::ENOENT)
-        from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn&#39;
-        from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show&#39;
-        from /gems/binman-3.3.1/lib/binman.rb:55:in `each&#39;
-        from /gems/binman-3.3.1/lib/binman.rb:55:in `show&#39;
-        from /gems/binman-3.3.1/lib/binman.rb:88:in `help&#39;
-        from /gems/binman-3.3.1/bin/binman:106:in `&lt;top (required)&gt;&#39;
-        from /bin/binman:23:in `load&#39;
-        from /bin/binman:23:in `&lt;main&gt;&#39;
+<li><p>Rescue error when designated opener is not found:</p><pre class="highlight plaintext"><code>$ binman -h
+/gems/opener-0.1.0/lib/opener.rb:97:in `spawn': No such file or directory - xdg-open (Errno::ENOENT)
+        from /gems/opener-0.1.0/lib/opener.rb:97:in `spawn'
+        from /gems/binman-3.3.1/lib/binman.rb:57:in `block in show'
+        from /gems/binman-3.3.1/lib/binman.rb:55:in `each'
+        from /gems/binman-3.3.1/lib/binman.rb:55:in `show'
+        from /gems/binman-3.3.1/lib/binman.rb:88:in `help'
+        from /gems/binman-3.3.1/bin/binman:106:in `&lt;top (required)&gt;'
+        from /bin/binman:23:in `load'
+        from /bin/binman:23:in `&lt;main&gt;'
 </code></pre></li>
-<li><p>Fix an undefined local variable or method error:</p><pre><code>binman: undefined local variable or method `library&#39; for BinMan:Module
+<li><p>Fix an undefined local variable or method error:</p><pre class="highlight plaintext"><code>binman: undefined local variable or method `library' for BinMan:Module
 </code></pre></li>
 </ul>
 <p>Other:</p>

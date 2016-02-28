@@ -1,0 +1,19 @@
+# BINMAN-ROFF 1 2016-02-13 5.0.1
+
+## NAME
+
+binman-roff - UNIX manpages from header comments
+
+## SYNOPSIS
+
+`binman-roff` [*OPTION*]... [*FILE*]
+
+
+## DESCRIPTION
+
+Extracts the "embedded manpage source", described in binman-text(1), from the
+given *FILE* or STDIN and transforms it into roff(7) for display by man(1).
+
+## SEE ALSO
+
+binman-text(1), binman-html(1), binman(1), roff(7), man(1)

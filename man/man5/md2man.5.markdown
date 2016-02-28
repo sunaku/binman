@@ -1,22 +1,23 @@
-# MD2MAN 5                        2016-02-21                            5.0.2
+# MD2MAN 5                        2016-02-21                            5.0.3
 
 ## NAME
 
-md2man - UNIX manual page flavoring for the markdown(7) file format
+md2man - UNIX manual page flavoring for [Markdown]
 
 ## DESCRIPTION
 
-[md2man] makes the markdown(7) file format friendly for writing UNIX manual
+[md2man] makes the [Markdown] format more friendly for writing UNIX manual
 pages by extending its syntax, semantics, and assumed processing extensions.
 
 ### Syntax
 
-md2man extends markdown(7) syntax by distinguishing three kinds of paragraphs.
+md2man extends [Markdown] syntax by recognizing three kinds of paragraphs,
+analogous to the underlying `.PP`, `.TP`, and `.IP` directives in roff(7).
 
 #### Normal paragraphs
 
 Paragraphs whose lines are all indented by exactly zero or one additional
-spaces are considered to be "normal paragraphs".  For example:
+space are considered "normal paragraphs", analogous to `.PP` in roff(7):
 
     This is a normal paragraph.
 
@@ -35,8 +36,8 @@ spaces are considered to be "normal paragraphs".  For example:
 #### Tagged paragraphs
 
 Paragraphs whose first line is indented by less than two additional spaces and
-whose subsequent lines are uniformly indented by exactly two additional spaces
-are considered to be "tagged paragraphs".  For example:
+whose subsequent lines are all uniformly indented by exactly two additional
+spaces are considered "tagged paragraphs", analogous to `.TP` in roff(7):
 
     This is a
       tagged
@@ -45,7 +46,7 @@ are considered to be "tagged paragraphs".  For example:
 #### Indented paragraphs
 
 Paragraphs whose lines are all uniformly indented by exactly two additional
-spaces are considered to be "indented paragraphs".  For example:
+spaces are considered "indented paragraphs", analogous to `.IP` in roff(7):
 
       This is an
       indented
@@ -53,7 +54,7 @@ spaces are considered to be "indented paragraphs".  For example:
 
 ### Semantics
 
-md2man extends markdown(7) semantics by treating top-level headings specially.
+md2man extends [Markdown] semantics by treating top-level headings specially.
 
 #### Top-level headings
 
@@ -81,7 +82,7 @@ Any subsequent top-level headings are treated as second-level `<h2>` headings.
 
 ### Extensions
 
-md2man enables the following [Redcarpet] extensions while reading markdown(7):
+md2man enables the following [Redcarpet] extensions while reading [Markdown]:
 
   * tables
   * autolink
@@ -184,7 +185,8 @@ http://www.schweikhardt.net/man_page_howto.html)
 
 ## SEE ALSO
 
-markdown(7), man-pages(7), md2man-roff(1), md2man-html(1), md2man-rake(1)
+[Markdown], man-pages(7), roff(7), md2man-roff(1), md2man-html(1)
 
 [md2man]: https://github.com/sunaku/md2man
 [Redcarpet]: https://github.com/vmg/redcarpet
+[Markdown]: http://daringfireball.net/projects/markdown/syntax

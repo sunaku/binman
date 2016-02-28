@@ -1,19 +1,13 @@
-.TH BINMAN 1 2016\-02\-13 5.0.1
+.TH BINMAN\-TEXT 1 2016\-02\-13 5.0.1
 .SH NAME
 .PP
-binman \- manpages from header comments
+binman\-text \- extract embedded manpage sources
 .SH SYNOPSIS
 .PP
-\fB\fCbinman\fR [\fIOPTION\fP]... \fICOMMAND\fP
+\fB\fCbinman\-text\fR [\fIOPTION\fP]... [\fIFILE\fP]
 .SH DESCRIPTION
 .PP
-binman \[la]https://github.com/sunaku/binman\[ra] generates manual pages from header comments in your scripts.  It can
-extract their embedded manpage sources (described below), convert them from
-.BR md2man (5) 
-into 
-.BR roff (7) 
-and HTML using md2man \[la]https://github.com/sunaku/md2man\[ra], and display them using 
-.BR man (1).
+Prints the "embedded manpage source" extracted from the given \fIFILE\fP or STDIN.
 .SS Embedded manpage sources
 .PP
 An "embedded manpage source" is an 
@@ -127,53 +121,9 @@ Here is another permutation of the above:
 .TP
 \fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
 Show this help manual and optionally search for \fIPATTERN\fP regular expression.
-.SH COMMANDS
-.TP
-\fB\fCtext\fR [\fIFILE\fP]
-Print the embedded manpage source extracted from the given \fIFILE\fP or STDIN.
-.TP
-\fB\fCroff\fR [\fIFILE\fP]
-Print the 
-.BR roff (7) 
-conversion of the embedded manpage source extracted from
-the given \fIFILE\fP or STDIN.
-.TP
-\fB\fChtml\fR [\fIFILE\fP]
-Print the HTML conversion of the embedded manpage source extracted from
-the given \fIFILE\fP or STDIN.
-.TP
-\fB\fCshow\fR [\fIFILE\fP] [\fIPATTERN\fP]
-Use 
-.BR man (1) 
-to display the 
-.BR roff (7) 
-conversion of the embedded manpage source
-extracted from the given \fIFILE\fP or STDIN.  If \fIPATTERN\fP is given, search for
-it within the output displayed by 
-.BR man (1) 
-and jump to first match if found.
-If 
-.BR man (1) 
-cannot display the 
-.BR roff (1) 
-conversion, fall back to the showing
-the HTML conversion; if that fails too, display the extracted text as\-is.
-.TP
-\fB\fChelp\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIPATTERN\fP]] ... [\fB\fC\-\-\fR] ...
-If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after
-\fB\fC\-\-\fR, optionally followed by a \fIPATTERN\fP regular expression that specifies
-text to search for and, if found, jump to inside the displayed man page,
-then this program extracts the given \fIFILE\fP\&'s embedded manpage source,
-converts it into 
-.BR roff (7), 
-displays it using 
-.BR man (1), 
-and finally exits with
-status code \fB\fC0\fR\&.  Otherwise, this program exits with status code \fB\fC111\fR\&.
 .SH SEE ALSO
 .PP
-.BR binman-rake (1), 
-.BR man (1), 
 .BR md2man (5), 
-.BR roff (7), 
-.BR markdown (7)
+.BR binman-roff (1), 
+.BR binman-html (1), 
+.BR binman (1)

@@ -83,6 +83,7 @@ First, write
 text for your script: either in a comment at the top of
 your script file, as described under "Embedded manpage sources" in 
 .BR binman (1),
+
 or in a separate Markdown file located at \fB\fCman/man?/*.?.{markdown,mkd,md}\fR\&.
 .RS
 .IP \(bu 2
@@ -538,8 +539,10 @@ at "compile time") \fIonly when\fP those help options are found in its arguments
 .nf
 #!/usr/bin/sh
 # your program's manual page goes here
+
 # OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 binman help "$0" "$@" && exit
+
 # OPTION 2: show manual unconditionally
 binman show "$0"
 .fi
@@ -550,9 +553,12 @@ binman show "$0"
 .nf
 #!/usr/bin/env ruby
 # your program's manual page goes here
+
 require 'binman'
+
 # OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 BinMan.help
+
 # OPTION 2: show manual unconditionally
 BinMan.show
 .fi
@@ -598,8 +604,10 @@ See the API documentation \[la]http://rubydoc.info/gems/binman/frames\[ra] for e
 .nf
 #!/usr/bin/env perl
 # your program's manual page goes here
+
 # OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 system('binman', 'help', __FILE__, @ARGV) == 0 and exit;
+
 # OPTION 2: show manual unconditionally
 system('binman', 'show', __FILE__);
 .fi
@@ -623,9 +631,12 @@ your program's manual page goes here
 .nf
 #!/usr/bin/env python
 # your program's manual page goes here
+
 import sys, subprocess
+
 # OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 subprocess.call(['binman', 'help', __file__] + sys.argv) == 0 and sys.exit()
+
 # OPTION 2: show manual unconditionally
 subprocess.call(['binman', 'show', __file__])
 .fi
@@ -675,9 +686,11 @@ The technique for determining current AWK script file name comes from here \[la]
 .nf
 #!/usr/bin/awk \-f
 # your program's manual page goes here
+
 # OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); gsub("\\0"," ",c);
        if(system("binman help" c) == 0){ exit }}
+
 # OPTION 2: show manual unconditionally
 BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); sub("\\0.*","",c);
        system("binman show" c)}
@@ -689,8 +702,10 @@ BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); sub("\\0.*","",c)
 .nf
 #!/usr/bin/env tclsh
 # your program's manual page goes here
+
 # OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 if {![catch {exec \-\- >/dev/tty binman help $argv0 {*}$argv}]} {exit}
+
 # OPTION 2: show manual unconditionally
 exec >/dev/tty binman show $argv0
 .fi
@@ -717,10 +732,13 @@ your program's manual page goes here
 your program's manual page goes here
 =end
 */
+
 var exec = require('child_process').exec;
+
 // OPTION 1: show manual and exit if ARGV has \-h or \-\-help except after \-\-
 exec(['>/dev/tty', 'binman', 'help', __filename].concat(process.argv).
 join(' '), function(error){ if (error === null){ process.exit(); } });
+
 // OPTION 2: show manual unconditionally
 exec(['>/dev/tty', 'binman', 'show', __filename].join(' '));
 .fi

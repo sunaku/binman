@@ -1,0 +1,39 @@
+.TH BINMAN\-SHOW 1 2016\-02\-13 5.0.1
+.SH NAME
+.PP
+binman\-show \- show manpage from header comment
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\-show\fR [\fIOPTION\fP]... [\fIFILE\fP] [\fIPATTERN\fP]
+.SH DESCRIPTION
+.PP
+Extracts the "embedded manpage source", described in 
+.BR binman-text (1), 
+from the
+given \fIFILE\fP or STDIN, transforms it into 
+.BR roff (7), 
+and displays it in 
+.BR man (1).
+.PP
+If the optional \fIPATTERN\fP regular expression is specified, searches for it
+inside the output displayed by 
+.BR man (1) 
+and jumps to the first match if found.
+.PP
+If 
+.BR man (1) 
+cannot display the 
+.BR roff (7) 
+conversion, falls back to the displaying
+the HTML conversion. And if that fails too, displays the manpage source as\-is.
+.SH OPTIONS
+.TP
+\fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
+Show this help manual and optionally search for \fIPATTERN\fP regular expression.
+.SH SEE ALSO
+.PP
+.BR binman-text (1), 
+.BR binman-roff (1), 
+.BR binman-html (1), 
+.BR binman-help (1), 
+.BR binman (1)

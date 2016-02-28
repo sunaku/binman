@@ -1,0 +1,33 @@
+.TH BINMAN\-HELP 1 2016\-02\-13 5.0.1
+.SH NAME
+.PP
+binman\-help \- add help options to your program
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\-help\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIPATTERN\fP]] ... [\fB\fC\-\-\fR] ...
+.SH DESCRIPTION
+.PP
+If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after \fB\fC\-\-\fR,
+then this program displays the given \fIFILE\fP\&'s "embedded manpage source",
+described in 
+.BR binman-text (1), 
+and then terminates with exit status \fB\fC0\fR\&.
+Otherwise, this program terminates with the nonzero exit status \fB\fC111\fR\&.
+.SH OPTIONS
+.TP
+\fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
+Display manpage and optionally search for \fIPATTERN\fP regular expression.
+.SH EXIT STATUS
+.TP
+0
+Arguments contained help options so manpage was displayed.
+.TP
+111
+Arguments lacked help options so manpage was not displayed.
+.SH SEE ALSO
+.PP
+.BR binman-text (1), 
+.BR binman-roff (1), 
+.BR binman-html (1), 
+.BR binman-show (1), 
+.BR binman (1)
