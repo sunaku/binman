@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="md2man 5.1.0 https://github.com/sunaku/md2man" />
+  <title>binman-show(1) &mdash; show manpage from header comment</title>
+  <link rel="stylesheet" href="../style.css"/>
+  <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man1">man1</a>/binman-show.1</span></div></div><div class="container-fluid"><h1 id="binman-show-1-2016-02-28-5-1-0"><span class="md2man-title">BINMAN-SHOW</span> <span class="md2man-section">1</span> <span class="md2man-date">2016-02-28</span> <span class="md2man-source">5.1.0</span><a name="binman-show-1-2016-02-28-5-1-0" href="#binman-show-1-2016-02-28-5-1-0" class="md2man-permalink" title="permalink"></a></h1><h2 id="name">NAME<a name="name" href="#name" class="md2man-permalink" title="permalink"></a></h2><p>binman-show - show manpage from header comment</p><h2 id="synopsis">SYNOPSIS<a name="synopsis" href="#synopsis" class="md2man-permalink" title="permalink"></a></h2><p><code>binman-show</code> [<em>OPTION</em>]... [<em>FILE</em>] [<em>PATTERN</em>]</p><h2 id="description">DESCRIPTION<a name="description" href="#description" class="md2man-permalink" title="permalink"></a></h2><p>Extracts the &quot;embedded manpage source&quot;, described in <a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a>, from the
+given <em>FILE</em> or STDIN, transforms it into <a class="md2man-reference">roff(7)</a>, and displays it in <a class="md2man-reference">man(1)</a>.</p><p>If the optional <em>PATTERN</em> regular expression is specified, searches for it
+inside the output displayed by <a class="md2man-reference">man(1)</a> and jumps to the first match if found.</p><p>If <a class="md2man-reference">man(1)</a> cannot display the <a class="md2man-reference">roff(7)</a> conversion, falls back to the displaying
+the HTML conversion. And if that fails too, displays the manpage source as-is.</p><h3 id="examples">Examples<a name="examples" href="#examples" class="md2man-permalink" title="permalink"></a></h3><p>See &quot;Embedded manpage sources&quot; in <a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a> for header comment syntax.</p><h4 id="from-a-shell-script">From a shell script<a name="from-a-shell-script" href="#from-a-shell-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight shell"><code><span class="c">#!/usr/bin/sh</span>
+<span class="c"># your program's manual page goes here</span>
+
+binman-show <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
+</code></pre>
+<h4 id="from-a-ruby-script">From a Ruby script<a name="from-a-ruby-script" href="#from-a-ruby-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight ruby"><code><span class="c1">#!/usr/bin/env ruby</span>
+<span class="c1"># your program's manual page goes here</span>
+
+<span class="nb">require</span> <span class="s1">'binman'</span>
+<span class="no">BinMan</span><span class="p">.</span><span class="nf">show</span>
+</code></pre>
+<p>You can also specify your program&#39;s source file encoding above the manual:</p><pre class="highlight ruby"><code><span class="c1">#!/usr/bin/env ruby</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="c1"># your program's manual page goes here</span>
+</code></pre>
+<p>You can also write the manual as a multi-line Ruby comment:</p><pre class="highlight ruby"><code><span class="c1">#!/usr/bin/env ruby</span>
+<span class="cm">=begin
+your program's manual page goes here
+=end</span>
+</code></pre>
+<p>You can also specify your program&#39;s source file encoding above the manual:</p><pre class="highlight ruby"><code><span class="c1">#!/usr/bin/env ruby</span>
+<span class="c1"># -*- coding: utf-8 -*-</span>
+<span class="cm">=begin
+your program's manual page goes here
+=end</span>
+</code></pre>
+<h4 id="from-a-perl-script">From a Perl script<a name="from-a-perl-script" href="#from-a-perl-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight perl"><code><span class="c1">#!/usr/bin/env perl</span>
+<span class="c1"># your program's manual page goes here</span>
+
+<span class="nb">system</span><span class="p">(</span><span class="s">'binman-show'</span><span class="p">,</span> <span class="nv">__FILE__</span><span class="p">);</span>
+</code></pre>
+<p>You can also write the manual as a multi-line Ruby comment after <code>__END__</code>:</p><pre class="highlight perl"><code><span class="c1">#!/usr/bin/env perl</span>
+<span class="k">print</span> <span class="s">"your program's code goes here"</span><span class="p">;</span>
+<span class="cp">__END__
+=begin
+your program's manual page goes here
+=end
+</span></code></pre>
+<h4 id="from-a-python-script">From a Python script<a name="from-a-python-script" href="#from-a-python-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
+<span class="c"># your program's manual page goes here</span>
+
+<span class="kn">import</span> <span class="nn">subprocess</span>
+
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">'binman-show'</span><span class="p">,</span> <span class="n">__file__</span><span class="p">])</span>
+</code></pre>
+<p>You can also specify your program&#39;s source file encoding above the manual:</p><pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="c"># your program's manual page goes here</span>
+</code></pre>
+<p>You can also write the manual as a multi-line Ruby comment inside a docstring:</p><pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
+<span class="s">"""
+=begin
+your program's manual page goes here
+=end
+"""</span>
+</code></pre>
+<p>You can also specify your program&#39;s source file encoding above the manual:</p><pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
+<span class="c"># -*- coding: utf-8 -*-</span>
+<span class="s">"""
+=begin
+your program's manual page goes here
+=end
+"""</span>
+</code></pre>
+<h4 id="from-an-awk-script">From an AWK script<a name="from-an-awk-script" href="#from-an-awk-script" class="md2man-permalink" title="permalink"></a></h4><p>The technique for determining current AWK script file name <a href="http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784-print.html">comes from here</a>.</p><pre class="highlight plaintext"><code>#!/usr/bin/awk -f
+# your program's manual page goes here
+
+BEGIN {getline c &lt;"/proc/self/cmdline"; sub(".*-f\0"," ",c); sub("\0.*","",c);
+       system("binman-show" c)}
+</code></pre>
+<h4 id="from-a-tcl-script">From a Tcl script<a name="from-a-tcl-script" href="#from-a-tcl-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight tcl"><code><span class="c1">#!/usr/bin/env tclsh</span>
+<span class="c1"># your program's manual page goes here</span>
+
+<span class="nb">exec</span> &gt;/dev/tty binman-show <span class="nv">$argv0</span>
+</code></pre>
+<p>You can also write the manual as a multi-line Ruby comment inside an <code>if 0</code>:</p><pre class="highlight tcl"><code><span class="c1">#!/usr/bin/env tclsh</span>
+<span class="k">if</span> 0 <span class="p">{</span>
+=begin
+your program's manual page goes here
+=end
+<span class="p">}</span>
+</code></pre>
+<h4 id="from-a-node-js-script">From a Node.js script<a name="from-a-node-js-script" href="#from-a-node-js-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight javascript"><code><span class="cm">/*
+=begin
+your program's manual page goes here
+=end
+*/</span>
+
+<span class="nx">require</span><span class="p">(</span><span class="s1">'child_process'</span><span class="p">).</span><span class="nx">exec</span><span class="p">([</span><span class="s1">'&gt;/dev/tty'</span><span class="p">,</span> <span class="s1">'binman-show'</span><span class="p">,</span> <span class="nx">__filename</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">' '</span><span class="p">));</span>
+</code></pre>
+<h2 id="options">OPTIONS<a name="options" href="#options" class="md2man-permalink" title="permalink"></a></h2><dl><dt><code>-h</code> [<em>PATTERN</em>], <code>--help</code> [<em>PATTERN</em>]</dt><dd>Show this help manual and optionally search for <em>PATTERN</em> regular expression.</dd></dl><h2 id="see-also">SEE ALSO<a name="see-also" href="#see-also" class="md2man-permalink" title="permalink"></a></h2><p><a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a>, <a class="md2man-reference" href="../man1/binman-roff.1.html">binman-roff(1)</a>, <a class="md2man-reference" href="../man1/binman-html.1.html">binman-html(1)</a>, <a class="md2man-reference" href="../man1/binman-help.1.html">binman-help(1)</a>, <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a></p></div></body>
+</html>

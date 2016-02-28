@@ -1,0 +1,219 @@
+.TH BINMAN\-SHOW 1                 2016\-02\-28                            5.1.0
+.SH NAME
+.PP
+binman\-show \- show manpage from header comment
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\-show\fR [\fIOPTION\fP]... [\fIFILE\fP] [\fIPATTERN\fP]
+.SH DESCRIPTION
+.PP
+Extracts the "embedded manpage source", described in 
+.BR binman-text (1), 
+from the
+given \fIFILE\fP or STDIN, transforms it into 
+.BR roff (7), 
+and displays it in 
+.BR man (1).
+.PP
+If the optional \fIPATTERN\fP regular expression is specified, searches for it
+inside the output displayed by 
+.BR man (1) 
+and jumps to the first match if found.
+.PP
+If 
+.BR man (1) 
+cannot display the 
+.BR roff (7) 
+conversion, falls back to the displaying
+the HTML conversion. And if that fails too, displays the manpage source as\-is.
+.SS Examples
+.PP
+See "Embedded manpage sources" in 
+.BR binman-text (1) 
+for header comment syntax.
+.SS From a shell script
+.PP
+.RS
+.nf
+#!/usr/bin/sh
+# your program's manual page goes here
+
+binman\-show "$0"
+.fi
+.RE
+.SS From a Ruby script
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# your program's manual page goes here
+
+require 'binman'
+BinMan.show
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# \-*\- coding: utf\-8 \-*\-
+# your program's manual page goes here
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# \-*\- coding: utf\-8 \-*\-
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.SS From a Perl script
+.PP
+.RS
+.nf
+#!/usr/bin/env perl
+# your program's manual page goes here
+
+system('binman\-show', __FILE__);
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment after \fB\fC__END__\fR:
+.PP
+.RS
+.nf
+#!/usr/bin/env perl
+print "your program's code goes here";
+__END__
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.SS From a Python script
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# your program's manual page goes here
+
+import subprocess
+
+subprocess.call(['binman\-show', __file__])
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# \-*\- coding: utf\-8 \-*\-
+# your program's manual page goes here
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment inside a docstring:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# \-*\- coding: utf\-8 \-*\-
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+.fi
+.RE
+.SS From an AWK script
+.PP
+The technique for determining current AWK script file name comes from here \[la]http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784-print.html\[ra]\&.
+.PP
+.RS
+.nf
+#!/usr/bin/awk \-f
+# your program's manual page goes here
+
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); sub("\\0.*","",c);
+       system("binman\-show" c)}
+.fi
+.RE
+.SS From a Tcl script
+.PP
+.RS
+.nf
+#!/usr/bin/env tclsh
+# your program's manual page goes here
+
+exec >/dev/tty binman\-show $argv0
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment inside an \fB\fCif 0\fR:
+.PP
+.RS
+.nf
+#!/usr/bin/env tclsh
+if 0 {
+=begin
+your program's manual page goes here
+=end
+}
+.fi
+.RE
+.SS From a Node.js script
+.PP
+.RS
+.nf
+/*
+=begin
+your program's manual page goes here
+=end
+*/
+
+require('child_process').exec(['>/dev/tty', 'binman\-show', __filename].join(' '));
+.fi
+.RE
+.SH OPTIONS
+.TP
+\fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
+Show this help manual and optionally search for \fIPATTERN\fP regular expression.
+.SH SEE ALSO
+.PP
+.BR binman-text (1), 
+.BR binman-roff (1), 
+.BR binman-html (1), 
+.BR binman-help (1), 
+.BR binman (1)

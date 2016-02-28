@@ -1,10 +1,9 @@
-.TH BINMAN\-RAKE 1 2016\-02\-13 5.0.1
+.TH BINMAN\-RAKE 1                   2016\-02\-28                            5.1.0
 .SH NAME
 .PP
 binman\-rake \- run 
 .BR rake (1) 
-tasks from 
-.BR binman (1)
+tasks from command line
 .SH SYNOPSIS
 .PP
 \fB\fCbinman\-rake\fR [\fIOPTION\fP]... [\fITASK\fP]...
@@ -27,15 +26,15 @@ If no \fITASK\fP is specified, then the \fB\fCbinman\fR task is run by default.
 .SH TASKS
 .TP
 \fB\fCbinman\fR
-Runs the \fB\fCbinman:man\fR and \fB\fCbinman:web\fR tasks, in that order.
+Runs the \fB\fCbinman:mkd\fR, \fB\fCbinman:man\fR, and \fB\fCbinman:web\fR tasks, in that order.
 .TP
-\fB\fCbinman:mkd\fR
+\fB\fCbinman:mkd\fR or \fB\fCmkd\fR
 Extracts manual page sources embedded in scripts found in your \fB\fCbin/\fR
 directory and saves them as \fB\fCman/man1/*.1.markdown\fR files, which can
 then be rendered as HTML or UNIX manual pages using 
 .BR md2man-rake (1).
 .TP
-\fB\fCbinman:man\fR
+\fB\fCbinman:man\fR or \fB\fCman\fR
 Builds UNIX manual pages from scripts found in your \fB\fCbin/\fR directory.
 It also runs the \fB\fCmd2man:man\fR task, provided by 
 .BR md2man-rake (1), 
@@ -43,7 +42,7 @@ which
 builds UNIX manual pages from \fB\fC*.markdown\fR, \fB\fC*.mkd\fR, and \fB\fC*.md\fR files
 found in or beneath the \fB\fCman/\fR subdirectory in your working directory.
 .TP
-\fB\fCbinman:web\fR
+\fB\fCbinman:web\fR or \fB\fCweb\fR
 Builds HTML manual pages from scripts found in your \fB\fCbin/\fR directory.
 It also runs the \fB\fCmd2man:web\fR task, provided by 
 .BR md2man-rake (1), 

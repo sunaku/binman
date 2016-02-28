@@ -1,0 +1,23 @@
+.TH BINMAN\-ROFF 1                   2016\-02\-28                            5.1.0
+.SH NAME
+.PP
+binman\-roff \- UNIX manpage from header comment
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\-roff\fR [\fIOPTION\fP]... [\fIFILE\fP]
+.SH DESCRIPTION
+.PP
+Extracts the "embedded manpage source", described in 
+.BR binman-text (1), 
+from the
+given \fIFILE\fP or STDIN and transforms it into 
+.BR roff (7) 
+for display by 
+.BR man (1).
+.SH SEE ALSO
+.PP
+.BR binman-text (1), 
+.BR binman-html (1), 
+.BR binman (1), 
+.BR roff (7), 
+.BR man (1)

@@ -1,3 +1,60 @@
+.SH Version 5.1.0 (2016\-02\-28)
+.PP
+This release splits 
+.BR binman (1) 
+into pieces and improves the documentation.
+.SS Minor:
+.RS
+.IP \(bu 2
+.BR binman (1) 
+is now deprecated, to be removed in the next major version.
+Please run the new binman\-* programs, listed below, directly instead.
+.IP \(bu 2
+Split 
+.BR binman (1) 
+commands into independent programs:
+.RS
+.IP \(bu 2
+.BR binman-help (1) 
+\- add help options to your program
+.IP \(bu 2
+.BR binman-html (1) 
+\- HTML manpage from header comment
+.IP \(bu 2
+.BR binman-rake (1) 
+\- run 
+.BR rake (1) 
+tasks from command line
+.IP \(bu 2
+.BR binman-roff (1) 
+\- UNIX manpage from header comment
+.IP \(bu 2
+.BR binman-show (1) 
+\- show manpage from header comment
+.IP \(bu 2
+.BR binman-text (1) 
+\- extract embedded manpage sources
+.RE
+.IP \(bu 2
+.BR binman-rake (1): 
+allow task names without namespace.
+.PP
+You can now run \fB\fCbinman\-rake man\fR instead of \fB\fCbinman\-rake binman:man\fR,
+and similarly \fB\fCbinman\-rake web\fR instead of \fB\fCbinman\-rake binman:web\fR,
+and similarly \fB\fCbinman\-rake mkd\fR instead of \fB\fCbinman\-rake binman:mkd\fR\&.
+.RE
+.SS Patch:
+.RS
+.IP \(bu 2
+README: an epic revision; add copy of 
+.BR md2man (5).
+.IP \(bu 2
+README: add dasht manual pages to examples section.
+.IP \(bu 2
+Clarify optionalness of \fIPATTERN\fP in \fB\fC\-\-help\fR option.
+.IP \(bu 2
+Upgrade to md2man version 5.1.
+.RE
 .SH Version 5.0.1 (2016\-02\-13)
 .SS Major:
 .RS

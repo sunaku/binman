@@ -1,0 +1,215 @@
+.TH BINMAN\-HELP 1                 2016\-02\-28                            5.1.0
+.SH NAME
+.PP
+binman\-help \- add help options to your program
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\-help\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIPATTERN\fP]] ... [\fB\fC\-\-\fR] ...
+.SH DESCRIPTION
+.PP
+If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after \fB\fC\-\-\fR,
+then this program displays the given \fIFILE\fP\&'s "embedded manpage source",
+described in 
+.BR binman-text (1), 
+and then terminates with exit status \fB\fC0\fR\&.
+Otherwise, this program terminates with the nonzero exit status \fB\fC111\fR\&.
+.SS Examples
+.PP
+See "Embedded manpage sources" in 
+.BR binman-text (1) 
+for header comment syntax.
+.SS From a shell script
+.PP
+.RS
+.nf
+#!/usr/bin/sh
+# your program's manual page goes here
+
+binman\-help "$0" "$@" && exit
+.fi
+.RE
+.SS From a Ruby script
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# your program's manual page goes here
+
+require 'binman'
+BinMan.help
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# \-*\- coding: utf\-8 \-*\-
+# your program's manual page goes here
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env ruby
+# \-*\- coding: utf\-8 \-*\-
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.SS From a Perl script
+.PP
+.RS
+.nf
+#!/usr/bin/env perl
+# your program's manual page goes here
+
+system('binman\-help', __FILE__, @ARGV) == 0 and exit;
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment after \fB\fC__END__\fR:
+.PP
+.RS
+.nf
+#!/usr/bin/env perl
+print "your program's code goes here";
+__END__
+=begin
+your program's manual page goes here
+=end
+.fi
+.RE
+.SS From a Python script
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# your program's manual page goes here
+
+import sys, subprocess
+
+subprocess.call(['binman\-help', __file__] + sys.argv) == 0 and sys.exit()
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# \-*\- coding: utf\-8 \-*\-
+# your program's manual page goes here
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment inside a docstring:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+.fi
+.RE
+.PP
+You can also specify your program's source file encoding above the manual:
+.PP
+.RS
+.nf
+#!/usr/bin/env python
+# \-*\- coding: utf\-8 \-*\-
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+.fi
+.RE
+.SS From an AWK script
+.PP
+The technique for determining current AWK script file name comes from here \[la]http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784-print.html\[ra]\&.
+.PP
+.RS
+.nf
+#!/usr/bin/awk \-f
+# your program's manual page goes here
+
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*\-f\\0"," ",c); gsub("\\0"," ",c);
+       if(system("binman\-help" c) == 0){ exit }}
+.fi
+.RE
+.SS From a Tcl script
+.PP
+.RS
+.nf
+#!/usr/bin/env tclsh
+# your program's manual page goes here
+
+if {![catch {exec \-\- >/dev/tty binman\-help $argv0 {*}$argv}]} {exit}
+.fi
+.RE
+.PP
+You can also write the manual as a multi\-line Ruby comment inside an \fB\fCif 0\fR:
+.PP
+.RS
+.nf
+#!/usr/bin/env tclsh
+if 0 {
+=begin
+your program's manual page goes here
+=end
+}
+.fi
+.RE
+.SS From a Node.js script
+.PP
+.RS
+.nf
+/*
+=begin
+your program's manual page goes here
+=end
+*/
+
+var exec = require('child_process').exec;
+exec(['>/dev/tty', 'binman\-help', __filename].concat(process.argv).
+join(' '), function(error){ if (error === null){ process.exit(); } });
+.fi
+.RE
+.SH OPTIONS
+.TP
+\fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
+Display manpage and optionally search for \fIPATTERN\fP regular expression.
+.SH EXIT STATUS
+.TP
+0
+Arguments contained help options so manpage was displayed.
+.TP
+111
+Arguments lacked help options so manpage was not displayed.
+.SH SEE ALSO
+.PP
+.BR binman-text (1), 
+.BR binman-roff (1), 
+.BR binman-html (1), 
+.BR binman-show (1), 
+.BR binman (1)

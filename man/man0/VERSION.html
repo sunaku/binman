@@ -7,7 +7,31 @@
   <link rel="stylesheet" href="../style.css"/>
   <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
-<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-0-1-2016-02-13">Version 5.0.1 (2016-02-13)<a name="version-5-0-1-2016-02-13" href="#version-5-0-1-2016-02-13" class="md2man-permalink" title="permalink"></a></h2><h3 id="major">Major:<a name="major" href="#major" class="md2man-permalink" title="permalink"></a></h3>
+<body><div class="navbar"><div class="navbar-inner"><span class="brand"><a href="../index.html#man0">man0</a>/VERSION</span></div></div><div class="container-fluid"><h2 id="version-5-1-0-2016-02-28">Version 5.1.0 (2016-02-28)<a name="version-5-1-0-2016-02-28" href="#version-5-1-0-2016-02-28" class="md2man-permalink" title="permalink"></a></h2><p>This release splits <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> into pieces and improves the documentation.</p><h3 id="minor">Minor:<a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a></h3>
+<ul>
+<li><p><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> is now deprecated, to be removed in the next major version.
+Please run the new binman-* programs, listed below, directly instead.</p></li>
+<li><p>Split <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a> commands into independent programs:</p>
+<ul>
+<li><a class="md2man-reference" href="../man1/binman-help.1.html">binman-help(1)</a> - add help options to your program</li>
+<li><a class="md2man-reference" href="../man1/binman-html.1.html">binman-html(1)</a> - HTML manpage from header comment</li>
+<li><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a> - run <a class="md2man-reference">rake(1)</a> tasks from command line</li>
+<li><a class="md2man-reference" href="../man1/binman-roff.1.html">binman-roff(1)</a> - UNIX manpage from header comment</li>
+<li><a class="md2man-reference" href="../man1/binman-show.1.html">binman-show(1)</a> - show manpage from header comment</li>
+<li><a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a> - extract embedded manpage sources</li>
+</ul></li>
+<li><p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>: allow task names without namespace.</p><p>You can now run <code>binman-rake man</code> instead of <code>binman-rake binman:man</code>,
+and similarly <code>binman-rake web</code> instead of <code>binman-rake binman:web</code>,
+and similarly <code>binman-rake mkd</code> instead of <code>binman-rake binman:mkd</code>.</p></li>
+</ul>
+<h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
+<ul>
+<li><p>README: an epic revision; add copy of <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a>.</p></li>
+<li><p>README: add dasht manual pages to examples section.</p></li>
+<li><p>Clarify optionalness of <em>PATTERN</em> in <code>--help</code> option.</p></li>
+<li><p>Upgrade to md2man version 5.1.</p></li>
+</ul>
+<h2 id="version-5-0-1-2016-02-13">Version 5.0.1 (2016-02-13)<a name="version-5-0-1-2016-02-13" href="#version-5-0-1-2016-02-13" class="md2man-permalink" title="permalink"></a></h2><h3 id="major">Major:<a name="major" href="#major" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Rename <code>binman snip</code> command to <code>binman text</code>.</p></li>
 <li><p>Rename <code>binman conv</code> command to <code>binman roff</code> and make it operate on a bin
@@ -20,11 +44,11 @@ Windows where there is no <a class="md2man-reference">man(1)</a> reader, but a w
 <li><p>When a HTML manual page is shown, <code>binman</code> now blocks until the launched
 web browser exits.  Previously, it used to exit immediately (nonblocking).</p></li>
 </ul>
-<h2 id="version-4-2-1-2016-02-12">Version 4.2.1 (2016-02-12)<a name="version-4-2-1-2016-02-12" href="#version-4-2-1-2016-02-12" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor">Minor:<a name="minor" href="#minor" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-4-2-1-2016-02-12">Version 4.2.1 (2016-02-12)<a name="version-4-2-1-2016-02-12" href="#version-4-2-1-2016-02-12" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-1">Minor:<a name="minor-1" href="#minor-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>Add <code>binman:mkd</code> rake task to extract <code>man/man1/*.1.markdown</code> files.</li>
 </ul>
-<h3 id="patch">Patch:<a name="patch" href="#patch" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="patch-1">Patch:<a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Shell out to <a class="md2man-reference">md2man-rake(1)</a> for dynamic man pages.</p><p>Requiring the md2man/rakefile.rb script builds Rake tasks only once, so
 it ignores any man page files generated dynamically after the require().</p><p>This fix shells out to <a class="md2man-reference">md2man-rake(1)</a> causing that script to be required
@@ -33,11 +57,11 @@ every time afresh, so that such dynamically generated files are handled.</p></li
 <li><p>Failure when <code>binman show</code> is called without ARGV.</p><p>binman.rb:47:in `basename&#39;: no implicit conversion of IO into String (TypeError)</p></li>
 <li><p>Failure when <code>binman show</code> is given input on STDIN.</p><p>binman.rb:51:in `basename&#39;: no implicit conversion of IO into String (TypeError)</p></li>
 </ul>
-<h3 id="patch-1">Patch:<a name="patch-1" href="#patch-1" class="md2man-permalink" title="permalink"></a></h3><h2 id="version-4-1-0-2016-02-10">Version 4.1.0 (2016-02-10)<a name="version-4-1-0-2016-02-10" href="#version-4-1-0-2016-02-10" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-1">Minor:<a name="minor-1" href="#minor-1" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="patch-2">Patch:<a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a></h3><h2 id="version-4-1-0-2016-02-10">Version 4.1.0 (2016-02-10)<a name="version-4-1-0-2016-02-10" href="#version-4-1-0-2016-02-10" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-2">Minor:<a name="minor-2" href="#minor-2" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li>Print path of HTML man page to STDOUT when launching browser.</li>
 </ul>
-<h3 id="patch-2">Patch:<a name="patch-2" href="#patch-2" class="md2man-permalink" title="permalink"></a></h3>
+<h3 id="patch-3">Patch:<a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>Revert &quot;ensure &#39;binman:web&#39; task works the first time thru&quot;.</p><p>This reverts commit dd0511e78e02546cac4903b5c6de6243607a8bba,
 which was causing the following error under Ruby 2.3.0p0.</p><dl><dd>% rake build
@@ -65,7 +89,7 @@ exit 1</dd></dl></li>
 <li><p>Upgrade to md2man 4.0, which no longer expands cross references in code
 spans and code blocks.  Your manuals might be rendered differently now.</p></li>
 </ul>
-<h2 id="version-3-4-1-2014-07-01">Version 3.4.1 (2014-07-01)<a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a></h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-3">Patch:<a name="patch-3" href="#patch-3" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-3-4-1-2014-07-01">Version 3.4.1 (2014-07-01)<a name="version-3-4-1-2014-07-01" href="#version-3-4-1-2014-07-01" class="md2man-permalink" title="permalink"></a></h2><p>This release fixes the help options&#39; REGEXP argument under non-Debian systems.</p><h3 id="patch-4">Patch:<a name="patch-4" href="#patch-4" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p><a class="md2man-reference">pager(1)</a> isn&#39;t a universal command: CentOS uses <code>less -is</code> instead.</p></li>
 <li><p>Silence <a class="md2man-reference">man(1)</a> stderr when displaying dynamically extracted manual.</p></li>
@@ -76,7 +100,7 @@ spans and code blocks.  Your manuals might be rendered differently now.</p></li>
 <li><p>Document REGEXP argument for help options in <code>bin/*</code>.</p></li>
 <li><p>Refer to REGEXP argument as PATTERN like less does.</p></li>
 </ul>
-<h2 id="version-3-4-0-2014-06-29">Version 3.4.0 (2014-06-29)<a name="version-3-4-0-2014-06-29" href="#version-3-4-0-2014-06-29" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-2">Minor:<a name="minor-2" href="#minor-2" class="md2man-permalink" title="permalink"></a></h3>
+<h2 id="version-3-4-0-2014-06-29">Version 3.4.0 (2014-06-29)<a name="version-3-4-0-2014-06-29" href="#version-3-4-0-2014-06-29" class="md2man-permalink" title="permalink"></a></h2><h3 id="minor-3">Minor:<a name="minor-3" href="#minor-3" class="md2man-permalink" title="permalink"></a></h3>
 <ul>
 <li><p>GH-3: add optional regexp argument to <code>-h</code>/<code>--help</code> to search in <a class="md2man-reference">man(1)</a>.</p><p>The <code>-h</code> and <code>--help</code> options in <code>BinMan.help()</code> can now be optionally
 followed by a regular expression argument that specifies text to search

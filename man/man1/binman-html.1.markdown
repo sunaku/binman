@@ -1,0 +1,19 @@
+# BINMAN-HTML 1                   2016-02-28                            5.1.0
+
+## NAME
+
+binman-html - HTML manpage from header comment
+
+## SYNOPSIS
+
+`binman-html` [*OPTION*]... [*FILE*]
+
+
+## DESCRIPTION
+
+Extracts the "embedded manpage source", described in binman-text(1), from the
+given *FILE* or STDIN and transforms it into HTML for use in a web browser.
+
+## SEE ALSO
+
+binman-text(1), binman-roff(1), binman(1)

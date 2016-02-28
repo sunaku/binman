@@ -1,127 +1,17 @@
-.TH BINMAN 1 2016\-02\-13 5.0.1
+.TH BINMAN 1                        2016\-02\-28                            5.1.0
 .SH NAME
 .PP
-binman \- manpages from header comments
+binman \- deprecated; use binman\-* instead
 .SH SYNOPSIS
 .PP
 \fB\fCbinman\fR [\fIOPTION\fP]... \fICOMMAND\fP
 .SH DESCRIPTION
 .PP
-binman \[la]https://github.com/sunaku/binman\[ra] generates manual pages from header comments in your scripts.  It can
-extract their embedded manpage sources (described below), convert them from
-.BR md2man (5) 
-into 
-.BR roff (7) 
-and HTML using md2man \[la]https://github.com/sunaku/md2man\[ra], and display them using 
-.BR man (1).
-.SS Embedded manpage sources
-.PP
-An "embedded manpage source" is an 
-.BR md2man (5) 
-document that is embedded in your
-script, typically inside a multi\-line block comment or "here document"; or in
-a header comment composed of single\-line comments near the top of your script.
-.SS In multi\-line comments
-.PP
-In the former case, where it's possible to write a freeform block of text, the
-embedded manpage source must be delimited by \fB\fC=begin\fR and \fB\fC=end\fR lines, which
-start with their respective delimiters and, optionally, continue with a single
-space followed by any amount and kind of characters until the end of line.
-.PP
-To illustrate, here is the simplest case:
+Runs the fellow "\fB\fCbinman\fR\-\fICOMMAND\fP" programs listed under "Commands" below.
 .PP
 .RS
-.nf
-=begin
-This is an embedded manpage source!
-=end
-.fi
-.RE
-.PP
-Next, we can add decorations after the delimiters:
-.PP
-.RS
-.nf
-=begin \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-This is an embedded manpage source!
-=end //////////////////////////////
-.fi
-.RE
-.PP
-Similarly, using different characters this time:
-.PP
-.RS
-.nf
-=begin abcdefghijklmnopqrstuvwxyz'"
-This is an embedded manpage source!
-=end 0123456789!@#$%^&*()=+\-_:;,\\/?
-.fi
-.RE
-.SS In single\-line comments
-.PP
-In the latter case, the embedded manpage source is expected to be found in a
-contiguous block of single\-line comments that begins at the top of the script
-(optionally after a \fB\fC#!\fR line, \fB\fCcoding:\fR line, and any number of blank lines)
-and ends at the first blank line.  Each single\-line comment inside this block
-must begin with a \fB\fC#\fR character and may, optionally, continue with a single
-space followed by any amount and kind of characters until the end of line.
-.PP
-To illustrate, here is the simplest case:
-.PP
-.RS
-.nf
-# This is an embedded manpage source!
-.fi
-.RE
-.PP
-Next, we can add a \fB\fC#!\fR line at the top:
-.PP
-.RS
-.nf
-#!/bin/sh
-# This is an embedded manpage source!
-.fi
-.RE
-.PP
-Next, we can add a \fB\fCcoding:\fR line after \fB\fC#!\fR:
-.PP
-.RS
-.nf
-#!/bin/sh
-# coding: utf\-8
-# This is an embedded manpage source!
-.fi
-.RE
-.PP
-Or, using the Emacs coding system syntax:
-.PP
-.RS
-.nf
-#!/bin/sh
-# \-*\- encoding: utf\-8 \-*\-
-# This is an embedded manpage source!
-.fi
-.RE
-.PP
-Next, we can add blank lines between them:
-.PP
-.RS
-.nf
-#!/bin/sh
-# coding: utf\-8
-
-# This is an embedded manpage source!
-.fi
-.RE
-.PP
-Here is another permutation of the above:
-.PP
-.RS
-.nf
-#!/bin/sh
-
-# This is an embedded manpage source!
-.fi
+Note: This program is deprecated for removal in the next major version. To
+prepare yourself, please run the fellow binman\-* programs directly instead.
 .RE
 .SH OPTIONS
 .TP
@@ -129,51 +19,25 @@ Here is another permutation of the above:
 Show this help manual and optionally search for \fIPATTERN\fP regular expression.
 .SH COMMANDS
 .TP
-\fB\fCtext\fR [\fIFILE\fP]
-Print the embedded manpage source extracted from the given \fIFILE\fP or STDIN.
+\fB\fCtext\fR ...
+Runs 
+.BR binman-text (1).
 .TP
-\fB\fCroff\fR [\fIFILE\fP]
-Print the 
-.BR roff (7) 
-conversion of the embedded manpage source extracted from
-the given \fIFILE\fP or STDIN.
+\fB\fCroff\fR ...
+Runs 
+.BR binman-roff (1).
 .TP
-\fB\fChtml\fR [\fIFILE\fP]
-Print the HTML conversion of the embedded manpage source extracted from
-the given \fIFILE\fP or STDIN.
+\fB\fChtml\fR ...
+Runs 
+.BR binman-html (1).
 .TP
-\fB\fCshow\fR [\fIFILE\fP] [\fIPATTERN\fP]
-Use 
-.BR man (1) 
-to display the 
-.BR roff (7) 
-conversion of the embedded manpage source
-extracted from the given \fIFILE\fP or STDIN.  If \fIPATTERN\fP is given, search for
-it within the output displayed by 
-.BR man (1) 
-and jump to first match if found.
-If 
-.BR man (1) 
-cannot display the 
-.BR roff (1) 
-conversion, fall back to the showing
-the HTML conversion; if that fails too, display the extracted text as\-is.
+\fB\fCshow\fR ...
+Runs 
+.BR binman-show (1).
 .TP
-\fB\fChelp\fR \fIFILE\fP ... [\fB\fC\-h\fR|\fB\fC\-\-help\fR [\fIPATTERN\fP]] ... [\fB\fC\-\-\fR] ...
-If the given argument sequence contains \fB\fC\-h\fR or \fB\fC\-\-help\fR, except after
-\fB\fC\-\-\fR, optionally followed by a \fIPATTERN\fP regular expression that specifies
-text to search for and, if found, jump to inside the displayed man page,
-then this program extracts the given \fIFILE\fP\&'s embedded manpage source,
-converts it into 
-.BR roff (7), 
-displays it using 
-.BR man (1), 
-and finally exits with
-status code \fB\fC0\fR\&.  Otherwise, this program exits with status code \fB\fC111\fR\&.
+\fB\fChelp\fR ...
+Runs 
+.BR binman-help (1).
 .SH SEE ALSO
 .PP
-.BR binman-rake (1), 
-.BR man (1), 
-.BR md2man (5), 
-.BR roff (7), 
-.BR markdown (7)
+.BR binman-rake (1)

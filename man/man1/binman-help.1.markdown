@@ -1,0 +1,193 @@
+# BINMAN-HELP 1                 2016-02-28                            5.1.0
+
+## NAME
+
+binman-help - add help options to your program
+
+## SYNOPSIS
+
+`binman-help` *FILE* ... [`-h`|`--help` [*PATTERN*]] ... [`--`] ...
+
+## DESCRIPTION
+
+If the given argument sequence contains `-h` or `--help`, except after `--`,
+then this program displays the given *FILE*'s "embedded manpage source",
+described in binman-text(1), and then terminates with exit status `0`.
+Otherwise, this program terminates with the nonzero exit status `111`.
+
+### Examples
+
+See "Embedded manpage sources" in binman-text(1) for header comment syntax.
+
+#### From a shell script
+
+```sh
+#!/usr/bin/sh
+# your program's manual page goes here
+
+binman-help "$0" "$@" && exit
+```
+
+#### From a Ruby script
+
+```ruby
+#!/usr/bin/env ruby
+# your program's manual page goes here
+
+require 'binman'
+BinMan.help
+```
+
+You can also specify your program's source file encoding above the manual:
+
+```ruby
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+# your program's manual page goes here
+```
+
+You can also write the manual as a multi-line Ruby comment:
+
+```ruby
+#!/usr/bin/env ruby
+=begin
+your program's manual page goes here
+=end
+```
+
+You can also specify your program's source file encoding above the manual:
+
+```ruby
+#!/usr/bin/env ruby
+# -*- coding: utf-8 -*-
+=begin
+your program's manual page goes here
+=end
+```
+
+#### From a Perl script
+
+```perl
+#!/usr/bin/env perl
+# your program's manual page goes here
+
+system('binman-help', __FILE__, @ARGV) == 0 and exit;
+```
+
+You can also write the manual as a multi-line Ruby comment after `__END__`:
+
+```perl
+#!/usr/bin/env perl
+print "your program's code goes here";
+__END__
+=begin
+your program's manual page goes here
+=end
+```
+
+#### From a Python script
+
+```python
+#!/usr/bin/env python
+# your program's manual page goes here
+
+import sys, subprocess
+
+subprocess.call(['binman-help', __file__] + sys.argv) == 0 and sys.exit()
+```
+
+You can also specify your program's source file encoding above the manual:
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+# your program's manual page goes here
+```
+
+You can also write the manual as a multi-line Ruby comment inside a docstring:
+
+```python
+#!/usr/bin/env python
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+```
+
+You can also specify your program's source file encoding above the manual:
+
+```python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+"""
+=begin
+your program's manual page goes here
+=end
+"""
+```
+
+#### From an AWK script
+
+The technique for determining current AWK script file name [comes from here](
+http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784-print.html
+).
+
+```awk
+#!/usr/bin/awk -f
+# your program's manual page goes here
+
+BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\0"," ",c); gsub("\0"," ",c);
+       if(system("binman-help" c) == 0){ exit }}
+```
+
+#### From a Tcl script
+
+```tcl
+#!/usr/bin/env tclsh
+# your program's manual page goes here
+
+if {![catch {exec -- >/dev/tty binman-help $argv0 {*}$argv}]} {exit}
+```
+
+You can also write the manual as a multi-line Ruby comment inside an `if 0`:
+
+```tcl
+#!/usr/bin/env tclsh
+if 0 {
+=begin
+your program's manual page goes here
+=end
+}
+```
+
+#### From a Node.js script
+
+```javascript
+/*
+=begin
+your program's manual page goes here
+=end
+*/
+
+var exec = require('child_process').exec;
+exec(['>/dev/tty', 'binman-help', __filename].concat(process.argv).
+join(' '), function(error){ if (error === null){ process.exit(); } });
+```
+
+## OPTIONS
+
+`-h` [*PATTERN*], `--help` [*PATTERN*]
+  Display manpage and optionally search for *PATTERN* regular expression.
+
+## EXIT STATUS
+
+0
+  Arguments contained help options so manpage was displayed.
+
+111
+  Arguments lacked help options so manpage was not displayed.
+
+## SEE ALSO
+
+binman-text(1), binman-roff(1), binman-html(1), binman-show(1), binman(1)

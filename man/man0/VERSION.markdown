@@ -1,3 +1,37 @@
+## Version 5.1.0 (2016-02-28)
+
+This release splits binman(1) into pieces and improves the documentation.
+
+### Minor:
+
+  * binman(1) is now deprecated, to be removed in the next major version.
+    Please run the new binman-* programs, listed below, directly instead.
+
+  * Split binman(1) commands into independent programs:
+
+      * binman-help(1) - add help options to your program
+      * binman-html(1) - HTML manpage from header comment
+      * binman-rake(1) - run rake(1) tasks from command line
+      * binman-roff(1) - UNIX manpage from header comment
+      * binman-show(1) - show manpage from header comment
+      * binman-text(1) - extract embedded manpage sources
+
+  * binman-rake(1): allow task names without namespace.
+
+    You can now run `binman-rake man` instead of `binman-rake binman:man`,
+    and similarly `binman-rake web` instead of `binman-rake binman:web`,
+    and similarly `binman-rake mkd` instead of `binman-rake binman:mkd`.
+
+### Patch:
+
+  * README: an epic revision; add copy of md2man(5).
+
+  * README: add dasht manual pages to examples section.
+
+  * Clarify optionalness of *PATTERN* in `--help` option.
+
+  * Upgrade to md2man version 5.1.
+
 ## Version 5.0.1 (2016-02-13)
 
 ### Major:

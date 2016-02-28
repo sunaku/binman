@@ -1,8 +1,8 @@
-# BINMAN-RAKE 1 2016-02-13 5.0.1
+# BINMAN-RAKE 1                   2016-02-28                            5.1.0
 
 ## NAME
 
-binman-rake - run rake(1) tasks from binman(1)
+binman-rake - run rake(1) tasks from command line
 
 ## SYNOPSIS
 
@@ -20,20 +20,20 @@ If no *TASK* is specified, then the `binman` task is run by default.
 ## TASKS
 
 `binman`
-  Runs the `binman:man` and `binman:web` tasks, in that order.
+  Runs the `binman:mkd`, `binman:man`, and `binman:web` tasks, in that order.
 
-`binman:mkd`
+`binman:mkd` or `mkd`
   Extracts manual page sources embedded in scripts found in your `bin/`
   directory and saves them as `man/man1/*.1.markdown` files, which can
   then be rendered as HTML or UNIX manual pages using md2man-rake(1).
 
-`binman:man`
+`binman:man` or `man`
   Builds UNIX manual pages from scripts found in your `bin/` directory.
   It also runs the `md2man:man` task, provided by md2man-rake(1), which
   builds UNIX manual pages from `*.markdown`, `*.mkd`, and `*.md` files
   found in or beneath the `man/` subdirectory in your working directory.
 
-`binman:web`
+`binman:web` or `web`
   Builds HTML manual pages from scripts found in your `bin/` directory.
   It also runs the `md2man:web` task, provided by md2man-rake(1), which
   builds HTML manual pages from `*.markdown`, `*.mkd`, and `*.md` files

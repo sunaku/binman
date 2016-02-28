@@ -14,7 +14,7 @@
 </ul>
 <h1 id="binman-manpages-from-header-comments"><span class="md2man-title">binman</span> <span class="md2man-section">-</span> <span class="md2man-date">manpages</span> <span class="md2man-source">from</span> <span class="md2man-manual">header</span> comments<a name="binman-manpages-from-header-comments" href="#binman-manpages-from-header-comments" class="md2man-permalink" title="permalink"></a></h1><p>binman generates manual pages from header comments in your scripts so that you
 can keep your documentation and implementation together, in the same file, for
-easy maintenance.  But keeping them apart, in separate files, is supported too.</p><p><img src="https://github.com/sunaku/binman/raw/gh-pages/EXAMPLE.png" alt="screenshot"></p><h2 id="features">Features<a name="features" href="#features" class="md2man-permalink" title="permalink"></a></h2>
+easy maintenance. But keeping them apart, in separate files, is supported too.</p><p><img src="https://github.com/sunaku/binman/raw/gh-pages/EXAMPLE.png" alt="screenshot"></p><h2 id="features">Features<a name="features" href="#features" class="md2man-permalink" title="permalink"></a></h2>
 <ul>
 <li><p>Direct support for any scripting language that has multi-line comments or
 uses <code>#</code> for single-line comments such as Ruby, Perl, PHP, Python, R, Tcl,
@@ -36,16 +36,21 @@ Node.js, Elixir, make, AWK, sed, UNIX shells, Windows PowerShell and more!</p></
 </ul>
 <h3 id="for-users">For users<a name="for-users" href="#for-users" class="md2man-permalink" title="permalink"></a></h3><p>If you only want to view pre-built manual pages:</p><pre class="highlight shell"><code>gem install binman
 </code></pre>
-<p>If you also want to build your own manual pages:</p><pre class="highlight shell"><code>gem install md2man -v <span class="s1">'~&gt; 5.0'</span>
+<p>If you also want to build your own manual pages:</p><pre class="highlight shell"><code>gem install md2man -v <span class="s1">'~&gt; 5.1'</span>
 </code></pre>
 <h3 id="for-developers">For developers<a name="for-developers" href="#for-developers" class="md2man-permalink" title="permalink"></a></h3><pre class="highlight shell"><code>git clone https://github.com/sunaku/binman
 <span class="nb">cd </span>binman
 bundle install
-bundle <span class="nb">exec </span>binman --help <span class="c"># run it directly</span>
-bundle <span class="nb">exec </span>rake --tasks  <span class="c"># packaging tasks</span>
+bundle <span class="nb">exec </span>rake --tasks       <span class="c"># packaging tasks</span>
+bundle <span class="nb">exec </span>binman-text --help <span class="c"># run it directly</span>
+bundle <span class="nb">exec </span>binman-roff --help <span class="c"># run it directly</span>
+bundle <span class="nb">exec </span>binman-html --help <span class="c"># run it directly</span>
+bundle <span class="nb">exec </span>binman-show --help <span class="c"># run it directly</span>
+bundle <span class="nb">exec </span>binman-help --help <span class="c"># run it directly</span>
+bundle <span class="nb">exec </span>binman-rake --help <span class="c"># run it directly</span>
 </code></pre>
 <h2 id="usage">Usage<a name="usage" href="#usage" class="md2man-permalink" title="permalink"></a></h2><p>First, write <a class="md2man-reference" href="../man5/md2man.5.html">md2man(5)</a> text for your script: either in a comment at the top of
-your script file, as described under &quot;Embedded manpage sources&quot; in <a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>,
+your script file, described as &quot;Embedded manpage sources&quot; in <a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a>,
 or in a separate Markdown file located at <code>man/man?/*.?.{markdown,mkd,md}</code>.</p>
 <ul>
 <li>For real examples of what to write, see &quot;From the command line&quot; below.</li>
@@ -58,290 +63,350 @@ or in a separate Markdown file located at <code>man/man?/*.?.{markdown,mkd,md}</
 </ol>
 <h3 id="at-compile-time">At compile time<a name="at-compile-time" href="#at-compile-time" class="md2man-permalink" title="permalink"></a></h3><p>Run <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a> to generate manual pages for all of your <code>./bin/*</code> scripts.</p><p>Alternatively, to have more control over the generation of your manual pages:</p>
 <ul>
-<li>Run <code>binman text</code> to extract manual page text from a specified script.</li>
-<li>Run <code>binman roff</code> to generate a UNIX manual page from a specified script.</li>
-<li>Run <code>binman html</code> to generate a HTML manual page from a specified script.</li>
+<li>Run <a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a> to extract manual page text from a specified script.</li>
+<li>Run <a class="md2man-reference" href="../man1/binman-roff.1.html">binman-roff(1)</a> to generate a UNIX manual page from a specified script.</li>
+<li>Run <a class="md2man-reference" href="../man1/binman-html.1.html">binman-html(1)</a> to generate a HTML manual page from a specified script.</li>
 </ul>
 <h4 id="from-the-command-line">From the command line<a name="from-the-command-line" href="#from-the-command-line" class="md2man-permalink" title="permalink"></a></h4><p>Below are some real examples of generating manual pages from the command line.
 Note that <a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a> abstracts away all of the complexity you see below!</p><p><a class="md2man-reference">dasht(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht">dasht</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht.1.markdown">dasht.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht">dasht</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht.1">dasht.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht">dasht</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht.1.html">dasht.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-docsets(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets">dasht-docsets</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets.1.markdown">dasht-docsets.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets">dasht-docsets</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets.1">dasht-docsets.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets">dasht-docsets</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets.1.html">dasht-docsets.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-docsets-install(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install">dasht-docsets-install</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-install.1.markdown">dasht-docsets-install.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install">dasht-docsets-install</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-install.1">dasht-docsets-install.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install">dasht-docsets-install</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets-install.1.html">dasht-docsets-install.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-docsets-remove(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove">dasht-docsets-remove</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-remove.1.markdown">dasht-docsets-remove.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove">dasht-docsets-remove</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-remove.1">dasht-docsets-remove.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove">dasht-docsets-remove</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets-remove.1.html">dasht-docsets-remove.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-docsets-update(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update">dasht-docsets-update</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-update.1.markdown">dasht-docsets-update.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update">dasht-docsets-update</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-update.1">dasht-docsets-update.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update">dasht-docsets-update</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-docsets-update.1.html">dasht-docsets-update.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-query-exec(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec">dasht-query-exec</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-exec.1.markdown">dasht-query-exec.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec">dasht-query-exec</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-exec.1">dasht-query-exec.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec">dasht-query-exec</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-query-exec.1.html">dasht-query-exec.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-query-html(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html">dasht-query-html</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-html.1.markdown">dasht-query-html.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html">dasht-query-html</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-html.1">dasht-query-html.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html">dasht-query-html</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-query-html.1.html">dasht-query-html.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-query-line(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line">dasht-query-line</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-line.1.markdown">dasht-query-line.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line">dasht-query-line</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-line.1">dasht-query-line.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line">dasht-query-line</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-query-line.1.html">dasht-query-line.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-server(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server">dasht-server</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server.1.markdown">dasht-server.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server">dasht-server</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server.1">dasht-server.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server">dasht-server</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-server.1.html">dasht-server.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">dasht-server-http(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http">dasht-server-http</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server-http.1.markdown">dasht-server-http.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http">dasht-server-http</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server-http.1">dasht-server-http.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http">dasht-server-http</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/dasht/man/man1/dasht-server-http.1.html">dasht-server-http.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1.markdown">tork.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1">tork.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork">tork</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork.1.html">tork.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-runner(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1.markdown">tork-runner.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1">tork-runner.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-runner">tork-runner</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-runner.1.html">tork-runner.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-herald(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1.markdown">tork-herald.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1">tork-herald.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-herald">tork-herald</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-herald.1.html">tork-herald.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-driver(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1.markdown">tork-driver.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1">tork-driver.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-driver">tork-driver</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-driver.1.html">tork-driver.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-engine(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1.markdown">tork-engine.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1">tork-engine.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-engine">tork-engine</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-engine.1.html">tork-engine.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-master(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1.markdown">tork-master.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1">tork-master.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-master">tork-master</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-master.1.html">tork-master.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-remote(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1.markdown">tork-remote.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1">tork-remote.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-remote">tork-remote</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-remote.1.html">tork-remote.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">tork-notify(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1.markdown">tork-notify.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1">tork-notify.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/tork/master/bin/tork-notify">tork-notify</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/tork/man/man1/tork-notify.1.html">tork-notify.1.html</a></li>
 </ul>
+<p><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown">binman.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1">binman.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman.1.html">binman.1.html</a></li>
+</ul>
+<p><a class="md2man-reference" href="../man1/binman-text.1.html">binman-text(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-text">binman-text</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-text.1.markdown">binman-text.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-text">binman-text</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-text.1">binman-text.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-text">binman-text</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-text.1.html">binman-text.1.html</a></li>
+</ul>
+<p><a class="md2man-reference" href="../man1/binman-roff.1.html">binman-roff(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-roff">binman-roff</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-roff.1.markdown">binman-roff.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-roff">binman-roff</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-roff.1">binman-roff.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-roff">binman-roff</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-roff.1.html">binman-roff.1.html</a></li>
+</ul>
+<p><a class="md2man-reference" href="../man1/binman-html.1.html">binman-html(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-html">binman-html</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-html.1.markdown">binman-html.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-html">binman-html</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-html.1">binman-html.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-html">binman-html</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-html.1.html">binman-html.1.html</a></li>
+</ul>
+<p><a class="md2man-reference" href="../man1/binman-show.1.html">binman-show(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-show">binman-show</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-show.1.markdown">binman-show.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-show">binman-show</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-show.1">binman-show.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-show">binman-show</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-show.1.html">binman-show.1.html</a></li>
+</ul>
+<p><a class="md2man-reference" href="../man1/binman-help.1.html">binman-help(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-help">binman-help</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-help.1.markdown">binman-help.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-help">binman-help</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-help.1">binman-help.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-help">binman-help</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-help.1.html">binman-help.1.html</a></li>
+</ul>
+<p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>:</p>
+<ul>
+<li><code>binman-text</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown">binman-rake.1.markdown</a></li>
+<li><code>binman-roff</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
+<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1">binman-rake.1</a></li>
+<li><code>binman-html</code>
+<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
+<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-rake.1.html">binman-rake.1.html</a></li>
+</ul>
 <p><a class="md2man-reference">md2man-roff(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1.markdown">md2man-roff.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1">md2man-roff.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-roff">md2man-roff</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html">md2man-roff.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">md2man-html(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1.markdown">md2man-html.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1">md2man-html.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-html">md2man-html</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/md2man/man/man1/md2man-html.1.html">md2man-html.1.html</a></li>
 </ul>
 <p><a class="md2man-reference">md2man-rake(1)</a>:</p>
 <ul>
-<li><code>binman text</code>
+<li><code>binman-text</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1.markdown">md2man-rake.1.markdown</a></li>
-<li><code>binman roff</code>
+<li><code>binman-roff</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
 <code>&gt;</code> <a href="https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1">md2man-rake.1</a></li>
-<li><code>binman html</code>
+<li><code>binman-html</code>
 <a href="https://raw.github.com/sunaku/md2man/master/bin/md2man-rake">md2man-rake</a>
 <code>&gt;</code> <a href="https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html">md2man-rake.1.html</a></li>
 </ul>
-<p><a class="md2man-reference" href="../man1/binman.1.html">binman(1)</a>:</p>
-<ul>
-<li><code>binman text</code>
-<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
-<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown">binman.1.markdown</a></li>
-<li><code>binman roff</code>
-<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
-<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1">binman.1</a></li>
-<li><code>binman html</code>
-<a href="https://raw.github.com/sunaku/binman/master/bin/binman">binman</a>
-<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman.1.html">binman.1.html</a></li>
-</ul>
-<p><a class="md2man-reference" href="../man1/binman-rake.1.html">binman-rake(1)</a>:</p>
-<ul>
-<li><code>binman text</code>
-<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
-<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown">binman-rake.1.markdown</a></li>
-<li><code>binman roff</code>
-<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
-<code>&gt;</code> <a href="https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1">binman-rake.1</a></li>
-<li><code>binman html</code>
-<a href="https://raw.github.com/sunaku/binman/master/bin/binman-rake">binman-rake</a>
-<code>&gt;</code> <a href="https://sunaku.github.io/binman/man/man1/binman-rake.1.html">binman-rake.1.html</a></li>
-</ul>
-<h4 id="for-a-ruby-package">For a Ruby package<a name="for-a-ruby-package" href="#for-a-ruby-package" class="md2man-permalink" title="permalink"></a></h4><p>Add this snippet to your gemspec file:</p><pre class="highlight ruby"><code><span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/man?/*.?'</span><span class="p">]</span>            <span class="c1"># UNIX manual pages</span>
-<span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/**/*.{html,css,js}'</span><span class="p">]</span>  <span class="c1"># HTML manual pages</span>
-<span class="n">s</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s1">'md2man'</span><span class="p">,</span> <span class="s1">'~&gt; 5.0'</span>
+<h4 id="for-a-ruby-package">For a Ruby package<a name="for-a-ruby-package" href="#for-a-ruby-package" class="md2man-permalink" title="permalink"></a></h4><p>Add this snippet to your gemspec file:</p><pre class="highlight ruby"><code><span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/man?/*.?'</span><span class="p">]</span>         <span class="c1"># UNIX manpages</span>
+<span class="n">s</span><span class="p">.</span><span class="nf">files</span> <span class="o">+=</span> <span class="no">Dir</span><span class="p">[</span><span class="s1">'man/**/*.{html,css}'</span><span class="p">]</span>  <span class="c1"># HTML webpages</span>
+<span class="n">s</span><span class="p">.</span><span class="nf">add_development_dependency</span> <span class="s1">'md2man'</span><span class="p">,</span> <span class="s1">'~&gt; 5.1'</span>
 </code></pre>
 <p>Add the following line to your Rakefile:</p><pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'binman/rakefile'</span>
 </code></pre>
@@ -352,18 +417,18 @@ There are also sub-tasks to build manual pages individually as <a href="http://t
 ensures that your UNIX manual pages are pre-built and packaged into your gem:</p><pre class="highlight shell"><code>bundle <span class="nb">exec </span>rake build
 gem spec pkg/<span class="k">*</span>.gem | fgrep man/man
 </code></pre>
-<h3 id="at-run-time">At run time<a name="at-run-time" href="#at-run-time" class="md2man-permalink" title="permalink"></a></h3><p>Run <code>binman show</code> to display the manual page (which may have been
+<h3 id="at-run-time">At run time<a name="at-run-time" href="#at-run-time" class="md2man-permalink" title="permalink"></a></h3><p>Run <a class="md2man-reference" href="../man1/binman-show.1.html">binman-show(1)</a> to display the manual page (which may have been
 pre-generated at &quot;compile time&quot;) for a specified script.</p><p>Alternatively, an easy way to add support for <code>-h</code> and <code>--help</code> options in a
-specified script is to run <code>binman help</code> with its file path and command line
+specified script is to run <a class="md2man-reference" href="../man1/binman-help.1.html">binman-help(1)</a> with its file path and command line
 arguments.  This displays its manual page (which may have been pre-generated
 at &quot;compile time&quot;) <em>only when</em> those help options are found in its arguments.</p><h4 id="from-a-shell-script">From a shell script<a name="from-a-shell-script" href="#from-a-shell-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight shell"><code><span class="c">#!/usr/bin/sh</span>
 <span class="c"># your program's manual page goes here</span>
 
 <span class="c"># OPTION 1: show manual and exit if ARGV has -h or --help except after --</span>
-binman <span class="nb">help</span> <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
+binman-help <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span> <span class="s2">"</span><span class="nv">$@</span><span class="s2">"</span> <span class="o">&amp;&amp;</span> <span class="nb">exit</span>
 
 <span class="c"># OPTION 2: show manual unconditionally</span>
-binman show <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
+binman-show <span class="s2">"</span><span class="nv">$0</span><span class="s2">"</span>
 </code></pre>
 <h4 id="from-a-ruby-script">From a Ruby script<a name="from-a-ruby-script" href="#from-a-ruby-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight ruby"><code><span class="c1">#!/usr/bin/env ruby</span>
 <span class="c1"># your program's manual page goes here</span>
@@ -395,10 +460,10 @@ your program's manual page goes here
 <span class="c1"># your program's manual page goes here</span>
 
 <span class="c1"># OPTION 1: show manual and exit if ARGV has -h or --help except after --</span>
-<span class="nb">system</span><span class="p">(</span><span class="s">'binman'</span><span class="p">,</span> <span class="s">'help'</span><span class="p">,</span> <span class="nv">__FILE__</span><span class="p">,</span> <span class="nv">@ARGV</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">exit</span><span class="p">;</span>
+<span class="nb">system</span><span class="p">(</span><span class="s">'binman-help'</span><span class="p">,</span> <span class="nv">__FILE__</span><span class="p">,</span> <span class="nv">@ARGV</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="nb">exit</span><span class="p">;</span>
 
 <span class="c1"># OPTION 2: show manual unconditionally</span>
-<span class="nb">system</span><span class="p">(</span><span class="s">'binman'</span><span class="p">,</span> <span class="s">'show'</span><span class="p">,</span> <span class="nv">__FILE__</span><span class="p">);</span>
+<span class="nb">system</span><span class="p">(</span><span class="s">'binman-show'</span><span class="p">,</span> <span class="nv">__FILE__</span><span class="p">);</span>
 </code></pre>
 <p>You can also write the manual as a multi-line Ruby comment after <code>__END__</code>:</p><pre class="highlight perl"><code><span class="c1">#!/usr/bin/env perl</span>
 <span class="k">print</span> <span class="s">"your program's code goes here"</span><span class="p">;</span>
@@ -413,10 +478,10 @@ your program's manual page goes here
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">subprocess</span>
 
 <span class="c"># OPTION 1: show manual and exit if ARGV has -h or --help except after --</span>
-<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">'binman'</span><span class="p">,</span> <span class="s">'help'</span><span class="p">,</span> <span class="n">__file__</span><span class="p">]</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">'binman-help'</span><span class="p">,</span> <span class="n">__file__</span><span class="p">]</span> <span class="o">+</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">sys</span><span class="o">.</span><span class="nb">exit</span><span class="p">()</span>
 
 <span class="c"># OPTION 2: show manual unconditionally</span>
-<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">'binman'</span><span class="p">,</span> <span class="s">'show'</span><span class="p">,</span> <span class="n">__file__</span><span class="p">])</span>
+<span class="n">subprocess</span><span class="o">.</span><span class="n">call</span><span class="p">([</span><span class="s">'binman-show'</span><span class="p">,</span> <span class="n">__file__</span><span class="p">])</span>
 </code></pre>
 <p>You can also specify your program&#39;s source file encoding above the manual:</p><pre class="highlight python"><code><span class="c">#!/usr/bin/env python</span>
 <span class="c"># -*- coding: utf-8 -*-</span>
@@ -442,20 +507,20 @@ your program's manual page goes here
 
 # OPTION 1: show manual and exit if ARGV has -h or --help except after --
 BEGIN {getline c &lt;"/proc/self/cmdline"; sub(".*-f\0"," ",c); gsub("\0"," ",c);
-       if(system("binman help" c) == 0){ exit }}
+       if(system("binman-help" c) == 0){ exit }}
 
 # OPTION 2: show manual unconditionally
 BEGIN {getline c &lt;"/proc/self/cmdline"; sub(".*-f\0"," ",c); sub("\0.*","",c);
-       system("binman show" c)}
+       system("binman-show" c)}
 </code></pre>
 <h4 id="from-a-tcl-script">From a Tcl script<a name="from-a-tcl-script" href="#from-a-tcl-script" class="md2man-permalink" title="permalink"></a></h4><pre class="highlight tcl"><code><span class="c1">#!/usr/bin/env tclsh</span>
 <span class="c1"># your program's manual page goes here</span>
 
 <span class="c1"># OPTION 1: show manual and exit if ARGV has -h or --help except after --</span>
-<span class="k">if</span> <span class="p">{</span>!<span class="p">[</span><span class="k">catch</span> <span class="p">{</span><span class="nb">exec</span> -- &gt;/dev/tty binman help <span class="nv">$argv0</span> <span class="k">{*}</span><span class="nv">$argv</span><span class="p">}]}</span> <span class="p">{</span><span class="nb">exit</span><span class="p">}</span>
+<span class="k">if</span> <span class="p">{</span>!<span class="p">[</span><span class="k">catch</span> <span class="p">{</span><span class="nb">exec</span> -- &gt;/dev/tty binman-help <span class="nv">$argv0</span> <span class="k">{*}</span><span class="nv">$argv</span><span class="p">}]}</span> <span class="p">{</span><span class="nb">exit</span><span class="p">}</span>
 
 <span class="c1"># OPTION 2: show manual unconditionally</span>
-<span class="nb">exec</span> &gt;/dev/tty binman show <span class="nv">$argv0</span>
+<span class="nb">exec</span> &gt;/dev/tty binman-show <span class="nv">$argv0</span>
 </code></pre>
 <p>You can also write the manual as a multi-line Ruby comment inside an <code>if 0</code>:</p><pre class="highlight tcl"><code><span class="c1">#!/usr/bin/env tclsh</span>
 <span class="k">if</span> 0 <span class="p">{</span>
@@ -473,11 +538,11 @@ your program's manual page goes here
 <span class="kd">var</span> <span class="nx">exec</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'child_process'</span><span class="p">).</span><span class="nx">exec</span><span class="p">;</span>
 
 <span class="c1">// OPTION 1: show manual and exit if ARGV has -h or --help except after --</span>
-<span class="nx">exec</span><span class="p">([</span><span class="s1">'&gt;/dev/tty'</span><span class="p">,</span> <span class="s1">'binman'</span><span class="p">,</span> <span class="s1">'help'</span><span class="p">,</span> <span class="nx">__filename</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">).</span>
+<span class="nx">exec</span><span class="p">([</span><span class="s1">'&gt;/dev/tty'</span><span class="p">,</span> <span class="s1">'binman-help'</span><span class="p">,</span> <span class="nx">__filename</span><span class="p">].</span><span class="nx">concat</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">argv</span><span class="p">).</span>
 <span class="nx">join</span><span class="p">(</span><span class="s1">' '</span><span class="p">),</span> <span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span> <span class="k">if</span> <span class="p">(</span><span class="nx">error</span> <span class="o">===</span> <span class="kc">null</span><span class="p">){</span> <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">();</span> <span class="p">}</span> <span class="p">});</span>
 
 <span class="c1">// OPTION 2: show manual unconditionally</span>
-<span class="nx">exec</span><span class="p">([</span><span class="s1">'&gt;/dev/tty'</span><span class="p">,</span> <span class="s1">'binman'</span><span class="p">,</span> <span class="s1">'show'</span><span class="p">,</span> <span class="nx">__filename</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">' '</span><span class="p">));</span>
+<span class="nx">exec</span><span class="p">([</span><span class="s1">'&gt;/dev/tty'</span><span class="p">,</span> <span class="s1">'binman-show'</span><span class="p">,</span> <span class="nx">__filename</span><span class="p">].</span><span class="nx">join</span><span class="p">(</span><span class="s1">' '</span><span class="p">));</span>
 </code></pre>
 <h2 id="license">License<a name="license" href="#license" class="md2man-permalink" title="permalink"></a></h2><p>Released under the ISC license.  See the LICENSE file for details.</p></div></body>
 </html>

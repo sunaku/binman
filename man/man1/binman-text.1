@@ -1,0 +1,129 @@
+.TH BINMAN\-TEXT 1                   2016\-02\-28                            5.1.0
+.SH NAME
+.PP
+binman\-text \- extract embedded manpage sources
+.SH SYNOPSIS
+.PP
+\fB\fCbinman\-text\fR [\fIOPTION\fP]... [\fIFILE\fP]
+.SH DESCRIPTION
+.PP
+Prints the "embedded manpage source" extracted from the given \fIFILE\fP or STDIN.
+.SS Embedded manpage sources
+.PP
+An "embedded manpage source" is an 
+.BR md2man (5) 
+document that is embedded in your
+script, typically inside a multi\-line block comment or "here document"; or in
+a header comment composed of single\-line comments near the top of your script.
+.SS In multi\-line comments
+.PP
+In the former case, where it's possible to write a freeform block of text, the
+embedded manpage source must be delimited by \fB\fC=begin\fR and \fB\fC=end\fR lines, which
+start with their respective delimiters and, optionally, continue with a single
+space followed by any amount and kind of characters until the end of line.
+.PP
+To illustrate, here is the simplest case:
+.PP
+.RS
+.nf
+=begin
+This is an embedded manpage source!
+=end
+.fi
+.RE
+.PP
+Next, we can add decorations after the delimiters:
+.PP
+.RS
+.nf
+=begin \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+This is an embedded manpage source!
+=end //////////////////////////////
+.fi
+.RE
+.PP
+Similarly, using different characters this time:
+.PP
+.RS
+.nf
+=begin abcdefghijklmnopqrstuvwxyz'"
+This is an embedded manpage source!
+=end 0123456789!@#$%^&*()=+\-_:;,\\/?
+.fi
+.RE
+.SS In single\-line comments
+.PP
+In the latter case, the embedded manpage source is expected to be found in a
+contiguous block of single\-line comments that begins at the top of the script
+(optionally after a \fB\fC#!\fR line, \fB\fCcoding:\fR line, and any number of blank lines)
+and ends at the first blank line.  Each single\-line comment inside this block
+must begin with a \fB\fC#\fR character and may, optionally, continue with a single
+space followed by any amount and kind of characters until the end of line.
+.PP
+To illustrate, here is the simplest case:
+.PP
+.RS
+.nf
+# This is an embedded manpage source!
+.fi
+.RE
+.PP
+Next, we can add a \fB\fC#!\fR line at the top:
+.PP
+.RS
+.nf
+#!/bin/sh
+# This is an embedded manpage source!
+.fi
+.RE
+.PP
+Next, we can add a \fB\fCcoding:\fR line after \fB\fC#!\fR:
+.PP
+.RS
+.nf
+#!/bin/sh
+# coding: utf\-8
+# This is an embedded manpage source!
+.fi
+.RE
+.PP
+Or, using the Emacs coding system syntax:
+.PP
+.RS
+.nf
+#!/bin/sh
+# \-*\- encoding: utf\-8 \-*\-
+# This is an embedded manpage source!
+.fi
+.RE
+.PP
+Next, we can add blank lines between them:
+.PP
+.RS
+.nf
+#!/bin/sh
+# coding: utf\-8
+
+# This is an embedded manpage source!
+.fi
+.RE
+.PP
+Here is another permutation of the above:
+.PP
+.RS
+.nf
+#!/bin/sh
+
+# This is an embedded manpage source!
+.fi
+.RE
+.SH OPTIONS
+.TP
+\fB\fC\-h\fR [\fIPATTERN\fP], \fB\fC\-\-help\fR [\fIPATTERN\fP]
+Show this help manual and optionally search for \fIPATTERN\fP regular expression.
+.SH SEE ALSO
+.PP
+.BR md2man (5), 
+.BR binman-roff (1), 
+.BR binman-html (1), 
+.BR binman (1)
