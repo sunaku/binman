@@ -60,14 +60,19 @@ gem install md2man -v '~> 5.1'
 git clone https://github.com/sunaku/binman
 cd binman
 bundle install
-bundle exec binman --help # run it directly
-bundle exec rake --tasks  # packaging tasks
+bundle exec rake --tasks       # packaging tasks
+bundle exec binman-text --help # run it directly
+bundle exec binman-roff --help # run it directly
+bundle exec binman-html --help # run it directly
+bundle exec binman-show --help # run it directly
+bundle exec binman-help --help # run it directly
+bundle exec binman-rake --help # run it directly
 ```
 
 ## Usage
 
 First, write md2man(5) text for your script: either in a comment at the top of
-your script file, as described under "Embedded manpage sources" in binman(1),
+your script file, described as "Embedded manpage sources" in binman-text(1),
 or in a separate Markdown file located at `man/man?/*.?.{markdown,mkd,md}`.
 
   * For real examples of what to write, see "From the command line" below.
@@ -84,9 +89,9 @@ Run binman-rake(1) to generate manual pages for all of your `./bin/*` scripts.
 
 Alternatively, to have more control over the generation of your manual pages:
 
-  * Run `binman text` to extract manual page text from a specified script.
-  * Run `binman roff` to generate a UNIX manual page from a specified script.
-  * Run `binman html` to generate a HTML manual page from a specified script.
+  * Run binman-text(1) to extract manual page text from a specified script.
+  * Run binman-roff(1) to generate a UNIX manual page from a specified script.
+  * Run binman-html(1) to generate a HTML manual page from a specified script.
 
 #### From the command line
 
@@ -95,279 +100,339 @@ Note that binman-rake(1) abstracts away all of the complexity you see below!
 
 dasht(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht](https://raw.github.com/sunaku/dasht/master/bin/dasht)
     `>` [dasht.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht](https://raw.github.com/sunaku/dasht/master/bin/dasht)
     `>` [dasht.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht.1)
-  * `binman html`
+  * `binman-html`
     [dasht](https://raw.github.com/sunaku/dasht/master/bin/dasht)
     `>` [dasht.1.html](https://sunaku.github.io/dasht/man/man1/dasht.1.html)
 
 dasht-docsets(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-docsets](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets)
     `>` [dasht-docsets.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-docsets](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets)
     `>` [dasht-docsets.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets.1)
-  * `binman html`
+  * `binman-html`
     [dasht-docsets](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets)
     `>` [dasht-docsets.1.html](https://sunaku.github.io/dasht/man/man1/dasht-docsets.1.html)
 
 dasht-docsets-install(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-docsets-install](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install)
     `>` [dasht-docsets-install.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-install.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-docsets-install](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install)
     `>` [dasht-docsets-install.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-install.1)
-  * `binman html`
+  * `binman-html`
     [dasht-docsets-install](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-install)
     `>` [dasht-docsets-install.1.html](https://sunaku.github.io/dasht/man/man1/dasht-docsets-install.1.html)
 
 dasht-docsets-remove(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-docsets-remove](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove)
     `>` [dasht-docsets-remove.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-remove.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-docsets-remove](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove)
     `>` [dasht-docsets-remove.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-remove.1)
-  * `binman html`
+  * `binman-html`
     [dasht-docsets-remove](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-remove)
     `>` [dasht-docsets-remove.1.html](https://sunaku.github.io/dasht/man/man1/dasht-docsets-remove.1.html)
 
 dasht-docsets-update(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-docsets-update](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update)
     `>` [dasht-docsets-update.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-update.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-docsets-update](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update)
     `>` [dasht-docsets-update.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-docsets-update.1)
-  * `binman html`
+  * `binman-html`
     [dasht-docsets-update](https://raw.github.com/sunaku/dasht/master/bin/dasht-docsets-update)
     `>` [dasht-docsets-update.1.html](https://sunaku.github.io/dasht/man/man1/dasht-docsets-update.1.html)
 
 dasht-query-exec(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-query-exec](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec)
     `>` [dasht-query-exec.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-exec.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-query-exec](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec)
     `>` [dasht-query-exec.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-exec.1)
-  * `binman html`
+  * `binman-html`
     [dasht-query-exec](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-exec)
     `>` [dasht-query-exec.1.html](https://sunaku.github.io/dasht/man/man1/dasht-query-exec.1.html)
 
 dasht-query-html(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-query-html](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html)
     `>` [dasht-query-html.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-html.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-query-html](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html)
     `>` [dasht-query-html.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-html.1)
-  * `binman html`
+  * `binman-html`
     [dasht-query-html](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-html)
     `>` [dasht-query-html.1.html](https://sunaku.github.io/dasht/man/man1/dasht-query-html.1.html)
 
 dasht-query-line(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-query-line](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line)
     `>` [dasht-query-line.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-line.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-query-line](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line)
     `>` [dasht-query-line.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-query-line.1)
-  * `binman html`
+  * `binman-html`
     [dasht-query-line](https://raw.github.com/sunaku/dasht/master/bin/dasht-query-line)
     `>` [dasht-query-line.1.html](https://sunaku.github.io/dasht/man/man1/dasht-query-line.1.html)
 
 dasht-server(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-server](https://raw.github.com/sunaku/dasht/master/bin/dasht-server)
     `>` [dasht-server.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-server](https://raw.github.com/sunaku/dasht/master/bin/dasht-server)
     `>` [dasht-server.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server.1)
-  * `binman html`
+  * `binman-html`
     [dasht-server](https://raw.github.com/sunaku/dasht/master/bin/dasht-server)
     `>` [dasht-server.1.html](https://sunaku.github.io/dasht/man/man1/dasht-server.1.html)
 
 dasht-server-http(1):
 
-  * `binman text`
+  * `binman-text`
     [dasht-server-http](https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http)
     `>` [dasht-server-http.1.markdown](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server-http.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [dasht-server-http](https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http)
     `>` [dasht-server-http.1](https://raw.github.com/sunaku/dasht/gh-pages/man/man1/dasht-server-http.1)
-  * `binman html`
+  * `binman-html`
     [dasht-server-http](https://raw.github.com/sunaku/dasht/master/bin/dasht-server-http)
     `>` [dasht-server-http.1.html](https://sunaku.github.io/dasht/man/man1/dasht-server-http.1.html)
 
 tork(1):
 
-  * `binman text`
+  * `binman-text`
     [tork](https://raw.github.com/sunaku/tork/master/bin/tork)
     `>` [tork.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork](https://raw.github.com/sunaku/tork/master/bin/tork)
     `>` [tork.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork.1)
-  * `binman html`
+  * `binman-html`
     [tork](https://raw.github.com/sunaku/tork/master/bin/tork)
     `>` [tork.1.html](https://sunaku.github.io/tork/man/man1/tork.1.html)
 
 tork-runner(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-runner](https://raw.github.com/sunaku/tork/master/bin/tork-runner)
     `>` [tork-runner.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-runner](https://raw.github.com/sunaku/tork/master/bin/tork-runner)
     `>` [tork-runner.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-runner.1)
-  * `binman html`
+  * `binman-html`
     [tork-runner](https://raw.github.com/sunaku/tork/master/bin/tork-runner)
     `>` [tork-runner.1.html](https://sunaku.github.io/tork/man/man1/tork-runner.1.html)
 
 tork-herald(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-herald](https://raw.github.com/sunaku/tork/master/bin/tork-herald)
     `>` [tork-herald.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-herald](https://raw.github.com/sunaku/tork/master/bin/tork-herald)
     `>` [tork-herald.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-herald.1)
-  * `binman html`
+  * `binman-html`
     [tork-herald](https://raw.github.com/sunaku/tork/master/bin/tork-herald)
     `>` [tork-herald.1.html](https://sunaku.github.io/tork/man/man1/tork-herald.1.html)
 
 tork-driver(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-driver](https://raw.github.com/sunaku/tork/master/bin/tork-driver)
     `>` [tork-driver.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-driver](https://raw.github.com/sunaku/tork/master/bin/tork-driver)
     `>` [tork-driver.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-driver.1)
-  * `binman html`
+  * `binman-html`
     [tork-driver](https://raw.github.com/sunaku/tork/master/bin/tork-driver)
     `>` [tork-driver.1.html](https://sunaku.github.io/tork/man/man1/tork-driver.1.html)
 
 tork-engine(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-engine](https://raw.github.com/sunaku/tork/master/bin/tork-engine)
     `>` [tork-engine.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-engine](https://raw.github.com/sunaku/tork/master/bin/tork-engine)
     `>` [tork-engine.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-engine.1)
-  * `binman html`
+  * `binman-html`
     [tork-engine](https://raw.github.com/sunaku/tork/master/bin/tork-engine)
     `>` [tork-engine.1.html](https://sunaku.github.io/tork/man/man1/tork-engine.1.html)
 
 tork-master(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-master](https://raw.github.com/sunaku/tork/master/bin/tork-master)
     `>` [tork-master.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-master](https://raw.github.com/sunaku/tork/master/bin/tork-master)
     `>` [tork-master.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-master.1)
-  * `binman html`
+  * `binman-html`
     [tork-master](https://raw.github.com/sunaku/tork/master/bin/tork-master)
     `>` [tork-master.1.html](https://sunaku.github.io/tork/man/man1/tork-master.1.html)
 
 tork-remote(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-remote](https://raw.github.com/sunaku/tork/master/bin/tork-remote)
     `>` [tork-remote.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-remote](https://raw.github.com/sunaku/tork/master/bin/tork-remote)
     `>` [tork-remote.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-remote.1)
-  * `binman html`
+  * `binman-html`
     [tork-remote](https://raw.github.com/sunaku/tork/master/bin/tork-remote)
     `>` [tork-remote.1.html](https://sunaku.github.io/tork/man/man1/tork-remote.1.html)
 
 tork-notify(1):
 
-  * `binman text`
+  * `binman-text`
     [tork-notify](https://raw.github.com/sunaku/tork/master/bin/tork-notify)
     `>` [tork-notify.1.markdown](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [tork-notify](https://raw.github.com/sunaku/tork/master/bin/tork-notify)
     `>` [tork-notify.1](https://raw.github.com/sunaku/tork/gh-pages/man/man1/tork-notify.1)
-  * `binman html`
+  * `binman-html`
     [tork-notify](https://raw.github.com/sunaku/tork/master/bin/tork-notify)
     `>` [tork-notify.1.html](https://sunaku.github.io/tork/man/man1/tork-notify.1.html)
 
+binman(1):
+
+  * `binman-text`
+    [binman](https://raw.github.com/sunaku/binman/master/bin/binman)
+    `>` [binman.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown)
+  * `binman-roff`
+    [binman](https://raw.github.com/sunaku/binman/master/bin/binman)
+    `>` [binman.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1)
+  * `binman-html`
+    [binman](https://raw.github.com/sunaku/binman/master/bin/binman)
+    `>` [binman.1.html](https://sunaku.github.io/binman/man/man1/binman.1.html)
+
+binman-text(1):
+
+  * `binman-text`
+    [binman-text](https://raw.github.com/sunaku/binman/master/bin/binman-text)
+    `>` [binman-text.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-text.1.markdown)
+  * `binman-roff`
+    [binman-text](https://raw.github.com/sunaku/binman/master/bin/binman-text)
+    `>` [binman-text.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-text.1)
+  * `binman-html`
+    [binman-text](https://raw.github.com/sunaku/binman/master/bin/binman-text)
+    `>` [binman-text.1.html](https://sunaku.github.io/binman/man/man1/binman-text.1.html)
+
+binman-roff(1):
+
+  * `binman-text`
+    [binman-roff](https://raw.github.com/sunaku/binman/master/bin/binman-roff)
+    `>` [binman-roff.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-roff.1.markdown)
+  * `binman-roff`
+    [binman-roff](https://raw.github.com/sunaku/binman/master/bin/binman-roff)
+    `>` [binman-roff.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-roff.1)
+  * `binman-html`
+    [binman-roff](https://raw.github.com/sunaku/binman/master/bin/binman-roff)
+    `>` [binman-roff.1.html](https://sunaku.github.io/binman/man/man1/binman-roff.1.html)
+
+binman-html(1):
+
+  * `binman-text`
+    [binman-html](https://raw.github.com/sunaku/binman/master/bin/binman-html)
+    `>` [binman-html.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-html.1.markdown)
+  * `binman-roff`
+    [binman-html](https://raw.github.com/sunaku/binman/master/bin/binman-html)
+    `>` [binman-html.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-html.1)
+  * `binman-html`
+    [binman-html](https://raw.github.com/sunaku/binman/master/bin/binman-html)
+    `>` [binman-html.1.html](https://sunaku.github.io/binman/man/man1/binman-html.1.html)
+
+binman-show(1):
+
+  * `binman-text`
+    [binman-show](https://raw.github.com/sunaku/binman/master/bin/binman-show)
+    `>` [binman-show.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-show.1.markdown)
+  * `binman-roff`
+    [binman-show](https://raw.github.com/sunaku/binman/master/bin/binman-show)
+    `>` [binman-show.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-show.1)
+  * `binman-html`
+    [binman-show](https://raw.github.com/sunaku/binman/master/bin/binman-show)
+    `>` [binman-show.1.html](https://sunaku.github.io/binman/man/man1/binman-show.1.html)
+
+binman-help(1):
+
+  * `binman-text`
+    [binman-help](https://raw.github.com/sunaku/binman/master/bin/binman-help)
+    `>` [binman-help.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-help.1.markdown)
+  * `binman-roff`
+    [binman-help](https://raw.github.com/sunaku/binman/master/bin/binman-help)
+    `>` [binman-help.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-help.1)
+  * `binman-html`
+    [binman-help](https://raw.github.com/sunaku/binman/master/bin/binman-help)
+    `>` [binman-help.1.html](https://sunaku.github.io/binman/man/man1/binman-help.1.html)
+
+binman-rake(1):
+
+  * `binman-text`
+    [binman-rake](https://raw.github.com/sunaku/binman/master/bin/binman-rake)
+    `>` [binman-rake.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown)
+  * `binman-roff`
+    [binman-rake](https://raw.github.com/sunaku/binman/master/bin/binman-rake)
+    `>` [binman-rake.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1)
+  * `binman-html`
+    [binman-rake](https://raw.github.com/sunaku/binman/master/bin/binman-rake)
+    `>` [binman-rake.1.html](https://sunaku.github.io/binman/man/man1/binman-rake.1.html)
+
 md2man-roff(1):
 
-  * `binman text`
+  * `binman-text`
     [md2man-roff](https://raw.github.com/sunaku/md2man/master/bin/md2man-roff)
     `>` [md2man-roff.1.markdown](https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [md2man-roff](https://raw.github.com/sunaku/md2man/master/bin/md2man-roff)
     `>` [md2man-roff.1](https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-roff.1)
-  * `binman html`
+  * `binman-html`
     [md2man-roff](https://raw.github.com/sunaku/md2man/master/bin/md2man-roff)
     `>` [md2man-roff.1.html](https://sunaku.github.io/md2man/man/man1/md2man-roff.1.html)
 
 md2man-html(1):
 
-  * `binman text`
+  * `binman-text`
     [md2man-html](https://raw.github.com/sunaku/md2man/master/bin/md2man-html)
     `>` [md2man-html.1.markdown](https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [md2man-html](https://raw.github.com/sunaku/md2man/master/bin/md2man-html)
     `>` [md2man-html.1](https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-html.1)
-  * `binman html`
+  * `binman-html`
     [md2man-html](https://raw.github.com/sunaku/md2man/master/bin/md2man-html)
     `>` [md2man-html.1.html](https://sunaku.github.io/md2man/man/man1/md2man-html.1.html)
 
 md2man-rake(1):
 
-  * `binman text`
+  * `binman-text`
     [md2man-rake](https://raw.github.com/sunaku/md2man/master/bin/md2man-rake)
     `>` [md2man-rake.1.markdown](https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1.markdown)
-  * `binman roff`
+  * `binman-roff`
     [md2man-rake](https://raw.github.com/sunaku/md2man/master/bin/md2man-rake)
     `>` [md2man-rake.1](https://raw.github.com/sunaku/md2man/gh-pages/man/man1/md2man-rake.1)
-  * `binman html`
+  * `binman-html`
     [md2man-rake](https://raw.github.com/sunaku/md2man/master/bin/md2man-rake)
     `>` [md2man-rake.1.html](https://sunaku.github.io/md2man/man/man1/md2man-rake.1.html)
-
-binman(1):
-
-  * `binman text`
-    [binman](https://raw.github.com/sunaku/binman/master/bin/binman)
-    `>` [binman.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1.markdown)
-  * `binman roff`
-    [binman](https://raw.github.com/sunaku/binman/master/bin/binman)
-    `>` [binman.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman.1)
-  * `binman html`
-    [binman](https://raw.github.com/sunaku/binman/master/bin/binman)
-    `>` [binman.1.html](https://sunaku.github.io/binman/man/man1/binman.1.html)
-
-binman-rake(1):
-
-  * `binman text`
-    [binman-rake](https://raw.github.com/sunaku/binman/master/bin/binman-rake)
-    `>` [binman-rake.1.markdown](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1.markdown)
-  * `binman roff`
-    [binman-rake](https://raw.github.com/sunaku/binman/master/bin/binman-rake)
-    `>` [binman-rake.1](https://raw.github.com/sunaku/binman/gh-pages/man/man1/binman-rake.1)
-  * `binman html`
-    [binman-rake](https://raw.github.com/sunaku/binman/master/bin/binman-rake)
-    `>` [binman-rake.1.html](https://sunaku.github.io/binman/man/man1/binman-rake.1.html)
 
 #### For a Ruby package
 
@@ -400,11 +465,11 @@ gem spec pkg/*.gem | fgrep man/man
 
 ### At run time
 
-Run `binman show` to display the manual page (which may have been
+Run binman-show(1) to display the manual page (which may have been
 pre-generated at "compile time") for a specified script.
 
 Alternatively, an easy way to add support for `-h` and `--help` options in a
-specified script is to run `binman help` with its file path and command line
+specified script is to run binman-help(1) with its file path and command line
 arguments.  This displays its manual page (which may have been pre-generated
 at "compile time") *only when* those help options are found in its arguments.
 
@@ -415,10 +480,10 @@ at "compile time") *only when* those help options are found in its arguments.
 # your program's manual page goes here
 
 # OPTION 1: show manual and exit if ARGV has -h or --help except after --
-binman help "$0" "$@" && exit
+binman-help "$0" "$@" && exit
 
 # OPTION 2: show manual unconditionally
-binman show "$0"
+binman-show "$0"
 ```
 
 #### From a Ruby script
@@ -472,10 +537,10 @@ See the [API documentation][binman-api] for even more possibilities!
 # your program's manual page goes here
 
 # OPTION 1: show manual and exit if ARGV has -h or --help except after --
-system('binman', 'help', __FILE__, @ARGV) == 0 and exit;
+system('binman-help', __FILE__, @ARGV) == 0 and exit;
 
 # OPTION 2: show manual unconditionally
-system('binman', 'show', __FILE__);
+system('binman-show', __FILE__);
 ```
 
 You can also write the manual as a multi-line Ruby comment after `__END__`:
@@ -498,10 +563,10 @@ your program's manual page goes here
 import sys, subprocess
 
 # OPTION 1: show manual and exit if ARGV has -h or --help except after --
-subprocess.call(['binman', 'help', __file__] + sys.argv) == 0 and sys.exit()
+subprocess.call(['binman-help', __file__] + sys.argv) == 0 and sys.exit()
 
 # OPTION 2: show manual unconditionally
-subprocess.call(['binman', 'show', __file__])
+subprocess.call(['binman-show', __file__])
 ```
 
 You can also specify your program's source file encoding above the manual:
@@ -547,11 +612,11 @@ http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784
 
 # OPTION 1: show manual and exit if ARGV has -h or --help except after --
 BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\0"," ",c); gsub("\0"," ",c);
-       if(system("binman help" c) == 0){ exit }}
+       if(system("binman-help" c) == 0){ exit }}
 
 # OPTION 2: show manual unconditionally
 BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\0"," ",c); sub("\0.*","",c);
-       system("binman show" c)}
+       system("binman-show" c)}
 ```
 
 #### From a Tcl script
@@ -561,10 +626,10 @@ BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\0"," ",c); sub("\0.*","",c);
 # your program's manual page goes here
 
 # OPTION 1: show manual and exit if ARGV has -h or --help except after --
-if {![catch {exec -- >/dev/tty binman help $argv0 {*}$argv}]} {exit}
+if {![catch {exec -- >/dev/tty binman-help $argv0 {*}$argv}]} {exit}
 
 # OPTION 2: show manual unconditionally
-exec >/dev/tty binman show $argv0
+exec >/dev/tty binman-show $argv0
 ```
 
 You can also write the manual as a multi-line Ruby comment inside an `if 0`:
@@ -590,11 +655,11 @@ your program's manual page goes here
 var exec = require('child_process').exec;
 
 // OPTION 1: show manual and exit if ARGV has -h or --help except after --
-exec(['>/dev/tty', 'binman', 'help', __filename].concat(process.argv).
+exec(['>/dev/tty', 'binman-help', __filename].concat(process.argv).
 join(' '), function(error){ if (error === null){ process.exit(); } });
 
 // OPTION 2: show manual unconditionally
-exec(['>/dev/tty', 'binman', 'show', __filename].join(' '));
+exec(['>/dev/tty', 'binman-show', __filename].join(' '));
 ```
 
 ## License

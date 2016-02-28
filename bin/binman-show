@@ -1,0 +1,193 @@
+#!/usr/bin/env ruby
+#
+# # BINMAN-SHOW 1 2016-02-13 5.0.1
+#
+# ## NAME
+#
+# binman-show - show manpage from header comment
+#
+# ## SYNOPSIS
+#
+# `binman-show` [*OPTION*]... [*FILE*] [*PATTERN*]
+#
+# ## DESCRIPTION
+#
+# Extracts the "embedded manpage source", described in binman-text(1), from the
+# given *FILE* or STDIN, transforms it into roff(7), and displays it in man(1).
+#
+# If the optional *PATTERN* regular expression is specified, searches for it
+# inside the output displayed by man(1) and jumps to the first match if found.
+#
+# If man(1) cannot display the roff(7) conversion, falls back to the displaying
+# the HTML conversion. And if that fails too, displays the manpage source as-is.
+#
+# ### Examples
+#
+# See "Embedded manpage sources" in binman-text(1) for header comment syntax.
+#
+# #### From a shell script
+#
+# ```sh
+# #!/usr/bin/sh
+# # your program's manual page goes here
+#
+# binman-show "$0"
+# ```
+#
+# #### From a Ruby script
+#
+# ```ruby
+# #!/usr/bin/env ruby
+# # your program's manual page goes here
+#
+# require 'binman'
+# BinMan.show
+# ```
+#
+# You can also specify your program's source file encoding above the manual:
+#
+# ```ruby
+# #!/usr/bin/env ruby
+# # -*- coding: utf-8 -*-
+# # your program's manual page goes here
+# ```
+#
+# You can also write the manual as a multi-line Ruby comment:
+#
+# ```ruby
+# #!/usr/bin/env ruby
+# =begin
+# your program's manual page goes here
+# =end
+# ```
+#
+# You can also specify your program's source file encoding above the manual:
+#
+# ```ruby
+# #!/usr/bin/env ruby
+# # -*- coding: utf-8 -*-
+# =begin
+# your program's manual page goes here
+# =end
+# ```
+#
+# #### From a Perl script
+#
+# ```perl
+# #!/usr/bin/env perl
+# # your program's manual page goes here
+#
+# system('binman-show', __FILE__);
+# ```
+#
+# You can also write the manual as a multi-line Ruby comment after `__END__`:
+#
+# ```perl
+# #!/usr/bin/env perl
+# print "your program's code goes here";
+# __END__
+# =begin
+# your program's manual page goes here
+# =end
+# ```
+#
+# #### From a Python script
+#
+# ```python
+# #!/usr/bin/env python
+# # your program's manual page goes here
+#
+# import subprocess
+#
+# subprocess.call(['binman-show', __file__])
+# ```
+#
+# You can also specify your program's source file encoding above the manual:
+#
+# ```python
+# #!/usr/bin/env python
+# # -*- coding: utf-8 -*-
+# # your program's manual page goes here
+# ```
+#
+# You can also write the manual as a multi-line Ruby comment inside a docstring:
+#
+# ```python
+# #!/usr/bin/env python
+# """
+# =begin
+# your program's manual page goes here
+# =end
+# """
+# ```
+#
+# You can also specify your program's source file encoding above the manual:
+#
+# ```python
+# #!/usr/bin/env python
+# # -*- coding: utf-8 -*-
+# """
+# =begin
+# your program's manual page goes here
+# =end
+# """
+# ```
+#
+# #### From an AWK script
+#
+# The technique for determining current AWK script file name [comes from here](
+# http://www.mombu.com/programming/programming/t-the-name-of-script-itself-2040784-print.html
+# ).
+#
+# ```awk
+# #!/usr/bin/awk -f
+# # your program's manual page goes here
+#
+# BEGIN {getline c <"/proc/self/cmdline"; sub(".*-f\0"," ",c); sub("\0.*","",c);
+#        system("binman-show" c)}
+# ```
+#
+# #### From a Tcl script
+#
+# ```tcl
+# #!/usr/bin/env tclsh
+# # your program's manual page goes here
+#
+# exec >/dev/tty binman-show $argv0
+# ```
+#
+# You can also write the manual as a multi-line Ruby comment inside an `if 0`:
+#
+# ```tcl
+# #!/usr/bin/env tclsh
+# if 0 {
+# =begin
+# your program's manual page goes here
+# =end
+# }
+# ```
+#
+# #### From a Node.js script
+#
+# ```javascript
+# /*
+# =begin
+# your program's manual page goes here
+# =end
+# */
+#
+# require('child_process').exec(['>/dev/tty', 'binman-show', __filename].join(' '));
+# ```
+#
+# ## OPTIONS
+#
+# `-h` [*PATTERN*], `--help` [*PATTERN*]
+#   Show this help manual and optionally search for *PATTERN* regular expression.
+#
+# ## SEE ALSO
+#
+# binman-text(1), binman-roff(1), binman-html(1), binman-help(1), binman(1)
+
+require 'binman'
+BinMan.help
+BinMan.show(ARGF)

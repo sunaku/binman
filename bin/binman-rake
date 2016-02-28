@@ -5,7 +5,7 @@
 
 ## NAME
 
-binman-rake - run rake(1) tasks from binman(1)
+binman-rake - run rake(1) tasks from command line
 
 ## SYNOPSIS
 
