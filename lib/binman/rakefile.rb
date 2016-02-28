@@ -29,12 +29,12 @@ task 'binman:mkd' => mkds
 desc 'Build UNIX manual pages for bin/ scripts.'
 task 'binman:man' => 'binman:mkd' do
 #-----------------------------------------------------------------------------
-  sh 'md2man-rake', 'md2man:man'
+  sh 'md2man-rake', 'man'
 end
 
 #-----------------------------------------------------------------------------
 desc 'Build HTML manual pages for bin/ scripts.'
 task 'binman:web' => 'binman:mkd' do
 #-----------------------------------------------------------------------------
-  sh 'md2man-rake', 'md2man:web'
+  sh 'md2man-rake', 'web'
 end

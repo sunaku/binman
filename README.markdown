@@ -51,7 +51,7 @@ gem install binman
 If you also want to build your own manual pages:
 
 ```sh
-gem install md2man -v '~> 5.0'
+gem install md2man -v '~> 5.1'
 ```
 
 ### For developers
@@ -374,9 +374,9 @@ binman-rake(1):
 Add this snippet to your gemspec file:
 
 ```ruby
-s.files += Dir['man/man?/*.?']            # UNIX manual pages
-s.files += Dir['man/**/*.{html,css,js}']  # HTML manual pages
-s.add_development_dependency 'md2man', '~> 5.0'
+s.files += Dir['man/man?/*.?']         # UNIX manpages
+s.files += Dir['man/**/*.{html,css}']  # HTML webpages
+s.add_development_dependency 'md2man', '~> 5.1'
 ```
 
 Add the following line to your Rakefile:
