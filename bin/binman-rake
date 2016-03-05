@@ -59,13 +59,13 @@ rake(1), binman(1), md2man-rake(1)
 require 'binman'
 BinMan.help
 
+# qualify relative task names by prefixing the namespace
+ARGV.map! {|arg| arg.sub(/\A(mkd|man|web)\Z/, 'binman:\&') }
+
 require 'rake'
 Rake.application.init File.basename(__FILE__)
 
 require 'binman/rakefile'
 task :default => :binman
-task :mkd => 'binman:mkd'
-task :man => 'binman:man'
-task :web => 'binman:web'
 
 Rake.application.top_level
