@@ -37,8 +37,7 @@ For examples of input and output files, see "From the command line" below.
 
 ### Requirements
 
-  * [Ruby] 1.8.7 or newer
-  [Ruby]: https://www.ruby-lang.org/
+  * [Ruby]( https://www.ruby-lang.org/ ) 1.8.7 or newer
 
 ### For users
 
@@ -664,9 +663,9 @@ exec(['>/dev/tty', 'binman-show', __filename].join(' '));
 
 ## License
 
-> Like my work? :+1: Please [spare a life] today as thanks!
-> :cow::pig::chicken::fish::speak_no_evil::v::revolving_hearts:
-[spare a life]: https://sunaku.github.io/vegan-for-life.html
+[Spare A Life]: https://sunaku.github.io/vegan-for-life.html
+> Like my work? :+1:  Please [spare a life] today as thanks!
+:cow::pig::chicken::fish::speak_no_evil::v::revolving_hearts:
 
 Copyright 2011 Suraj N. Kurapati <https://github.com/sunaku>
 
